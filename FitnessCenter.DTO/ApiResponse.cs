@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FitnessCenter.DTO
 {
-    internal class ApiResponse
+    public class ApiResponse
     {
     }
 }

@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace FitnessCenter.DTO
 {
-    internal class Routine
+    public class Routine
     {
+        public int RoutineID { get; set; }
+        public int ClientID { get; set; }
+        public int TrainerID { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }

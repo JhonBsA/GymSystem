@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace FitnessCenter.DTO
 {
-    internal class Appointment
+    public class Appointment
     {
+        public int AppointmentID { get; set; }
+        public int ClientID { get; set; }
+        public int TrainerID { get; set; }
+        public DateTime AppointmentDate { get; set; }
+        public int DurationInMinutes { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }
