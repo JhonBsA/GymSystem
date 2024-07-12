@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FitnessCenter.Core\FitnessCenter.Core.csproj" />
+    <ProjectReference Include="..\FitnessCenter.DTO\FitnessCenter.DTO.csproj" />
+  </ItemGroup>
+
 </Project>

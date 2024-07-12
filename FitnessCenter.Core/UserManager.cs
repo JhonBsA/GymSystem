@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FitnessCenter.DTO;
+using FitnessCenter.Data.Dao;
+using FitnessCenter.Data.Crud;
+
 
 namespace FitnessCenter.Core
 {
-    internal class UserManager
+    public class UserManager
     {
+        public void CreateUsuario(UserDetails user)
+        {
+            UserCrudFactory userCrud = new UserCrudFactory();
+            userCrud.Create(user);
+        }
     }
 }

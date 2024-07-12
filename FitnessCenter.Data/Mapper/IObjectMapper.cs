@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FitnessCenter.DTO;
 
 namespace FitnessCenter.Data.Mapper
 {
-    internal class IObjectMapper
+    public interface IObjectMapper
     {
+        BaseClass BuildObject(Dictionary<string, object> objectRow);
+        List<BaseClass> BuildObjects(List<Dictionary<string, object>> objectRows);
     }
 }
