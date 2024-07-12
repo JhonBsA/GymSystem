@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace FitnessCenter.DTO
 {
-    internal class ExerciseType
+    public class ExerciseType
     {
+        public int ExerciseTypeID { get; set; }
+        public string? TypeName { get; set; }
     }
 }

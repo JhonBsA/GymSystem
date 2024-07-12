@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace FitnessCenter.DTO
 {
-    internal class TrainingLogs
+    public class TrainingLogs
     {
+        public int TrainingLogID { get; set; }
+        public int ClientID { get; set; }
+        public int RoutineExerciseID { get; set; }
+        public DateTime DateLogged { get; set; }
+        public int SetsCompleted { get; set; }
+        public int RepetitionsCompleted { get; set; }
+        public decimal WeightUsed { get; set; }
+        public int DurationInSeconds { get; set; }
     }
 }

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace FitnessCenter.DTO
 {
-    internal class UserRole
+    public class UserRole
     {
+        public int UserRoleID { get; set; }
+        public int UserID { get; set; }
+        public int RoleID { get; set; }
     }
 }

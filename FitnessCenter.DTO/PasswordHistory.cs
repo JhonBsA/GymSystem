@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace FitnessCenter.DTO
 {
-    internal class PasswordHistory
+    public class PasswordHistory
     {
+        public int HistoryID { get; set; }
+        public int UserID { get; set; }
+        public byte[]? PasswordHash { get; set; }
+        public byte[]? PasswordSalt { get; set; }
+        public DateTime ChangedAt { get; set; }
     }
 }
