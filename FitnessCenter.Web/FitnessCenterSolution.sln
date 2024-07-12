@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessCenter.Data", "..\Fi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessCenter.Core", "..\FitnessCenter.Core\FitnessCenter.Core.csproj", "{310A7B65-02B7-4CDE-BC97-EE9DBC88B3E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessCenter.DTO", "..\FitnessCenter.DTO\FitnessCenter.DTO.csproj", "{7A88A861-0417-4C73-A892-107978228866}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessCenter.DTO", "..\FitnessCenter.DTO\FitnessCenter.DTO.csproj", "{7A88A861-0417-4C73-A892-107978228866}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessCenter.API", "..\FitnessCenter.API\FitnessCenter.API.csproj", "{EF210EAC-B99C-4986-801D-FCBF23B402E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{7A88A861-0417-4C73-A892-107978228866}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A88A861-0417-4C73-A892-107978228866}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A88A861-0417-4C73-A892-107978228866}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF210EAC-B99C-4986-801D-FCBF23B402E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF210EAC-B99C-4986-801D-FCBF23B402E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF210EAC-B99C-4986-801D-FCBF23B402E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF210EAC-B99C-4986-801D-FCBF23B402E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FitnessCenter.Data\FitnessCenter.Data.csproj" />
+    <ProjectReference Include="..\FitnessCenter.DTO\FitnessCenter.DTO.csproj" />
+  </ItemGroup>
+
 </Project>
