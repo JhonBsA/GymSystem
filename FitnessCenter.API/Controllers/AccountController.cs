@@ -21,5 +21,14 @@ namespace FitnessCenter.API.Controllers
             manager.CreateUsuario(user);
             return Ok();
         }
+        [HttpGet]
+        [Route("PasswordReset")]
+        public ActionResult PasswordReset(string email)
+        {
+            UserManager manager = new UserManager();
+            var result = manager.RetrieveByEmail(email);
+            return Ok(result);
+        }
+
     }
 }

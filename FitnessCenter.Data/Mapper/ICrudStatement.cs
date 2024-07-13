@@ -10,6 +10,6 @@ namespace DataAccess.Mapper
         SqlOperation GetDeleteStatement(BaseClass entityDTO);
         SqlOperation GetRetrieveAllStatement();
         SqlOperation GetRetrieveByIdStatement(int Id);
-        SqlOperation GetRetrieveByPhraseStatement(string searchType, string searchPhrase);
+        SqlOperation GetRetrieveByEmailStatement(string email);
     }
 }

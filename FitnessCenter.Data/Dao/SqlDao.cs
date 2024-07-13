@@ -46,6 +46,39 @@ namespace FitnessCenter.Data.Dao
             command.ExecuteNonQuery();
         }
 
+        public List<Dictionary<string, object>> ExecuteStoredProcedureWithResult(SqlOperation operation)
+        {
+            using (SqlConnection conn = new SqlConnection(_connString))
+            {
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = conn;
+                    command.CommandText = operation.ProcedureName;
+                    command.CommandType = CommandType.StoredProcedure;
 
+                    foreach (var p in operation.Parameters)
+                    {
+                        command.Parameters.Add(p);
+                    }
+
+                    conn.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        var result = new List<Dictionary<string, object>>();
+                        while (reader.Read())
+                        {
+                            var row = new Dictionary<string, object>();
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                row[reader.GetName(i)] = reader.GetValue(i);
+                            }
+                            result.Add(row);
+                        }
+                        return result;
+                    }
+                }
+            }
+        }
     }
 }

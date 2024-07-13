@@ -7,10 +7,16 @@ namespace FitnessCenter.Core
 {
     public class UserManager
     {
+        readonly UserCrudFactory userCrud = new UserCrudFactory();
         public void CreateUsuario(UserDetails user)
         {
-            UserCrudFactory userCrud = new UserCrudFactory();
+            
             userCrud.Create(user);
+        }
+
+        public Dictionary<string, string> RetrieveByEmail(string email)
+        {
+            return userCrud.RetrieveByEmail(email);
         }
     }
 }
