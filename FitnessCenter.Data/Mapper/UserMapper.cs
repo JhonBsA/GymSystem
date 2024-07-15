@@ -81,6 +81,7 @@ namespace FitnessCenter.Data.Mapper
             };
             operation.AddVarcharParam("EmailP",email);
             return operation;
+<<<<<<< HEAD
         }
 
         public SqlOperation GetPasswordResetOTPStatement(string Otp, string NewPassword)
@@ -103,6 +104,8 @@ namespace FitnessCenter.Data.Mapper
             operation.AddVarcharParam("EmailP", Email);
             operation.AddVarcharParam("PasswordP", Password);
             return operation;
+=======
+>>>>>>> 2032cc1c34dfc49b772443d180f876b624aa8eed
         }
     }
 }
