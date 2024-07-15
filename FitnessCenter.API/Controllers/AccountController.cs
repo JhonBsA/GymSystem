@@ -22,7 +22,7 @@ namespace FitnessCenter.API.Controllers
             return Ok();
         }
         [HttpGet]
-        [Route("PasswordReset")]
+        [Route("PasswordResetEmail")]
         public ActionResult PasswordReset(string email)
         {
             UserManager manager = new UserManager();
@@ -30,5 +30,22 @@ namespace FitnessCenter.API.Controllers
             return Ok(result);
         }
 
+        [HttpPost]
+        [Route("PasswordResetOTP")]
+        public ActionResult PasswordResetOTP(string Otp, string NewPassword)
+        {
+            UserManager manager = new UserManager();
+            var result = manager.PasswordResetOTP(Otp, NewPassword);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("Login")]
+        public ActionResult Login(string Email, string Password)
+        {
+            UserManager manager = new UserManager();
+            var result = manager.Login(Email, Password);
+            return Ok(result);
+        }
     }
 }

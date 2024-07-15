@@ -18,5 +18,18 @@ namespace FitnessCenter.Core
         {
             return userCrud.RetrieveByEmail(email);
         }
+
+        public Dictionary<string, string> PasswordResetOTP(string Otp, string NewPassword)
+        {
+            var result = userCrud.PasswordResetOTP(Otp, NewPassword);
+            return result;
+        }
+
+        public Dictionary<string, string> Login(string Email, string Password)
+        {
+            var result = userCrud.Login(Email, Password);
+            return result;
+        }
+
     }
 }

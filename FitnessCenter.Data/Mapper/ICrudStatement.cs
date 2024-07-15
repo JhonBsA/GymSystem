@@ -11,5 +11,7 @@ namespace DataAccess.Mapper
         SqlOperation GetRetrieveAllStatement();
         SqlOperation GetRetrieveByIdStatement(int Id);
         SqlOperation GetRetrieveByEmailStatement(string email);
+        SqlOperation GetPasswordResetOTPStatement(string Otp, string NewPassword);
+        SqlOperation Login(string Email, string Password);
     }
 }

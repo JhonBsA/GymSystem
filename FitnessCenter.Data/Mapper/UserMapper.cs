@@ -82,5 +82,27 @@ namespace FitnessCenter.Data.Mapper
             operation.AddVarcharParam("EmailP",email);
             return operation;
         }
+
+        public SqlOperation GetPasswordResetOTPStatement(string Otp, string NewPassword)
+        {
+            SqlOperation operation = new SqlOperation
+            {
+                ProcedureName = "VerifyAndResetOTP"
+            };
+            operation.AddVarcharParam("OTPP", Otp);
+            operation.AddVarcharParam("NewPassword", NewPassword);
+            return operation;
+        }
+
+        public SqlOperation Login(string Email, string Password)
+        {
+            SqlOperation operation = new SqlOperation
+            {
+                ProcedureName = "GetLogin"
+            };
+            operation.AddVarcharParam("EmailP", Email);
+            operation.AddVarcharParam("PasswordP", Password);
+            return operation;
+        }
     }
 }
