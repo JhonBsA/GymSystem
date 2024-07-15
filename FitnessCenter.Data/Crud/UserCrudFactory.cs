@@ -1,4 +1,5 @@
-﻿using FitnessCenter.Data.Dao;
+﻿using Azure;
+using FitnessCenter.Data.Dao;
 using FitnessCenter.Data.Mapper;
 using FitnessCenter.DTO;
 using System;
@@ -42,5 +43,94 @@ namespace FitnessCenter.Data.Crud
         {
             throw new NotImplementedException();
         }
+
+        public Dictionary<string, string> RetrieveByEmail(string email)
+        {
+            SqlOperation operation = mapper.GetRetrieveByEmailStatement(email);
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+
+            if (result.Count == 0)
+            {
+                throw new Exception("No response from stored procedure.");
+            }
+
+            var firstRow = result[0];
+            var response = new Dictionary<string, string>();
+
+            if (firstRow.ContainsKey("Message"))
+            {
+                response["Message"] = firstRow["Message"].ToString();
+            }
+            if (firstRow.ContainsKey("OTPCode"))
+            {
+                response["OTPCode"] = firstRow["OTPCode"].ToString();
+            }
+            if (firstRow.ContainsKey("OTPState"))
+            {
+                response["OTPState"] = firstRow["OTPState"].ToString();
+            }
+
+            return response;
+        }
+
+<<<<<<< HEAD
+        public Dictionary<string, string> PasswordResetOTP(string Otp, string NewPassword)
+        {
+            SqlOperation operation = mapper.GetPasswordResetOTPStatement(Otp, NewPassword);
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+
+            if (result.Count == 0)
+            {
+                throw new Exception("No response from stored procedure.");
+            }
+
+            var firstRow = result[0];
+            var response = new Dictionary<string, string>();
+
+            if (firstRow.ContainsKey("Email"))
+            {
+                response["Email"] = firstRow["Email"].ToString();
+            }
+            if (firstRow.ContainsKey("StatusCode"))
+            {
+                response["StatusCode"] = firstRow["StatusCode"].ToString();
+            }
+            if (firstRow.ContainsKey("Message"))
+            {
+                response["Message"] = firstRow["Message"].ToString();
+            }
+
+            return response;
+        }
+
+        public Dictionary<string, string> Login(string Email, string Password)
+        {
+            SqlOperation operation = mapper.Login(Email, Password);
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+            if (result.Count == 0) {
+                throw new Exception("No response from stored procedure.");
+            }
+            var firstRow = result[0];
+            var response = new Dictionary<string, string>();
+
+            if (firstRow.ContainsKey("Message"))
+            {
+                response["Message"] = firstRow["Message"].ToString();
+            }
+            if (firstRow.ContainsKey("RoleID"))
+            {
+                response["RoleID"] = firstRow["RoleID"].ToString();
+            }
+
+            if (firstRow.ContainsKey("UserID"))
+            {
+                response["UserID"] = firstRow["UserID"].ToString();
+            }
+
+            return response;
+        }
+
+=======
+>>>>>>> 2032cc1c34dfc49b772443d180f876b624aa8eed
     }
 }

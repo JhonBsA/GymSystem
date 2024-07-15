@@ -21,5 +21,38 @@ namespace FitnessCenter.API.Controllers
             manager.CreateUsuario(user);
             return Ok();
         }
+        [HttpGet]
+<<<<<<< HEAD
+        [Route("PasswordResetEmail")]
+=======
+        [Route("PasswordReset")]
+>>>>>>> 2032cc1c34dfc49b772443d180f876b624aa8eed
+        public ActionResult PasswordReset(string email)
+        {
+            UserManager manager = new UserManager();
+            var result = manager.RetrieveByEmail(email);
+            return Ok(result);
+        }
+
+<<<<<<< HEAD
+        [HttpPost]
+        [Route("PasswordResetOTP")]
+        public ActionResult PasswordResetOTP(string Otp, string NewPassword)
+        {
+            UserManager manager = new UserManager();
+            var result = manager.PasswordResetOTP(Otp, NewPassword);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("Login")]
+        public ActionResult Login(string Email, string Password)
+        {
+            UserManager manager = new UserManager();
+            var result = manager.Login(Email, Password);
+            return Ok(result);
+        }
+=======
+>>>>>>> 2032cc1c34dfc49b772443d180f876b624aa8eed
     }
 }

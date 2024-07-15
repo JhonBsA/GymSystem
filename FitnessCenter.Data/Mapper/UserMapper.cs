@@ -1,4 +1,5 @@
-﻿using DataAccess.Mapper;
+﻿using Azure;
+using DataAccess.Mapper;
 using FitnessCenter.Data.Dao;
 using FitnessCenter.DTO;
 using System;
@@ -42,7 +43,7 @@ namespace FitnessCenter.Data.Mapper
 
             UserDetails user = (UserDetails)entityDTO;
 
-            operation.AddIntegerParam("CedulaP", user.Cedula); // Directly using the value
+            operation.AddIntegerParam("CedulaP", user.Cedula); 
             operation.AddVarcharParam("NombreP", user.Nombre);
             operation.AddVarcharParam("FirstLastNameP", user.FirstLastName);
             operation.AddVarcharParam("SecondLastNameP", user.SecondLastName);
@@ -72,9 +73,39 @@ namespace FitnessCenter.Data.Mapper
             throw new NotImplementedException();
         }
 
-        public SqlOperation GetRetrieveByPhraseStatement(string searchType, string searchPhrase)
+        public SqlOperation GetRetrieveByEmailStatement(string email)
         {
-            throw new NotImplementedException();
+            SqlOperation operation = new SqlOperation
+            {
+                ProcedureName = "GetUser"
+            };
+            operation.AddVarcharParam("EmailP",email);
+            return operation;
+<<<<<<< HEAD
+        }
+
+        public SqlOperation GetPasswordResetOTPStatement(string Otp, string NewPassword)
+        {
+            SqlOperation operation = new SqlOperation
+            {
+                ProcedureName = "VerifyAndResetOTP"
+            };
+            operation.AddVarcharParam("OTPP", Otp);
+            operation.AddVarcharParam("NewPassword", NewPassword);
+            return operation;
+        }
+
+        public SqlOperation Login(string Email, string Password)
+        {
+            SqlOperation operation = new SqlOperation
+            {
+                ProcedureName = "GetLogin"
+            };
+            operation.AddVarcharParam("EmailP", Email);
+            operation.AddVarcharParam("PasswordP", Password);
+            return operation;
+=======
+>>>>>>> 2032cc1c34dfc49b772443d180f876b624aa8eed
         }
     }
 }
