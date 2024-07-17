@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FitnessCenter.DTO
 {
-    public class Appointment
+    public class Appointment : BaseClass
     {
         public int AppointmentID { get; set; }
         public int ClientID { get; set; }
@@ -14,5 +14,9 @@ namespace FitnessCenter.DTO
         public DateTime AppointmentDate { get; set; }
         public int DurationInMinutes { get; set; }
         public DateTime CreatedAt { get; set; }
+        public string Notes { get; set; }
+        public int? CalendarID { get; set; }
     }
 }
+
+

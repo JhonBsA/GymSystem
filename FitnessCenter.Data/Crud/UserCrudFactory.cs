@@ -4,9 +4,6 @@ using FitnessCenter.Data.Mapper;
 using FitnessCenter.DTO;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FitnessCenter.Data.Crud
 {
@@ -20,26 +17,43 @@ namespace FitnessCenter.Data.Crud
             dao = SqlDao.GetInstance();
         }
 
-        public override void Create(BaseClass users)
+        public override Dictionary<string, string> Create(BaseClass users)
         {
-            //throw new NotImplementedException();
             SqlOperation operation = mapper.GetCreateStatement(users);
-            dao.ExecuteStoredProcedure(operation);
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+
+            if (result.Count == 0)
+            {
+                throw new Exception("No response from stored procedure.");
+            }
+
+            var firstRow = result[0];
+            var response = new Dictionary<string, string>();
+
+            foreach (var key in firstRow.Keys)
+            {
+                response[key] = firstRow[key].ToString();
+            }
+
+            return response;
         }
 
-        public override void Delete(BaseClass entityDTO)
+        public override Dictionary<string, string> Delete(BaseClass entityDTO)
         {
             throw new NotImplementedException();
         }
+
         public override List<T> RetrieveAll<T>()
         {
             throw new NotImplementedException();
         }
+
         public override BaseClass RetrieveById(int id)
         {
             throw new NotImplementedException();
         }
-        public override void Update(BaseClass entityDTO)
+
+        public override Dictionary<string, string> Update(BaseClass entityDTO)
         {
             throw new NotImplementedException();
         }
@@ -106,9 +120,12 @@ namespace FitnessCenter.Data.Crud
         {
             SqlOperation operation = mapper.Login(Email, Password);
             var result = dao.ExecuteStoredProcedureWithResult(operation);
-            if (result.Count == 0) {
+
+            if (result.Count == 0)
+            {
                 throw new Exception("No response from stored procedure.");
             }
+
             var firstRow = result[0];
             var response = new Dictionary<string, string>();
 
@@ -128,6 +145,5 @@ namespace FitnessCenter.Data.Crud
 
             return response;
         }
-
     }
 }

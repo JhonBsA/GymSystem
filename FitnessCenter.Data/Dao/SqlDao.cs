@@ -23,7 +23,7 @@ namespace FitnessCenter.Data.Dao
             return instance;
         }
 
-        public void ExecuteStoredProcedure(SqlOperation operation)
+        public List<Dictionary<string, object>> ExecuteStoredProcedure(SqlOperation operation)
         {
             //hacer la conexion
             string connectionString = _connString;
@@ -42,8 +42,23 @@ namespace FitnessCenter.Data.Dao
             }
             //abrir conexion
             conn.Open();
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                var result = new List<Dictionary<string, object>>();
+                while (reader.Read())
+                {
+                    var row = new Dictionary<string, object>();
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        row[reader.GetName(i)] = reader.GetValue(i);
+                    }
+                    result.Add(row);
+                }
+                return result;
+            }
             //Ejecutar el comando
-            command.ExecuteNonQuery();
+            //command.ExecuteNonQuery();
         }
 
         public List<Dictionary<string, object>> ExecuteStoredProcedureWithResult(SqlOperation operation)
