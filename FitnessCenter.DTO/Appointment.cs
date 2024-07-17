@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace FitnessCenter.DTO
 {
-    public class Appointment : BaseClass
-    {
+    public class Appointment : AppointmentBaseClass
+    { 
         public int AppointmentID { get; set; }
         public int ClientID { get; set; }
         public int TrainerID { get; set; }

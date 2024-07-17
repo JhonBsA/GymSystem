@@ -1,6 +1,6 @@
 ﻿using FitnessCenter.DTO;
 using FitnessCenter.Data.Dao;
-using FitnessCenter.Data.Crud;
+using FitnessCenter.Data.Crud.AppointmentCRUD;
 
 
 namespace FitnessCenter.Core
