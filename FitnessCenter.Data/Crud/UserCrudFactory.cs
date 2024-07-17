@@ -73,7 +73,6 @@ namespace FitnessCenter.Data.Crud
             return response;
         }
 
-<<<<<<< HEAD
         public Dictionary<string, string> PasswordResetOTP(string Otp, string NewPassword)
         {
             SqlOperation operation = mapper.GetPasswordResetOTPStatement(Otp, NewPassword);
@@ -130,7 +129,5 @@ namespace FitnessCenter.Data.Crud
             return response;
         }
 
-=======
->>>>>>> 2032cc1c34dfc49b772443d180f876b624aa8eed
     }
 }

@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using FitnessCenter.DTO;
 using FitnessCenter.Core;
-
 
 namespace FitnessCenter.API.Controllers
 {
@@ -13,46 +11,43 @@ namespace FitnessCenter.API.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
+        private readonly UserManager _userManager;
+
+        public AccountController()
+        {
+            _userManager = new UserManager();
+        }
+
         [HttpPost]
         [Route("CreateUser")]
-        public ActionResult CreateUser(UserDetails user)
+        public IActionResult CreateUser(UserDetails user)
         {
-            UserManager manager = new UserManager();
-            manager.CreateUsuario(user);
+            _userManager.CreateUsuario(user);
             return Ok();
         }
+
         [HttpGet]
-<<<<<<< HEAD
-        [Route("PasswordResetEmail")]
-=======
         [Route("PasswordReset")]
->>>>>>> 2032cc1c34dfc49b772443d180f876b624aa8eed
-        public ActionResult PasswordReset(string email)
+        public IActionResult PasswordReset(string email)
         {
-            UserManager manager = new UserManager();
-            var result = manager.RetrieveByEmail(email);
+            var result = _userManager.RetrieveByEmail(email);
             return Ok(result);
         }
 
-<<<<<<< HEAD
         [HttpPost]
         [Route("PasswordResetOTP")]
-        public ActionResult PasswordResetOTP(string Otp, string NewPassword)
+        public IActionResult PasswordResetOTP(string otp, string newPassword)
         {
-            UserManager manager = new UserManager();
-            var result = manager.PasswordResetOTP(Otp, NewPassword);
+            var result = _userManager.PasswordResetOTP(otp, newPassword);
             return Ok(result);
         }
 
         [HttpPost]
         [Route("Login")]
-        public ActionResult Login(string Email, string Password)
+        public IActionResult Login(string email, string password)
         {
-            UserManager manager = new UserManager();
-            var result = manager.Login(Email, Password);
+            var result = _userManager.Login(email, password);
             return Ok(result);
         }
-=======
->>>>>>> 2032cc1c34dfc49b772443d180f876b624aa8eed
     }
 }
