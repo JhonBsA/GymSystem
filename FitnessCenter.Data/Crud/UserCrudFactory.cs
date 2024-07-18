@@ -50,8 +50,21 @@ namespace FitnessCenter.Data.Crud
 
         public override BaseClass RetrieveById(int id)
         {
-            throw new NotImplementedException();
+            SqlOperation operation = mapper.GetRetrieveByIdStatement(id);
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+
+            if (result.Count == 0)
+            {
+                throw new Exception("No response from stored procedure.");
+            }
+
+            var firstRow = result[0];
+            var user = mapper.BuildObject(firstRow);
+
+            return user;
         }
+
+
 
         public override Dictionary<string, string> Update(BaseClass entityDTO)
         {

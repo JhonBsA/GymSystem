@@ -23,14 +23,14 @@ namespace FitnessCenter.Data.Mapper
         {
             return new UserDetails()
             {
-                Cedula = Convert.ToInt32(objectRow["cedula"]),
-                Nombre = objectRow["nombre"].ToString(),
-                FirstLastName = objectRow["primer_apellido"].ToString(),
-                SecondLastName = objectRow["segundo_apellido"].ToString(),
-                Phone = objectRow["telefono"].ToString(),
-                Email = objectRow["email"].ToString(),
-                RoleName = objectRow["role_name"].ToString(),
-              
+                UserID = objectRow.ContainsKey("UserID") ? Convert.ToInt32(objectRow["UserID"]) : 0,
+                Cedula = objectRow.ContainsKey("Cedula") ? Convert.ToInt32(objectRow["Cedula"]) : 0,
+                Nombre = objectRow.ContainsKey("Nombre") ? objectRow["Nombre"].ToString() : string.Empty,
+                FirstLastName = objectRow.ContainsKey("FirstLastName") ? objectRow["FirstLastName"].ToString() : string.Empty,
+                SecondLastName = objectRow.ContainsKey("SecondLastName") ? objectRow["SecondLastName"].ToString() : string.Empty,
+                Phone = objectRow.ContainsKey("Phone") ? objectRow["Phone"].ToString() : string.Empty,
+                Email = objectRow.ContainsKey("Email") ? objectRow["Email"].ToString() : string.Empty,
+                RoleName = objectRow.ContainsKey("RoleName") ? objectRow["RoleName"].ToString() : string.Empty
             };
         }
 
@@ -68,10 +68,17 @@ namespace FitnessCenter.Data.Mapper
             throw new NotImplementedException();
         }
 
-        public SqlOperation GetRetrieveByIdStatement(int Id)
+        public SqlOperation GetRetrieveByIdStatement(int ID)
         {
-            throw new NotImplementedException();
+            SqlOperation operation = new SqlOperation
+            {
+                ProcedureName = "GetUserByUserID"
+            };
+
+            operation.AddIntegerParam("UserID", ID);
+            return operation;
         }
+
 
         public SqlOperation GetRetrieveByEmailStatement(string email)
         {

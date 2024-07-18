@@ -31,5 +31,10 @@ namespace FitnessCenter.Core
             return result;
         }
 
+        public BaseClass GetUserByUserID(int UserID)
+        {
+            var result = userCrud.RetrieveById(UserID);
+            return result;
+        }
     }
 }

@@ -49,5 +49,13 @@ namespace FitnessCenter.API.Controllers
             var result = _userManager.Login(email, password);
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("GetUserByUserID")]
+        public IActionResult GetUserByUserID(int UserID)
+        {
+            var result = _userManager.GetUserByUserID(UserID);
+            return Ok(result);
+        }
     }
 }
