@@ -57,5 +57,21 @@ namespace FitnessCenter.API.Controllers
             var result = _userManager.GetUserByUserID(UserID);
             return Ok(result);
         }
+
+        [HttpPost]
+        [Route("UpdateUser")]
+        public IActionResult UpdateUser(UserDetails user)
+        {
+            var result = _userManager.UpdateUser(user);
+            return Ok(result);
+        }
+
+        [HttpDelete]
+        [Route("DeleteUser")]
+        public IActionResult DeleteUser(UserDetails user)
+        {
+            var result = _userManager.DeleteUser(user);
+            return Ok(result);
+        }
     }
 }

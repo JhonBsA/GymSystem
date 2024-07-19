@@ -36,5 +36,15 @@ namespace FitnessCenter.Core
             var result = userCrud.RetrieveById(UserID);
             return result;
         }
+
+        public Dictionary<string, string> UpdateUser(UserDetails user)
+        {
+            return userCrud.Update(user);
+        }
+
+        public Dictionary<string, string> DeleteUser (UserDetails user)
+        {
+            return userCrud.Delete(user);
+        }
     }
-}
+}   

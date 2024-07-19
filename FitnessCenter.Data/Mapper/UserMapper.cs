@@ -54,12 +54,34 @@ namespace FitnessCenter.Data.Mapper
 
         public SqlOperation GetUpdateStatement(BaseClass entityDTO)
         {
-            throw new NotImplementedException();
+            SqlOperation operation = new SqlOperation
+            {
+                ProcedureName = "UpdateUser"
+            };
+
+            UserDetails user = (UserDetails)entityDTO;
+
+            operation.AddIntegerParam("UserID", user.UserID ?? 0);
+            operation.AddIntegerParam("CedulaP", user.Cedula);
+            operation.AddVarcharParam("NombreP", user.Nombre);
+            operation.AddVarcharParam("FirstLastNameP", user.FirstLastName);
+            operation.AddVarcharParam("SecondLastNameP", user.SecondLastName);
+            operation.AddVarcharParam("PhoneP", user.Phone);
+            operation.AddVarcharParam("EmailP", user.Email);
+            return operation;
         }
 
         public SqlOperation GetDeleteStatement(BaseClass entityDTO)
         {
-            throw new NotImplementedException();
+            SqlOperation operation = new SqlOperation
+            {
+                ProcedureName = "DeleteUser"
+            };
+
+            UserDetails user = (UserDetails)entityDTO;
+
+            operation.AddIntegerParam("CedulaP", user.Cedula);
+            return operation;
         }
 
         public SqlOperation GetRetrieveAllStatement()
