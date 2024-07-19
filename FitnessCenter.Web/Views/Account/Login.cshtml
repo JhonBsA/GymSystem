@@ -1,5 +1,50 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model FitnessCenter.Web.Models.LoginViewModel;
 @{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" type="text/css" href="~/css/Account/Login.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FitnessCenterSolution.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <form asp-action="Login" method="post">
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Iniciar Sesión" class="btn btn-primary" />
+                </div>
+                <div class="form-group">
+                    <a href="@Url.Action("Register", "Account")" class="url">Crear cuenta</a>
+                    <br />
+                    <a href="@Url.Action("ForgotPassword", "Account")" class="url">Olvidé mi contraseña</a>
+                </div>
+            </form>
+        </div>
+        <div class="login-photo">
+            <img src="~/images/Login_Image.jpg" alt="Foto de inicio de sesión" />
+        </div>
+    </div>
+</body>
+</html>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

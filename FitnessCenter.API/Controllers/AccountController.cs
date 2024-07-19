@@ -22,6 +22,7 @@ namespace FitnessCenter.API.Controllers
         [Route("CreateUser")]
         public IActionResult CreateUser(UserDetails user)
         {
+<<<<<<< HEAD
             var result = _userManager.CreateUsuario(user);
             return Ok(result);
         }
@@ -31,6 +32,19 @@ namespace FitnessCenter.API.Controllers
         public IActionResult PasswordReset(string email)
         {
             var result = _userManager.RetrieveByEmail(email);
+=======
+            UserManager manager = new UserManager();
+            manager.CreateUsuario(user);
+            return Ok();
+        }
+        [HttpGet]
+        [Route("PasswordResetEmail")]
+        [Route("PasswordReset")]
+        public ActionResult PasswordReset(string email)
+        {
+            UserManager manager = new UserManager();
+            var result = manager.RetrieveByEmail(email);
+>>>>>>> JBSA
             return Ok(result);
         }
 

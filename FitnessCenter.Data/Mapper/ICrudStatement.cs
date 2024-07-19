@@ -1,7 +1,7 @@
 ﻿using FitnessCenter.Data.Dao;
 using FitnessCenter.DTO;
 
-namespace DataAccess.Mapper
+namespace FitnessCenter.Data.Mapper
 {
     public interface ICrudStatements
     {
