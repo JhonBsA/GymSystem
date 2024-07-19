@@ -36,7 +36,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options => {
     options.AddPolicy(name: "NocheCorsPolicy",
         policy => {
-            policy.WithOrigins("https://localhost:7154");
+            policy.WithOrigins("https://localhost:7154");//7154
             policy.AllowAnyHeader(); //application/json  application/xml application/text
             policy.AllowAnyMethod(); //GET, POST, PUT, DELETE
         });

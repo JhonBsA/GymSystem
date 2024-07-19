@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FitnessCenter.Data.Mapper
 {
-    internal class AppointmentMapper
-    {
-    }
+   //// internal class AppointmentMapper
+   // {
+   // }
 }

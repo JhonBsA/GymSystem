@@ -1,0 +1,153 @@
+﻿@{
+    Layout = null; // No usar el layout predeterminado
+}
+@{
+    ViewData["Title"] = "LandingPage";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page - FitnessCenterSolution</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Pages/landingPage.css" asp-append-version="true" />
+    
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark azul-medianoche justify-content-between">
+        <a class="navbar-brand" href="#">
+            <img src="logo.png" alt="Logo del Sistema" height="40">
+        </a>
+        <div class="d-flex">
+            <a class="nav-link text-white custom-color" asp-controller="RegisterUsers" asp-action="CreateRegisterUsers">Registrarse</a>
+
+            <a class="nav-link text-white custom-color" href="#">Iniciar Sesión</a>
+        </div>
+    </nav>
+    <section id="hero">
+        <div class="overlay"></div>
+        <div class="content">
+            <div class="logo-container">
+                <img src="ruta/a/tu/logo.png" alt="Logo de tu gimnasio" class="logo">
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="container py-5">
+        <div class="mb-5 text-center">
+            <h1 class="mb-4 azul-turquesa">Transforma tu Vida con Nuestros Servicios Exclusivos</h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card zanahoria-naranja h-100">
+                    <img src="../static/personal.avif" class="card-img-top" alt="Entrenadores Personales Certificados">
+                    <div class="card-body text-white">
+                        <h5 class="card-title azul-medianoche">Entrenadores Personales Certificados</h5>
+                        <p class="card-text">Trabaja con entrenadores altamente calificados que te ayudarán a alcanzar tus metas de manera efectiva y segura.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card zanahoria-naranja h-100">
+                    <img src="../static/medicion.jpg" class="card-img-top" alt="Evaluaciones Corporales Personalizadas">
+                    <div class="card-body text-white">
+                        <h5 class="card-title azul-medianoche">Evaluaciones Corporales Personalizadas</h5>
+                        <p class="card-text">Recibe evaluaciones periódicas para monitorear tu progreso y ajustar tus rutinas según tus objetivos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card zanahoria-naranja h-100">
+                    <img src="../static/seguimiento_progreso.png" class="card-img-top" alt="Seguimiento de Progreso en Línea">
+                    <div class="card-body text-white">
+                        <h5 class="card-title azul-medianoche">Seguimiento de Progreso en Línea</h5>
+                        <p class="card-text">Monitorea tu progreso con gráficos y reportes detallados que te mantendrán motivado y enfocado en tus objetivos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="text-center my-5">
+            <h1 class="mb-4 azul-turquesa">Una experiencia completa para que cuidés tu salud donde quieras.</h1>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card zanahoria-naranja h-100">
+                    <img src="../static/full-shot-people-training-together-gym.jpg" class="card-img-top" alt="Clases Grupales Dinámicas">
+                    <div class="card-body text-white">
+                        <h5 class="card-title azul-medianoche">Clases Grupales Dinámicas</h5>
+                        <p class="card-text">Participa en una variedad de clases grupales divertidas y motivadoras que te ayudarán a mantenerte en forma y motivado.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card zanahoria-naranja h-100">
+                    <img src="../static/equipos_calidad.png" class="card-img-top" alt="Variedad de Equipos de Alta Calidad">
+                    <div class="card-body text-white">
+                        <h5 class="card-title azul-medianoche">Variedad de Equipos de Alta Calidad</h5>
+                        <p class="card-text">Accede a una amplia gama de equipos modernos y bien mantenidos para satisfacer todas tus necesidades de entrenamiento.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card zanahoria-naranja h-100">
+                    <img src="../static/side-view-elder-couple-tradmill.jpg" class="card-img-top" alt="Ambiente Seguro y Limpio">
+                    <div class="card-body text-white">
+                        <h5 class="card-title azul-medianoche">Ambiente Seguro y Limpio</h5>
+                        <p class="card-text">Disfruta de un ambiente seguro, limpio y amigable que te hará sentir cómodo y bienvenido.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+    <div class="text-center">
+        <p class="azul-turquesa">Y más... </p>
+        <hr class="line-separator">
+    </div>
+    <br><br/>
+    <br><br/>
+    <br><br/>
+    <div class="container text-center my-5">
+        <h4 class="azul-turquesa">Forma parte de nuestra comunidad y transforma tu vida con nosotros</h4>
+        <button type="button" class="btn boto zanahoria-naranja  mt-3">Registrarse</button>
+    </div>
+
+    <div class="text-center">
+        <hr class="line-separator2"><br>
+    </div>
+    <section class="contact mb-5">
+        <div class="container">
+            <h2 class="azul-turquesa text-center">Contacto</h2>
+            <div class="contact-info">
+                <p class="text-center">Teléfono: +506 1234 5678</p>
+                <p class="text-center">Email: centroAcon@ucenfotec.ac.cr</p>
+                <p class="text-center">Dirección: Avenida Central, San Jose, Costa Rica</p>
+            </div>
+        </div>
+    </section>
+    <div class="text-center">
+        <hr class="line-separator2"><br>
+    </div>
+
+    <footer class="text-white py-4 azul-medianoche">
+        <div class="container">
+            <div class="social-media mb-5 text-center">
+                <h4 class="azul-turquesa">Redes sociales</h4><br>
+                <a href="https://www.facebook.com/?locale2=es_LA&_rdr"><img src="../static/facebok.png" alt="Facebook" style="width: 50px;margin: 0 25px;"></a>
+                <a href="#"><img src="../static/t.png" alt="Twitter" style="width: 50px;  margin: 0 25px;"></a>
+                <a href="#"><img src="../static/LinkedIn.webp" alt="LinkedIn" style="width: 50px; margin: 0 25px;"></a>
+                <a href="#"><img src="../static/Instagram.webp" alt="Instagram" style="width: 50px ; margin: 0 25px;"></a>
+            </div>
+            <p class="custom-color text-center">&copy; 2024 <span class="azul-turquesa">Centro de acondicionamiento físico</span>. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
