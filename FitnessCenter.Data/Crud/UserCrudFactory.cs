@@ -158,9 +158,5 @@ namespace FitnessCenter.Data.Crud
 
             return response;
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> JBSA
     }
 }

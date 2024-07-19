@@ -1,5 +1,4 @@
 ﻿using Azure;
-using DataAccess.Mapper;
 using FitnessCenter.Data.Dao;
 using FitnessCenter.DTO;
 using System;

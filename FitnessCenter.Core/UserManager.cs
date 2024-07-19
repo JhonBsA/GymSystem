@@ -31,13 +31,10 @@ namespace FitnessCenter.Core
             return result;
         }
 
-<<<<<<< HEAD
         public BaseClass GetUserByUserID(int UserID)
         {
             var result = userCrud.RetrieveById(UserID);
             return result;
         }
-=======
->>>>>>> JBSA
     }
 }
