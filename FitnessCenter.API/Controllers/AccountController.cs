@@ -17,7 +17,7 @@ namespace FitnessCenter.API.Controllers
         [Route("CreateUser")]
         public ActionResult CreateUser(UserDetails user)
         {
-            UserManager manager = new UserManager();
+            UserDetailsManager manager = new UserDetailsManager();
             manager.CreateUsuario(user);
             return Ok();
         }
