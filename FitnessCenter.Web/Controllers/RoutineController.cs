@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FitnessCenterSolution.Web.Controllers
+namespace FitnessCenter.Web.Controllers
 {
     public class RoutineController : Controller
     {

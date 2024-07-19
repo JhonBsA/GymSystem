@@ -1,7 +1,7 @@
 ﻿using FitnessCenter.Data.Dao;
 using FitnessCenter.DTO;
 
-namespace DataAccess.Mapper
+namespace FitnessCenter.Data.Mapper
 {
     public interface ICrudStatements
     {
@@ -10,6 +10,8 @@ namespace DataAccess.Mapper
         SqlOperation GetDeleteStatement(BaseClass entityDTO);
         SqlOperation GetRetrieveAllStatement();
         SqlOperation GetRetrieveByIdStatement(int Id);
-        SqlOperation GetRetrieveByPhraseStatement(string searchType, string searchPhrase);
+        SqlOperation GetRetrieveByEmailStatement(string email);
+        SqlOperation GetPasswordResetOTPStatement(string Otp, string NewPassword);
+        SqlOperation Login(string Email, string Password);
     }
 }

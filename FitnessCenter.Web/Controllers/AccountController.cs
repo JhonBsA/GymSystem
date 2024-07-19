@@ -1,83 +1,25 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FitnessCenter.Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using FitnessCenter.DTO;
+using FitnessCenter.Core;
 
-namespace FitnessCenterSolution.Web.Controllers
+namespace FitnessCenter.Web.Controllers
 {
     public class AccountController : Controller
     {
-        // GET: AccountController
-        public ActionResult Index()
+        [HttpGet]
+        public IActionResult Login()
         {
             return View();
         }
 
-        // GET: AccountController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: AccountController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: AccountController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        [Route("Login")]
+        public ActionResult Login(string Email, string Password)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: AccountController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: AccountController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: AccountController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: AccountController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            UserManager manager = new UserManager();
+            var result = manager.Login(Email, Password);
+            return Ok(result);
         }
     }
 }

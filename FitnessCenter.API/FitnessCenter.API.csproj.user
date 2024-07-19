@@ -4,9 +4,15 @@
     <ActiveDebugProfile>https</ActiveDebugProfile>
   </PropertyGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
 >>>>>>> origin/main
+=======
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
+  </PropertyGroup>
+>>>>>>> main
 </Project>

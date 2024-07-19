@@ -1,4 +1,4 @@
-﻿using DataAccess.Mapper;
+﻿using Azure;
 using FitnessCenter.Data.Dao;
 using FitnessCenter.DTO;
 using System;
@@ -22,14 +22,14 @@ namespace FitnessCenter.Data.Mapper
         {
             return new UserDetails()
             {
-                Cedula = Convert.ToInt32(objectRow["cedula"]),
-                Nombre = objectRow["nombre"].ToString(),
-                FirstLastName = objectRow["primer_apellido"].ToString(),
-                SecondLastName = objectRow["segundo_apellido"].ToString(),
-                Phone = objectRow["telefono"].ToString(),
-                Email = objectRow["email"].ToString(),
-                RoleName = objectRow["role_name"].ToString(),
-              
+                UserID = objectRow.ContainsKey("UserID") ? Convert.ToInt32(objectRow["UserID"]) : 0,
+                Cedula = objectRow.ContainsKey("Cedula") ? Convert.ToInt32(objectRow["Cedula"]) : 0,
+                Nombre = objectRow.ContainsKey("Nombre") ? objectRow["Nombre"].ToString() : string.Empty,
+                FirstLastName = objectRow.ContainsKey("FirstLastName") ? objectRow["FirstLastName"].ToString() : string.Empty,
+                SecondLastName = objectRow.ContainsKey("SecondLastName") ? objectRow["SecondLastName"].ToString() : string.Empty,
+                Phone = objectRow.ContainsKey("Phone") ? objectRow["Phone"].ToString() : string.Empty,
+                Email = objectRow.ContainsKey("Email") ? objectRow["Email"].ToString() : string.Empty,
+                RoleName = objectRow.ContainsKey("RoleName") ? objectRow["RoleName"].ToString() : string.Empty
             };
         }
 
@@ -42,7 +42,7 @@ namespace FitnessCenter.Data.Mapper
 
             UserDetails user = (UserDetails)entityDTO;
 
-            operation.AddIntegerParam("CedulaP", user.Cedula); // Directly using the value
+            operation.AddIntegerParam("CedulaP", user.Cedula); 
             operation.AddVarcharParam("NombreP", user.Nombre);
             operation.AddVarcharParam("FirstLastNameP", user.FirstLastName);
             operation.AddVarcharParam("SecondLastNameP", user.SecondLastName);
@@ -67,14 +67,48 @@ namespace FitnessCenter.Data.Mapper
             throw new NotImplementedException();
         }
 
-        public SqlOperation GetRetrieveByIdStatement(int Id)
+        public SqlOperation GetRetrieveByIdStatement(int ID)
         {
-            throw new NotImplementedException();
+            SqlOperation operation = new SqlOperation
+            {
+                ProcedureName = "GetUserByUserID"
+            };
+
+            operation.AddIntegerParam("UserID", ID);
+            return operation;
         }
 
-        public SqlOperation GetRetrieveByPhraseStatement(string searchType, string searchPhrase)
+
+        public SqlOperation GetRetrieveByEmailStatement(string email)
         {
-            throw new NotImplementedException();
+            SqlOperation operation = new SqlOperation
+            {
+                ProcedureName = "GetUser"
+            };
+            operation.AddVarcharParam("EmailP",email);
+            return operation;
+        }
+
+        public SqlOperation GetPasswordResetOTPStatement(string Otp, string NewPassword)
+        {
+            SqlOperation operation = new SqlOperation
+            {
+                ProcedureName = "VerifyAndResetOTP"
+            };
+            operation.AddVarcharParam("OTPP", Otp);
+            operation.AddVarcharParam("NewPassword", NewPassword);
+            return operation;
+        }
+
+        public SqlOperation Login(string Email, string Password)
+        {
+            SqlOperation operation = new SqlOperation
+            {
+                ProcedureName = "GetLogin"
+            };
+            operation.AddVarcharParam("EmailP", Email);
+            operation.AddVarcharParam("PasswordP", Password);
+            return operation;
         }
     }
 }
