@@ -24,7 +24,7 @@ app.MapControllers();
 
 app.Run();*/
 
-/*var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
@@ -59,9 +59,9 @@ app.MapControllers();
 
 app.UseCors("NocheCorsPolicy");
 
-app.Run();*/
+app.Run();
 
-var builder = WebApplication.CreateBuilder(args);
+/*var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -106,5 +106,5 @@ app.MapControllers();
 // Default route for root URL
 app.MapGet("/", () => "Welcome to the Fitness Center API");
 
-app.Run();
+app.Run();*/
 
