@@ -57,12 +57,7 @@ namespace FitnessCenter.Data.Crud.AppointmentCRUD
 
         public List<Appointment> RetrieveByDateRange(DateTime startDate, DateTime endDate)
         {
-            SqlOperation operation = new SqlOperation
-            {
-                ProcedureName = "RetrieveAppointmentsByDateRange"
-            };
-            operation.AddDateTimeParam("StartDate", startDate);
-            operation.AddDateTimeParam("EndDate", endDate);
+            SqlOperation operation = mapper.GetRetrieveByDateRangeStatement(startDate, endDate);
             var result = dao.ExecuteStoredProcedureWithResult(operation);
             return mapper.BuildObjects(result);
         }
