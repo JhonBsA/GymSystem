@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using FitnessCenter.DTO;
 using FitnessCenter.Core;
 using Microsoft.AspNetCore.Identity;
+using FitnessCenter.DTO.AppointmentDTO;
 
 namespace FitnessCenter.API.Controllers
 {
@@ -26,5 +26,14 @@ namespace FitnessCenter.API.Controllers
             var result = _appointmentManager.CreateAppointment(appointment);
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("RetrieveByDateRange")]
+        public IActionResult RetrieveByDateRange(DateTime startDate, DateTime endDate)
+        {
+            var result = _appointmentManager.RetrieveByDateRange(startDate, endDate);
+            return Ok(result);
+        }
+
     }
 }

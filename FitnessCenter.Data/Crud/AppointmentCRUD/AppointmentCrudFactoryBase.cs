@@ -1,5 +1,5 @@
 ﻿using FitnessCenter.Data.Dao;
-using FitnessCenter.DTO;
+using FitnessCenter.DTO.AppointmentDTO;
 using System.Collections.Generic;
 
 namespace FitnessCenter.Data.Crud

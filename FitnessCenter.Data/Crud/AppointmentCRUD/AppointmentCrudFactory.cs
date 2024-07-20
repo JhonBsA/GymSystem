@@ -1,6 +1,6 @@
 ﻿using FitnessCenter.Data.Dao;
 using FitnessCenter.Data.Mapper.AppointmentMapper;
-using FitnessCenter.DTO;
+using FitnessCenter.DTO.AppointmentDTO;
 using System;
 using System.Collections.Generic;
 
@@ -53,6 +53,18 @@ namespace FitnessCenter.Data.Crud.AppointmentCRUD
         public override Dictionary<string, string> Update(AppointmentBaseClass entityDTO)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Appointment> RetrieveByDateRange(DateTime startDate, DateTime endDate)
+        {
+            SqlOperation operation = new SqlOperation
+            {
+                ProcedureName = "RetrieveAppointmentsByDateRange"
+            };
+            operation.AddDateTimeParam("StartDate", startDate);
+            operation.AddDateTimeParam("EndDate", endDate);
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+            return mapper.BuildObjects(result);
         }
     }
 }

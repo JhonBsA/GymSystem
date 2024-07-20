@@ -1,6 +1,6 @@
-﻿using FitnessCenter.DTO;
-using FitnessCenter.Data.Dao;
+﻿using FitnessCenter.Data.Dao;
 using FitnessCenter.Data.Crud.AppointmentCRUD;
+using FitnessCenter.DTO.AppointmentDTO;
 
 
 namespace FitnessCenter.Core
@@ -23,6 +23,11 @@ namespace FitnessCenter.Core
         public List<Appointment> RetrieveAllAppointments()
         {
             return appointmentCrud.RetrieveAll<Appointment>();
+        }
+
+        public List<Appointment> RetrieveByDateRange(DateTime startDate, DateTime endDate)
+        {
+            return appointmentCrud.RetrieveByDateRange(startDate, endDate);
         }
     }
 }
