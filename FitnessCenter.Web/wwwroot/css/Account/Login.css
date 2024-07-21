@@ -17,8 +17,7 @@ body {
     align-items: stretch;
     height: 100vh;
     padding: 20px;
-    background-color: #f4f4f4;
-    overflow: hidden;
+    background-color: #4a545f;
 }
 
 .login-box {
@@ -28,9 +27,11 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
+    background-color: #2C3E50;
+    z-index: 2;
 }
 
 .login-photo {
@@ -38,15 +39,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: stretch;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
+    z-index: 1;
+    overflow: hidden;
 }
 
     .login-photo img {
         width: 100%;
         object-fit: cover;
+        filter: brightness(70%) contrast(70%);
     }
 
 .login-logo img {
@@ -57,30 +60,54 @@ body {
     margin-bottom: 50px;
     text-align: center;
     margin-top: 50px;
+    color: white;
+    border: none !important;
+    outline: none !important;
 }
 
 .form-control {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5) !important;
 }
+
+    .form-control:focus,
+    .form-control:hover{
+        border: 3px solid #E67E22 !important;
+        transition: border 0.15s !important;
+    }
 
 .btn-primary {
     width: 100%;
     padding: 10px;
+    background-color: #E67E22 !important;
+    border-color: none !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
 }
 
-.url {
-    color: black;
-    text-decoration: none;
-}
+    .btn-primary:hover,
+    .btn-primary:focus {
+        background-color: #d35400 !important;
+        border-color: none !important;
+        color: white !important;
+        border: 3px solid #E67E22 !important;
+        transition: border 0.15s !important;
+    }
 
-.url:visited {
-    color: black;
-}
+    .url {
+        color: #E67E22;
+        text-decoration: none;
+    }
+
+    .url:visited {
+        color: #E67E22;
+    }
 
 .url:hover,
 .url:active {
-    color: black;
+    color: white;
     text-decoration: none;
 }
