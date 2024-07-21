@@ -35,5 +35,23 @@ namespace FitnessCenter.API.Controllers
             return Ok(result);
         }
 
+        [HttpPost]
+        [Route("UpdateAppointment")]
+        public IActionResult UpdateAppointment(int appointmentID, int clientID, int trainerID, 
+            DateTime appointmentDate, int durationInMinutes, string notes)
+        {
+            var result = _appointmentManager.UpdateAppointment(appointmentID, clientID, trainerID, 
+                appointmentDate, durationInMinutes, notes);
+            return Ok(result);
+        }
+
+        [HttpDelete]
+        [Route("DeleteAppointment")]
+        public IActionResult DeleteAppointment(int appointmentID)
+        {
+            var result = _appointmentManager.DeleteAppointment(appointmentID);
+            return Ok(result);
+        }
+
     }
 }

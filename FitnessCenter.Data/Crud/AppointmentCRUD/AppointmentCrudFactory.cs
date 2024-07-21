@@ -35,9 +35,21 @@ namespace FitnessCenter.Data.Crud.AppointmentCRUD
             return response;
         }
 
-        public override Dictionary<string, string> Delete(AppointmentBaseClass appointment)
+        public override Dictionary<string, string> Delete(int appointmentID)
         {
-            throw new NotImplementedException();
+            SqlOperation operation = mapper.GetDeleteStatement(appointmentID);
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+            if (result.Count == 0)
+            {
+                throw new Exception("No response from stored procedure.");
+            }
+            var firstRow = result[0];
+            var response = new Dictionary<string, string>();
+            foreach (var key in firstRow.Keys)
+            {
+                response[key] = firstRow[key].ToString();
+            }
+            return response;
         }
 
         public override List<T> RetrieveAll<T>()
@@ -50,9 +62,22 @@ namespace FitnessCenter.Data.Crud.AppointmentCRUD
             throw new NotImplementedException();
         }
 
-        public override Dictionary<string, string> Update(AppointmentBaseClass entityDTO)
+        public override Dictionary<string, string> Update(AppointmentBaseClass appointment)
         {
-            throw new NotImplementedException();
+            SqlOperation operation = mapper.GetUpdateStatement(appointment);
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+            if (result.Count == 0)
+            {
+                throw new Exception("No response from stored procedure.");
+            }
+            var firstRow = result[0];
+            var response = new Dictionary<string, string>();
+            foreach (var key in firstRow.Keys)
+            {
+                response[key] = firstRow[key].ToString();
+            }
+
+            return response;
         }
 
         public List<Appointment> RetrieveByDateRange(DateTime startDate, DateTime endDate)

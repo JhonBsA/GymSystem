@@ -10,7 +10,7 @@ namespace FitnessCenter.Data.Crud
 
         public abstract Dictionary<string, string> Create(AppointmentBaseClass entityDTO);
         public abstract Dictionary<string, string> Update(AppointmentBaseClass entityDTO);
-        public abstract Dictionary<string, string> Delete(AppointmentBaseClass entityDTO);
+        public abstract Dictionary<string, string> Delete(int appointmentID);
         public abstract List<T> RetrieveAll<T>();
         public abstract AppointmentBaseClass RetrieveById(int id);
     }

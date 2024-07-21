@@ -69,7 +69,6 @@ namespace FitnessCenter.Data.Mapper.AppointmentMapper
             operation.AddIntegerParam("TrainerID", appointment.TrainerID);
             operation.AddDateTimeParam("AppointmentDate", appointment.AppointmentDate);
             operation.AddIntegerParam("DurationInMinutes", appointment.DurationInMinutes);
-            operation.AddDateTimeParam("CreatedAt", appointment.CreatedAt);
             operation.AddVarcharParam("Notes", appointment.Notes);
             return operation;
         }
