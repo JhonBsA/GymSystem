@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FitnessCenter.DTO
+namespace FitnessCenter.DTO.RoutineDTO
 {
-    internal class RoutineEquipment
+    public class RoutineEquipment
     {
         public int RoutineEquipmentID { get; set; }
         public int RoutineExerciseID { get; set; }
