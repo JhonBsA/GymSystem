@@ -60,9 +60,15 @@ body {
         filter: brightness(70%) contrast(70%);
     }
 
-.login-logo img {
-    
+.login-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
+
+    .login-logo img {
+        width: 120px;
+    }
 
 .form-group {
     margin-bottom: 50px;
@@ -104,6 +110,11 @@ body {
         color: white !important;
         border: 3px solid #E67E22 !important;
         transition: border 0.15s !important;
+    }
+
+    .btn-primary:focus {
+        outline: none !important;
+        box-shadow: none !important;
     }
 
     .url {
