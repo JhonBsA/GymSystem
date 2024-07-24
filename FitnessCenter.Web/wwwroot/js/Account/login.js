@@ -1,4 +1,43 @@
 ﻿
+const loginUser = (e) => {
+    e.preventDefault();
+
+    console.log("entre");
+
+    const login = {
+        email: $("#email").val().trim(),
+        password: $("#password").val().trim()
+    }
+
+    const apiUrl = API_URL_BASE + "/Account/Login";
+
+    $.ajax({
+        url: apiUrl,
+        method: "POST",
+        hasContent: true,
+        data: JSON.stringify(login),
+        contentType: "application/json;charset-utf-8",
+        dataType: "json",
+    })
+        .done((result) => {
+            console.log(result);
+            Swal.fire({
+                title: "Logeo exitoso",
+                icon: "success",
+                confirmButtonText: "Aceptar",
+            });
+        })
+        .fail((jqXHR, textStatus, errorThrown) => {
+            console.error("Error en la solicitud:", textStatus, errorThrown);
+            Swal.fire({
+                title: "Error",
+                text: "Hubo un problema con el inicio de sesión. Por favor, intente nuevamente.",
+                icon: "error",
+                confirmButtonText: "Aceptar",
+            });
+        });
+}
+
 $(document).ready(function () {
     $('#loginForm').on('submit', function (e) {
         e.preventDefault(); // Previene el envío del formulario
@@ -16,35 +55,6 @@ $(document).ready(function () {
 
         } 
 
-        $.ajax({
-            type: 'POST',
-            url: '/Account/Login',
-            contentType: 'application/json',
-            data: JSON.stringify({ email: email, password: password }),
-            success: function (response) {
-                if (response.success) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Éxito',
-                        text: response.message,
-                    }).then(function () {
-                        window.location.href = '/Home/Index'; // Redirige a la página de inicio o dashboard
-                    });
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: response.message,
-                    });
-                }
-            },
-            error: function () {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Ocurrió un error al procesar la solicitud',
-                });
-            }
-        });
+        loginUser(e); // Llama a la función loginUser después de la validación
     });
 });
