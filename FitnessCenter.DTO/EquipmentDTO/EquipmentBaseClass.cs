@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FitnessCenter.Data.Mapper
+namespace FitnessCenter.DTO.EquipmentDTO
 {
-    internal class RoutineMapper
+    public class EquipmentBaseClass
     {
     }
 }

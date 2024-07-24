@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FitnessCenter.DTO
+namespace FitnessCenter.DTO.RoutineDTO
 {
     public class RoutineExercise
     {
