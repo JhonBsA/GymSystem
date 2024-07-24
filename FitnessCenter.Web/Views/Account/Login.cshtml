@@ -12,9 +12,6 @@
     <link rel="stylesheet" type="text/css" href="~/css/Account/Login.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/Account/login.js"></script>
 </head>
 <body>
     <div class="login-container">
@@ -28,12 +25,13 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Email"></label>
-                    <input id ="email" asp-for="Email" class="form-control" required placeholder="Correo electrónico" autocomplete="off"/>
+                    <input id ="email" asp-for="Email" class="form-control"  placeholder="Correo electrónico" autocomplete="off"/>
                     <span asp-validation-for="Email" class="text-danger" ></span>
+                    <span id="usuarioHelper" class="helper-text"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Password"></label>
-                    <input id="password" asp-for="Password" class="form-control" required placeholder="Contraseña" autocomplete="off" />
+                    <input id="password" asp-for="Password" class="form-control"  placeholder="Contraseña" autocomplete="off" />
                     <span asp-validation-for="Password" class="text-danger" ></span>
                 </div>
                 <div class="form-group">
@@ -51,4 +49,7 @@
         </div>
     </div>
 </body>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/js/Account/login.js"></script>
 </html>
