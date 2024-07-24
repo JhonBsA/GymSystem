@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FitnessCenter.Data.Dao;
+using FitnessCenter.Data.Crud.EquipmentCRUD;
+using FitnessCenter.DTO.EquipmentDTO;
 
 namespace FitnessCenter.Core
 {
-    internal class EquipmentManager
+    public class EquipmentManager
     {
+        readonly EquipmentCrudFactory equipmentCrud = new EquipmentCrudFactory();
     }
 }
