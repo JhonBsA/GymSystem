@@ -2,7 +2,6 @@
 const loginUser = (e) => {
     e.preventDefault();
 
-    console.log("entre");
 
     const login = {
         email: $("#email").val().trim(),
@@ -14,9 +13,8 @@ const loginUser = (e) => {
     $.ajax({
         url: apiUrl,
         method: "POST",
-        hasContent: true,
         data: JSON.stringify(login),
-        contentType: "application/json;charset-utf-8",
+        contentType: "application/json;charset=utf-8",
         dataType: "json",
     })
         .done((result) => {
