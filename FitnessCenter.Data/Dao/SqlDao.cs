@@ -11,7 +11,11 @@ namespace FitnessCenter.Data.Dao
         private string _server = "localhost";
         private string _database = "BioSport";
         private string _userId = "sa";
+<<<<<<< HEAD
         private string _password = "Jennifer1!";
+=======
+        private string _password = "Makober33*";
+>>>>>>> JBSA
         private string _trustServerCertificate = "True";
 
         private string _connString => $"Server={_server};Database={_database};User ID={_userId};Password={_password};TrustServerCertificate={_trustServerCertificate}";
