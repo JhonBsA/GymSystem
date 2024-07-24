@@ -73,6 +73,7 @@ app.Run();
 
 */
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -122,7 +123,7 @@ app.Run();
 
 
 
-    /*
+/*
 //revisar esto
 var builder = WebApplication.CreateBuilder(args);
 
@@ -134,13 +135,13 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: "NocheCorsPolicy",
-        policy =>
-        {
-            policy.WithOrigins("https://localhost:7154");
-            policy.AllowAnyHeader();
-            policy.AllowAnyMethod();
-        });
+options.AddPolicy(name: "NocheCorsPolicy",
+    policy =>
+    {
+        policy.WithOrigins("https://localhost:7154");
+        policy.AllowAnyHeader();
+        policy.AllowAnyMethod();
+    });
 });
 
 var app = builder.Build();
@@ -148,12 +149,12 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "FitnessCenter API V1");
-        c.RoutePrefix = string.Empty;
-    });
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "FitnessCenter API V1");
+    c.RoutePrefix = string.Empty;
+});
 }
 
 app.UseHttpsRedirection();
@@ -164,4 +165,4 @@ app.MapControllers();
 app.MapGet("/", () => "Welcome to the Fitness Center API");
 app.Run();
 
-    */
+*/
