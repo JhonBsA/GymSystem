@@ -1,0 +1,34 @@
+
+body {
+    background-color: #2C3E50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.form-container {
+    max-width: 600px;
+    width: 100%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.custom-color {
+    color: #F1C40F;
+    /* Amarillo girasol */
+}
+
+.zanahoria-naranja {
+    background-color: #f5d192;
+}
+
+.zanahoria-naranja-b {
+    background-color: #E67E22;
+}
+
+.texto {
+    color: #000000;
+}

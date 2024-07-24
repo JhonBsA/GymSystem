@@ -42,13 +42,13 @@ namespace FitnessCenter.Data.Mapper
 
             UserDetails user = (UserDetails)entityDTO;
 
-            operation.AddIntegerParam("CedulaP", user.Cedula); 
+            operation.AddIntegerParam("CedulaP", user.Cedula);
             operation.AddVarcharParam("NombreP", user.Nombre);
             operation.AddVarcharParam("FirstLastNameP", user.FirstLastName);
             operation.AddVarcharParam("SecondLastNameP", user.SecondLastName);
             operation.AddVarcharParam("PhoneP", user.Phone);
             operation.AddVarcharParam("EmailP", user.Email);
-            operation.AddVarcharParam("RoleNameP", user.RoleName);
+            //operation.AddVarcharParam("RoleNameP", user.RoleName);
             return operation;
         }
 

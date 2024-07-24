@@ -1,25 +1,25 @@
 body {
-    background-color: #2C3E50; /* Azul medianoche */
+    background-color: #2C3E50;
     color: white;
 }
 
 .navbar {
-    background-color: #2C3E50; /* Azul medianoche */
+    background-color: #2C3E50;
     z-index: 1000;
+    padding: 1rem 1rem;
+    /* Añade padding para espacio */
 }
 
-.navbar-dark .navbar-nav .nav-link {
-    color: white;
-}
-
-    .navbar-dark .navbar-nav .nav-link:hover {
-        color: #1ABC9C; /* Azul turquesa */
+    .navbar .nav-link.custom-color {
+        color: #F1C40F !important;
+        /* Amarillo girasol */
+        cursor: pointer;
     }
 
 #hero {
     position: relative;
-    height: 860px;
-    background: url('../static/t.png') no-repeat center 20% fixed; /* Ajusta la posiciï¿½n vertical de la imagen */
+    height: 630px;
+    background: url('../static/side-view-male-exercise-bicycle.jpg') no-repeat center 20% fixed;
     background-size: cover;
     text-align: center;
     color: white;
@@ -27,7 +27,7 @@ body {
 
 .logo-container {
     position: absolute;
-    top: 50%; 
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -38,62 +38,64 @@ body {
 }
 
 .azul-turquesa {
-    color: #1ABC9C; /* Azul turquesa */
+    color: #1ABC9C;
 }
 
 .azul-turquesa-fondo {
-    background-color: #1ABC9C; /* Azul turquesa */
+    background-color: #1ABC9C;
 }
 
 .azul-medianoche {
-    color: #2C3E50; /* Azul medianoche fondos, headers, footers */
+    color: #2C3E50;
 }
 
 .verde-esmeralda {
-    color: #2ECC71; /* Verde esmeralda */
+    color: #2ECC71;
 }
 
 .zanahoria-naranja {
-    background-color: #E67E22; /* Zanahoria naranja */
+    background-color: #E67E22;
 }
+
 .custom-color {
-    color: #F1C40F; /* Amarillo girasol */
+    color: #F1C40F;
+    /* Amarillo girasol */
 }
-.rojo-alizarina{
-    color: #E74C3C; /* rojo de alizarina para errores*/
+
+
+.rojo-alizarina {
+    color: #E74C3C;
 }
-.texto{
-    color: white; /*para parrafos*/
+
+.texto {
+    color: white;
 }
 
 #servicios h2 {
-    color: #1ABC9C; /* Azul turquesa */
+    color: #1ABC9C;
 }
 
-
 #contacto {
-    background-color: #E67E22; /* Zanahoria naranja */
+    background-color: #E67E22;
     color: white;
     padding: 20px;
     text-align: center;
 }
 
 footer {
-    background-color: #2C3E50; /* Azul medianoche */
+    background-color: #2C3E50;
     color: white;
     text-align: center;
     padding: 20px;
 }
 
     footer a {
-        color: #1ABC9C; /* Azul turquesa */
+        color: #1ABC9C;
     }
 
         footer a:hover {
-            color: #16A085; /* Verde mï¿½s oscuro */
+            color: #16A085;
         }
-
-
 
 .boto {
     color: white;
@@ -108,18 +110,18 @@ footer {
 
 .line-separator {
     border: none;
-    border-bottom: 2px solid #16A085; /* ajusta el color y grosor de la lï¿½nea segï¿½n sea necesario */
-    width: 30%; /* ajusta el ancho de la lï¿½nea segï¿½n sea necesario */
-    margin: 10px auto; /* centrarï¿½ la lï¿½nea horizontalmente y agregarï¿½ margen arriba y abajo */
+    border-bottom: 2px solid #16A085;
+    width: 30%;
+    margin: 10px auto;
 }
 
 .line-separator2 {
     border: none;
-    border-bottom: 2px solid #16A085; /* ajusta el color y grosor de la lï¿½nea segï¿½n sea necesario */
-    width: 80%; /* ajusta el ancho de la lï¿½nea segï¿½n sea necesario */
+    border-bottom: 2px solid #16A085;
+    width: 80%;
     margin: 10px auto;
 }
-/* Estilos para las cartas en la secciï¿½n de servicios */
+
 #servicios .card {
     width: 100%;
     min-height: 105%;
@@ -130,18 +132,18 @@ footer {
         object-fit: cover;
     }
 
-.row-cols-4 > .col, .row-cols-md-3 > .col {
+.row-cols-4 > .col,
+.row-cols-md-3 > .col {
     flex: 0 0 auto;
-    width: calc(40.333% - 1rem); /* Ajustar el ancho para 3 cartas por fila */
-    margin-right: 11.0rem; /* Aï¿½adir espacio entre las cartas */
+    width: calc(40.333% - 1rem);
+    margin-right: 11.0rem;
     margin-left: 0.5rem;
 }
 
 #servicios .g-4 > .col {
-    padding: 0.5rem; /* Ajustar el espacio entre las cartas */
+    padding: 0.5rem;
 }
-/* Ajustes de margen para mover las cartas */
+
 #servicios .row {
-    margin-left: 2rem; /* Ajustar hacia la derecha */
-    /* margin-right: 2rem; /* Ajustar hacia la izquierda, si es necesario */
+    margin-left: 2rem;
 }

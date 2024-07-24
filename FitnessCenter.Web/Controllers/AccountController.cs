@@ -21,5 +21,10 @@ namespace FitnessCenter.Web.Controllers
             var result = manager.Login(Email, Password);
             return Ok(result);
         }
+        // GET: AccountController
+        public IActionResult Register()
+        {
+            return View(); //cambiar esto
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace FitnessCenterSolution.Web.Controllers
         // GET: AccountController
         public IActionResult LandingPage()
         {
-            return View("~/Views/Customer/LandingPage.cshtml"); 
+            return View(); 
         }
 
 

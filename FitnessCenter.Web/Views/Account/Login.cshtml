@@ -6,6 +6,7 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>Inicio de Sesión</title>
@@ -14,6 +15,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FitnessCenterSolution.styles.css" asp-append-version="true" />
 </head>
+
 <body>
     <div class="login-container">
         <div class="login-box">
@@ -43,8 +45,11 @@
         </div>
     </div>
 </body>
+
 </html>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

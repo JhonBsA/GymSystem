@@ -7,5 +7,8 @@ namespace FitnessCenter.API.Controllers
     [ApiController]
     public class EquipmentController : ControllerBase
     {
+
+
     }
 }
+
