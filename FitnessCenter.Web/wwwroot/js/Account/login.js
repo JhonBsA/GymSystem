@@ -2,7 +2,6 @@
 const loginUser = (e) => {
     e.preventDefault();
 
-
     const login = {
         email: $("#email").val().trim(),
         password: $("#password").val().trim()
