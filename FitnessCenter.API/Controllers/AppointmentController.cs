@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using FitnessCenter.DTO;
 using FitnessCenter.Core;
 using Microsoft.AspNetCore.Identity;
+using FitnessCenter.DTO.AppointmentDTO;
 
 namespace FitnessCenter.API.Controllers
 {
@@ -26,5 +26,32 @@ namespace FitnessCenter.API.Controllers
             var result = _appointmentManager.CreateAppointment(appointment);
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("RetrieveByDateRange")]
+        public IActionResult RetrieveByDateRange(DateTime startDate, DateTime endDate)
+        {
+            var result = _appointmentManager.RetrieveByDateRange(startDate, endDate);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("UpdateAppointment")]
+        public IActionResult UpdateAppointment(int appointmentID, int clientID, int trainerID, 
+            DateTime appointmentDate, int durationInMinutes, string notes)
+        {
+            var result = _appointmentManager.UpdateAppointment(appointmentID, clientID, trainerID, 
+                appointmentDate, durationInMinutes, notes);
+            return Ok(result);
+        }
+
+        [HttpDelete]
+        [Route("DeleteAppointment")]
+        public IActionResult DeleteAppointment(int appointmentID)
+        {
+            var result = _appointmentManager.DeleteAppointment(appointmentID);
+            return Ok(result);
+        }
+
     }
 }

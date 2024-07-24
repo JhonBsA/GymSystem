@@ -11,7 +11,9 @@ namespace FitnessCenter.Data.Dao
         private string _server = "DIEGO\\SQLEXPRESS"; // Usa doble barra invertida
         private string _database = "BioSport";
         private string _userId = "sa";
+
         private string _password = "diego123";
+
 
         private string _trustServerCertificate = "True";
 

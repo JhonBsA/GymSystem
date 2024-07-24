@@ -12,6 +12,7 @@
     <ProjectReference Include="..\FitnessCenter.DTO\FitnessCenter.DTO.csproj" />
   </ItemGroup>
 
+
   <ItemGroup>
     <Folder Include="wwwroot\Images\" />
   </ItemGroup>
@@ -19,5 +20,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.18" />
   </ItemGroup>
+
 
 </Project>

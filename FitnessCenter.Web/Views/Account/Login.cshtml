@@ -13,21 +13,29 @@
     <link rel="stylesheet" type="text/css" href="~/css/Account/Login.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/FitnessCenterSolution.styles.css" asp-append-version="true" />
 </head>
 
 <body>
     <div class="login-container">
         <div class="login-box">
-            <form asp-action="Login" method="post">
+            <div class="login-logo">
+                <img src="~/images/login-logo.png" alt="Foto de inicio de sesión" />
+            </div>
+            <form id="loginForm" asp-action="Login" method="post">
+                <div class="titulo">
+                    <h1>Technoware</h1>
+                </div>
                 <div class="form-group">
                     <label asp-for="Email"></label>
-                    <input asp-for="Email" class="form-control" />
+                    <input id="email" asp-for="Email" class="form-control" placeholder="Correo electrónico"
+                        autocomplete="off" />
                     <span asp-validation-for="Email" class="text-danger"></span>
+                    <span id="usuarioHelper" class="helper-text"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Password"></label>
-                    <input asp-for="Password" class="form-control" />
+                    <input id="password" asp-for="Password" class="form-control" placeholder="Contraseña"
+                        autocomplete="off" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -46,10 +54,8 @@
     </div>
 </body>
 
-</html>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/js/Account/login.js"></script>
 
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
+</html>

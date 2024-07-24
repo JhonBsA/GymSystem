@@ -40,7 +40,23 @@ namespace FitnessCenter.Data.Crud
 
         public override Dictionary<string, string> Delete(BaseClass entityDTO)
         {
-            throw new NotImplementedException();
+            SqlOperation operation = mapper.GetDeleteStatement(entityDTO);
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+
+            if (result.Count == 0)
+            {
+                throw new Exception("No response from stored procedure.");
+            }
+
+            var firstRow = result[0];
+            var response = new Dictionary<string, string>();
+
+            foreach (var key in firstRow.Keys)
+            {
+                response[key] = firstRow[key].ToString();
+            }
+
+            return response;
         }
 
         public override List<T> RetrieveAll<T>()
@@ -66,9 +82,25 @@ namespace FitnessCenter.Data.Crud
 
 
 
-        public override Dictionary<string, string> Update(BaseClass entityDTO)
+        public override Dictionary<string, string> Update(BaseClass user)
         {
-            throw new NotImplementedException();
+            SqlOperation operation = mapper.GetUpdateStatement(user);
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+
+            if (result.Count == 0)
+            {
+                throw new Exception("No response from stored procedure.");
+            }
+
+            var firstRow = result[0];
+            var response = new Dictionary<string, string>();
+
+            foreach (var key in firstRow.Keys)
+            {
+                response[key] = firstRow[key].ToString();
+            }
+
+            return response;
         }
 
         public Dictionary<string, string> RetrieveByEmail(string email)
