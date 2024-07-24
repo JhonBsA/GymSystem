@@ -36,7 +36,7 @@ builder.Services.AddCors(options =>
         policy =>
         {
             policy.WithOrigins("https://localhost:52108",
-                               "https://localhost:7252");
+                               "https://localhost:7252"); //URLs permitidas en el CORS
             policy.AllowAnyHeader(); //application/json  application/xml application/text
             policy.AllowAnyMethod(); //GET, POST, PUT, DELETE
         });
