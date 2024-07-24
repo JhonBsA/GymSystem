@@ -13,9 +13,9 @@ namespace FitnessCenter.API.Controllers
     {
         private readonly UserManager _userManager;
 
-        public AccountController()
+        public AccountController(IEmailService emailService)
         {
-            _userManager = new UserManager();
+            _userManager = new UserManager(emailService);
         }
 
         [HttpPost]
@@ -23,7 +23,8 @@ namespace FitnessCenter.API.Controllers
         public IActionResult CreateUser(UserDetails user)
         {
             var result = _userManager.CreateUsuario(user);
-            return Ok(result);
+            var msg = result["Message"];
+            return Ok(msg);
         }
 
         [HttpGet]
@@ -31,7 +32,8 @@ namespace FitnessCenter.API.Controllers
         public IActionResult PasswordReset(string email)
         {
             var result = _userManager.RetrieveByEmail(email);
-            return Ok(result);
+            var msg = result["Message"];
+            return Ok(msg);
         }
 
         [HttpPost]
