@@ -17,7 +17,7 @@ namespace FitnessCenter.API.Controllers
         {
             _userManager = new UserManager(emailService);
         }
-        
+
         [HttpPost]
         [Route("CreateUser")]
         public IActionResult CreateUser(UserDetails user)
@@ -26,34 +26,7 @@ namespace FitnessCenter.API.Controllers
             var msg = result["Message"];
             return Ok(msg);
         }
-        /*
-        [HttpPost]
-        [Route("CreateUser")]
-        public IActionResult CreateUser(UserDetails user)
-        {
-            var result = _userManager.CreateUsuario(user);
-            if (result.ContainsKey("OTPCode")) // Verificar si se generó un OTP
-            {
-                // Redirigir a la página de verificación de OTP
-                return RedirectToAction("VerifyOTP", "Account");
-            }
-            return BadRequest("Error al crear usuario"); // Manejar el error en caso de fallo
-        }
 
-        
-        [HttpPost]
-        [Route("CreateUser")]
-        public IActionResult CreateUser(UserDetails user)
-        {
-            var result = _userManager.CreateUsuario(user);
-            if (result.ContainsKey("OTPCode")) // Verificar si se generó un OTP
-            {
-                return RedirectToAction("Check", "CheckOTP"); // Redirigir a la página de verificación de OTP
-            }
-            return BadRequest("Error al crear usuario"); // Manejar el error en caso de fallo
-        }
-
-        */
         [HttpGet]
         [Route("PasswordReset")]
         public IActionResult PasswordReset(string email)
@@ -62,7 +35,7 @@ namespace FitnessCenter.API.Controllers
             var msg = result["Message"];
             return Ok(msg);
         }
-
+        /* original
         [HttpPost]
         [Route("PasswordResetOTP")]
         public IActionResult PasswordResetOTP(string otp, string newPassword)
@@ -70,6 +43,22 @@ namespace FitnessCenter.API.Controllers
             var result = _userManager.PasswordResetOTP(otp, newPassword);
             return Ok(result);
         }
+        */
+
+        //Cambie esto porque el otp y password estaban definidos como parámetros de ruta en lugar de un objeto del cuerpo de la solicitud.
+        [HttpPost]
+        [Route("PasswordResetOTP")]
+        public IActionResult PasswordResetOTP([FromBody] PasswordResetRequest request)
+        {
+            if (request == null)
+            {
+                return BadRequest("Invalid request.");
+            }
+
+            var result = _userManager.PasswordResetOTP(request.Otp, request.NewPassword);
+            return Ok(result);
+        }
+
 
         [HttpPost]
         [Route("Login")]

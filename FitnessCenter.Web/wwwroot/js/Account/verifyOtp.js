@@ -1,12 +1,12 @@
 const verifyOTP = (e) => {
     e.preventDefault();
 
-    const data = {};
-    data.otp = $("#otp").val().trim();
-    data.newPassword = $("#password").val().trim();
+    const data = {
+        otp: $("#otp").val().trim(),
+        newPassword: $("#password").val().trim()
+    };
     const confirmPassword = $("#confirmPassword").val().trim();
 
-    // Validar que todos los campos están completos
     if (!data.otp || !data.newPassword || !confirmPassword) {
         Swal.fire({
             title: "Error",
@@ -18,7 +18,6 @@ const verifyOTP = (e) => {
         return;
     }
 
-    // Validar que las contraseñas coinciden
     if (data.newPassword !== confirmPassword) {
         Swal.fire({
             title: "Error",

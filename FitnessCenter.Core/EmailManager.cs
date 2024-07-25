@@ -8,7 +8,5 @@ namespace FitnessCenter.Core
 {
     internal class EmailManager
     {
-
-
     }
 }

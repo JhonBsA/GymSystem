@@ -15,10 +15,6 @@ namespace FitnessCenter.Core
             _emailService = emailService;
         }
 
-        public UserManager()
-        {
-        }
-
         public Dictionary<string, string> CreateUsuario(UserDetails user)
         {
             var result = userCrud.Create(user);

@@ -1,14 +1,14 @@
-﻿
-const createRegisterUsers = (e) => {
+﻿const createRegisterUsers = (e) => {
     e.preventDefault();
 
-    const user = {}
-    user.cedula = $("#identificacion").val(),
-        user.nombre = $("#nombre").val(),
-        user.firstLastName = $("#primerApellido").val(),
-        user.secondLastName = $("#segundoApellido").val(),
-        user.phone = $("#telefono").val(),
-        user.email = $("#correoElectronico").val()
+    const user = {
+        cedula: $("#identificacion").val(),
+        nombre: $("#nombre").val(),
+        firstLastName: $("#primerApellido").val(),
+        secondLastName: $("#segundoApellido").val(),
+        phone: $("#telefono").val(),
+        email: $("#correoElectronico").val()
+    };
 
     const apiUrl = API_URL_BASE + "/Account/CreateUser";
 
@@ -21,22 +21,35 @@ const createRegisterUsers = (e) => {
     })
         .done((result) => {
             console.log(result);
+            if (result.success) {
+                Swal.fire({
+                    title: "Usuario registrado con éxito",
+                    icon: "success",
+                    background: "#c0d898",
+                    customClass: {
+                        popup: 'custom-popup',
+                        title: 'custom-title',
+                        icon: 'custom-title',
+                    },
+                    confirmButtonText: 'Aceptar',
+                    confirmButtonColor: '#3085d6',
+                });
+            } else {
+                // Manejar error si result.success es falso
+                Swal.fire({
+                    title: "Error",
+                    text: result.message || "Se ha presentado un fallo",
+                    icon: "error",
+                    confirmButtonText: "Aceptar",
+                    background: "#f8d7da"
+                });
+            }
+        })
+        .fail((response) => {
+            console.log("Error en la respuesta del servidor:", response);
             Swal.fire({
-                title: "Usuario registrado con éxito",
-                icon: "success",
-                background: "#c0d898",
-                customClass: {
-                    popup: 'custom-popup',
-                    title: 'custom-title',
-                    icon: 'custom-title',
-                    
-                }
-            });
-        }).fail((response) => {
-            console.log(response.responseText);
-            Swal.fire({
-                title: "Usuario",
-                text: "Se ha presentado un fallo",
+                title: "Error",
+                text: response.responseText || "Se ha presentado un fallo",
                 icon: "error",
                 confirmButtonText: "Aceptar",
                 background: "#f8d7da"

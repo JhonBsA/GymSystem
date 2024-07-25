@@ -141,11 +141,11 @@ namespace FitnessCenter.Data.Crud
                 response["OTPState"] = firstRow["OTPState"].ToString();
             }
             if (firstRow.ContainsKey("Email"))
-             {
+            {
                 response["Email"] = firstRow["Email"].ToString();
             }
 
-                return response;
+            return response;
         }
 
         public Dictionary<string, string> PasswordResetOTP(string Otp, string NewPassword)
