@@ -14,6 +14,20 @@ namespace FitnessCenter.Web.Controllers
         }
 
         [HttpGet]
+        public IActionResult Verify()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Route("CreateUser")]
+        public IActionResult CreateUser(UserDetails user)
+        {
+            var result = _userManager.CreateUsuario(user);
+            return Ok(result);
+        }
+
+        [HttpGet]
         public IActionResult ForgotPassword()
         {
             return View();

@@ -14,9 +14,9 @@ namespace FitnessCenter.API.Controllers
     {
         private readonly UserManager _userManager;
 
-        public AccountController()
+        public AccountController(IEmailService emailService)
         {
-            _userManager = new UserManager();
+            _userManager = new UserManager(emailService);
         }
 
         [HttpPost]
@@ -24,7 +24,8 @@ namespace FitnessCenter.API.Controllers
         public IActionResult CreateUser(UserDetails user)
         {
             var result = _userManager.CreateUsuario(user);
-            return Ok(result);
+            var msg = result["Message"];
+            return Ok(msg);
         }
 
         [HttpGet]
@@ -32,14 +33,30 @@ namespace FitnessCenter.API.Controllers
         public IActionResult PasswordReset(string email)
         {
             var result = _userManager.RetrieveByEmail(email);
-            return Ok(result);
+            var msg = result["Message"];
+            return Ok(msg);
         }
-
+        /* original
         [HttpPost]
         [Route("PasswordResetOTP")]
         public IActionResult PasswordResetOTP(string otp, string newPassword)
         {
             var result = _userManager.PasswordResetOTP(otp, newPassword);
+            return Ok(result);
+        }
+        */
+
+        //Cambie esto porque el otp y password estaban definidos como parámetros de ruta en lugar de un objeto del cuerpo de la solicitud.
+        [HttpPost]
+        [Route("PasswordResetOTP")]
+        public IActionResult PasswordResetOTP([FromBody] PasswordResetRequest request)
+        {
+            if (request == null)
+            {
+                return BadRequest("Invalid request.");
+            }
+
+            var result = _userManager.PasswordResetOTP(request.Otp, request.NewPassword);
             return Ok(result);
         }
         //swagger funcional
@@ -50,6 +67,7 @@ namespace FitnessCenter.API.Controllers
         //    var result = _userManager.Login(email, password);
         //    return Ok(result);
         //}
+
 
         [HttpPost]
         [Route("Login")]

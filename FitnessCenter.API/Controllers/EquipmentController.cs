@@ -12,11 +12,14 @@ namespace FitnessCenter.API.Controllers
     [ApiController]
     public class EquipmentController : ControllerBase
     {
+
         private readonly EquipmentManager _equipmentManager;
 
         public EquipmentController()
         {
             _equipmentManager = new EquipmentManager();
         }
+
     }
 }
+

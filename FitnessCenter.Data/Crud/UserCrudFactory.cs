@@ -34,6 +34,18 @@ namespace FitnessCenter.Data.Crud
             {
                 response[key] = firstRow[key].ToString();
             }
+            if (firstRow.ContainsKey("Message"))
+            {
+                response["Message"] = firstRow["Message"].ToString();
+            }
+            if (firstRow.ContainsKey("OTPCode"))
+            {
+                response["OTPCode"] = firstRow["OTPCode"].ToString();
+            }
+            if (firstRow.ContainsKey("Email"))
+            {
+                response["Email"] = firstRow["Email"].ToString();
+            }
 
             return response;
         }
@@ -127,6 +139,10 @@ namespace FitnessCenter.Data.Crud
             if (firstRow.ContainsKey("OTPState"))
             {
                 response["OTPState"] = firstRow["OTPState"].ToString();
+            }
+            if (firstRow.ContainsKey("Email"))
+            {
+                response["Email"] = firstRow["Email"].ToString();
             }
 
             return response;

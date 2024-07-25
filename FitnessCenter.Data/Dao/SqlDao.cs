@@ -8,13 +8,16 @@ namespace FitnessCenter.Data.Dao
     {
         private static SqlDao instance = new SqlDao();
 
-        private string _server = "localhost";
+        private string _server = "DIEGO\\SQLEXPRESS"; // Usa doble barra invertida
         private string _database = "BioSport";
         private string _userId = "sa";
-        private string _password = "Makober33*";
+
+        private string _password = "diego123";
+
+
         private string _trustServerCertificate = "True";
 
-        private string _connString => $"Server={_server};Database={_database};User ID={_userId};Password={_password};TrustServerCertificate={_trustServerCertificate}";
+        private string _connString => $"Server={_server};Database={_database};User ID={_userId};Password={_password};TrustServerCertificate={_trustServerCertificate};";
 
         public static SqlDao GetInstance()
         {
