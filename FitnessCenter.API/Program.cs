@@ -1,21 +1,36 @@
+using FitnessCenter.Core;
+using Microsoft.Extensions.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddCors(options =>
-{
+// Configure CORS policy
+builder.Services.AddCors(options => {
     options.AddPolicy(name: "NocheCorsPolicy",
-        policy =>
-        {
+        policy => {
             policy.WithOrigins("https://localhost:52108"); // Cambiado a tu valor
-            policy.AllowAnyHeader(); // application/json, application/xml, application/text
-            policy.AllowAnyMethod(); // GET, POST, PUT, DELETE
+            policy.AllowAnyHeader();
+            policy.AllowAnyMethod();
         });
 });
+
+// Configure EmailService
+builder.Services.AddSingleton<IEmailService>(sp =>
+    new EmailService(
+        builder.Configuration["Smtp:Server"],
+        int.Parse(builder.Configuration["Smtp:Port"]),
+        builder.Configuration["Smtp:User"],
+        builder.Configuration["Smtp:Pass"]
+    ));
+
+// Configure UserManager
+builder.Services.AddScoped<UserManager>(sp =>
+    new UserManager(sp.GetRequiredService<IEmailService>())
+);
 
 var app = builder.Build();
 
@@ -34,7 +49,7 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
-app.UseCors("NocheCorsPolicy");
+app.UseCors("NocheCorsPolicy"); // Habilitar CORS
 
 app.UseAuthorization();
 

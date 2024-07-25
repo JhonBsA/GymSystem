@@ -19,6 +19,11 @@ namespace FitnessCenter.Web.Controllers
         {
             return View();
         }
+        public IActionResult Verify()
+        {
+            return View(); // Esto busca la vista Verify.cshtml en Views/Account
+        }
+
 
         [HttpPost]
         [Route("CreateUser")]
@@ -64,5 +69,10 @@ namespace FitnessCenter.Web.Controllers
         {
             return View(); //cambiar esto
         }
+        
+
+
+
+
     }
 }

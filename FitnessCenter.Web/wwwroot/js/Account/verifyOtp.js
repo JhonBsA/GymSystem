@@ -1,0 +1,66 @@
+const verifyOTP = (e) => {
+    e.preventDefault();
+
+    const data = {};
+    data.otp = $("#otp").val().trim();
+    data.newPassword = $("#password").val().trim();
+    const confirmPassword = $("#confirmPassword").val().trim();
+
+    // Validar que todos los campos están completos
+    if (!data.otp || !data.newPassword || !confirmPassword) {
+        Swal.fire({
+            title: "Error",
+            text: "Todos los campos son obligatorios",
+            icon: "error",
+            confirmButtonText: "Aceptar",
+            background: "#f8d7da"
+        });
+        return;
+    }
+
+    // Validar que las contraseñas coinciden
+    if (data.newPassword !== confirmPassword) {
+        Swal.fire({
+            title: "Error",
+            text: "Las contraseñas no coinciden",
+            icon: "error",
+            confirmButtonText: "Aceptar",
+            background: "#f8d7da"
+        });
+        return;
+    }
+
+    const apiUrl = API_URL_BASE + "/Account/PasswordResetOTP";
+    $.ajax({
+        url: apiUrl,
+        method: "POST",
+        data: JSON.stringify(data),
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+    })
+        .done((result) => {
+            console.log(result);
+            Swal.fire({
+                title: "Contraseña actualizada con éxito",
+                icon: "success",
+                background: "#c0d898",
+                customClass: {
+                    popup: 'custom-popup',
+                    title: 'custom-title',
+                    icon: 'custom-title',
+                    confirmButton: 'custom-button'
+                }
+            });
+        }).fail((response) => {
+            console.log(response.responseText);
+            Swal.fire({
+                title: "Error",
+                text: "Se ha presentado un fallo",
+                icon: "error",
+                confirmButtonText: "Aceptar",
+                background: "#f8d7da"
+            });
+        });
+}
+
+$("#verifyOtpForm").on('submit', verifyOTP);
