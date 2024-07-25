@@ -32,7 +32,7 @@ const loginUser = (e) => {
         })
         .fail((jqXHR, textStatus, errorThrown) => {
             console.error("Error en la solicitud:", textStatus, errorThrown);
-            let errorMessage = "Hubo un problema con el inicio de sesión. Por favor, intente nuevamente.";
+            let errorMessage = "Correo electrónico o contraseña incorrecto. Por favor, intente nuevamente.";
 
             if (jqXHR.responseJSON && jqXHR.responseJSON.Message) {
                 errorMessage = jqXHR.responseJSON.Message;
