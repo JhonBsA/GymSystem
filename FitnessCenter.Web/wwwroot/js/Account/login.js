@@ -2,17 +2,23 @@
 const loginUser = (e) => {
     e.preventDefault();
 
-    const login = {
-        email: $("#email").val().trim(),
-        password: $("#password").val().trim()
-    }
+    //ENVIO POR MEDIO DE OBJETO JSON
+    //const login = {
+    //    email: $("#email").val().trim(),
+    //    password: $("#password").val().trim()
+    //}
 
-    const apiUrl = API_URL_BASE + "/Account/Login";
+    //const apiUrl = API_URL_BASE + "/Account/Login";
+
+    const email = $("#email").val().trim();
+    const password = $("#password").val().trim();
+
+    const apiUrl = API_URL_BASE + `/Account/Login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
 
     $.ajax({
         url: apiUrl,
         method: "POST",
-        data: JSON.stringify(login),
+        /*data: JSON.stringify(login),*/
         contentType: "application/json;charset=utf-8",
         dataType: "json",
     })
