@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.18" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FitnessCenter.Core\FitnessCenter.Core.csproj" />
     <ProjectReference Include="..\FitnessCenter.Data\FitnessCenter.Data.csproj" />
     <ProjectReference Include="..\FitnessCenter.DTO\FitnessCenter.DTO.csproj" />

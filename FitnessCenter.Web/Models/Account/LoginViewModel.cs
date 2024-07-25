@@ -14,9 +14,6 @@ namespace FitnessCenter.Web.Models
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
-
-        [Display(Name = "Recuérdame")]
-        public bool RememberMe { get; set; }
     }
 }
 

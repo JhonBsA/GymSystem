@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using FitnessCenter.DTO;
 using FitnessCenter.Core;
+using FitnessCenter.Web.Models;
 
 namespace FitnessCenter.API.Controllers
 {
@@ -43,12 +44,28 @@ namespace FitnessCenter.API.Controllers
             var result = _userManager.PasswordResetOTP(otp, newPassword);
             return Ok(result);
         }
+        //swagger funcional
+        //[HttpPost]
+        //[Route("Login")]
+        //public IActionResult Login(string email, string password)
+        //{
+        //    var result = _userManager.Login(email, password);
+        //    return Ok(result);
+        //}
 
         [HttpPost]
         [Route("Login")]
-        public IActionResult Login(string email, string password)
+        public IActionResult Login([FromBody] LoginViewModel model)
         {
-            var result = _userManager.Login(email, password);
+            var result = _userManager.Login(model.Email, model.Password);
+
+            if (result.ContainsKey("Message"))
+            {
+                // Devuelve un BadRequest si el resultado contiene un mensaje de error
+                return BadRequest(result["Message"]);
+            }
+
+            // Devuelve OK si el resultado contiene datos de éxito
             return Ok(result);
         }
 
