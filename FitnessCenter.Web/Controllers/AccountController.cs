@@ -12,5 +12,11 @@ namespace FitnessCenter.Web.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
     }
 }
