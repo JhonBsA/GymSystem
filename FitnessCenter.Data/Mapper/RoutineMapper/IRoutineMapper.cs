@@ -6,8 +6,7 @@ namespace FitnessCenter.Data.Mapper.RoutineMapper
 {
     public interface IRoutineMapper
     {
-        SqlOperation GetCreateStatement(Routine routine, List<RoutineExercise> exercises, 
-            List<RoutineEquipment> equipment);
+        SqlOperation GetCreateStatement(Routine routine, List<RoutineExerciseDetail> exerciseDetails);
         SqlOperation GetUpdateStatement(Routine routine);
         SqlOperation GetDeleteStatement(int routineID);
         SqlOperation GetRetrieveByIdStatement(int routineID);
@@ -17,7 +16,6 @@ namespace FitnessCenter.Data.Mapper.RoutineMapper
         SqlOperation GetClearExercisesStatement(int routineID);
         SqlOperation GetAddEquipmentStatement(RoutineEquipment equipment);
         SqlOperation GetClearEquipmentStatement(int routineID);
-
         T BuildObject<T>(Dictionary<string, object> row);
         List<T> BuildObjects<T>(List<Dictionary<string, object>> rows);
     }

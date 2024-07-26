@@ -19,4 +19,8 @@
     <ProjectReference Include="..\FitnessCenter.DTO\FitnessCenter.DTO.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Mapper\RoleMapper\" />
+  </ItemGroup>
+
 </Project>
