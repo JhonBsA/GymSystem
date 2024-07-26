@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using FitnessCenter.DTO;
 using FitnessCenter.Core;
-using FitnessCenter.Web.Models;
+using FitnessCenter.Web.Models.Account;
 
 namespace FitnessCenter.API.Controllers
 {

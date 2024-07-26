@@ -25,53 +25,67 @@ app.MapControllers();
 
 app.Run();*/
 
-var NocheCorsPolicy = "NocheCorsPolicy";
-
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: NocheCorsPolicy,
-        policy =>
-        {
-            policy.WithOrigins("https://localhost:52108",
-                               "https://localhost:7252"); //URLs permitidas en el CORS
-            policy.AllowAnyHeader(); //application/json  application/xml application/text
-            policy.AllowAnyMethod(); //GET, POST, PUT, DELETE
-        });
-});
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 
-var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
-app.UseHttpsRedirection();
+//USO JHON
 
-app.UseCors(NocheCorsPolicy);
+//using FitnessCenter.Core;
 
-app.UseAuthorization();
+//var NocheCorsPolicy = "NocheCorsPolicy";
 
-app.MapControllers();
+//var builder = WebApplication.CreateBuilder(args);
 
-app.UseCors("NocheCorsPolicy");
+//// Add services to the container.
 
-app.Run();
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy(name: NocheCorsPolicy,
+//        policy =>
+//        {
+//            policy.WithOrigins("https://localhost:52108",
+//                               "https://localhost:7252"); //URLs permitidas en el CORS
+//            policy.AllowAnyHeader(); //application/json  application/xml application/text
+//            policy.AllowAnyMethod(); //GET, POST, PUT, DELETE
+//        });
+//});
 
-/*var builder = WebApplication.CreateBuilder(args);
+//builder.Services.AddControllers();
+//// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+//builder.Services.AddEndpointsApiExplorer();
+//builder.Services.AddSwaggerGen();
 
+
+//var app = builder.Build();
+
+//// Configure the HTTP request pipeline.
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
+
+//app.UseHttpsRedirection();
+
+//app.UseCors(NocheCorsPolicy);
+
+//app.UseAuthorization();
+
+//app.MapControllers();
+
+//app.UseCors("NocheCorsPolicy");
+
+//app.Run();
+
+//USO JHON
+
+
+
+
+
+
+//var builder = WebApplication.CreateBuilder(args);
 //// Add services to the container.
 //builder.Services.AddControllers();
 //// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -128,9 +142,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Configure CORS policy
-builder.Services.AddCors(options => {
+builder.Services.AddCors(options =>
+{
     options.AddPolicy(name: "NocheCorsPolicy",
-        policy => {
+        policy =>
+        {
             policy.WithOrigins("https://localhost:52108");
             policy.AllowAnyHeader();
             policy.AllowAnyMethod();

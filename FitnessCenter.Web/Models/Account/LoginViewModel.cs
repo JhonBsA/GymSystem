@@ -1,7 +1,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace FitnessCenter.Web.Models
+namespace FitnessCenter.Web.Models.Account
 {
     public class LoginViewModel
     {   

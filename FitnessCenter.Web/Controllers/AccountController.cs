@@ -7,6 +7,7 @@ namespace FitnessCenter.Web.Controllers
 {
     public class AccountController : Controller
     {
+
         [HttpGet]
         public IActionResult Login()
         {
@@ -19,16 +20,14 @@ namespace FitnessCenter.Web.Controllers
             return View();
         }
 
-        [HttpPost]
-        [Route("CreateUser")]
-        public IActionResult CreateUser(UserDetails user)
+        [HttpGet]
+        public IActionResult ForgotPassword()
         {
-            var result = _userManager.CreateUsuario(user);
-            return Ok(result);
+            return View();
         }
 
         [HttpGet]
-        public IActionResult ForgotPassword()
+        public IActionResult Register()
         {
             return View();
         }
