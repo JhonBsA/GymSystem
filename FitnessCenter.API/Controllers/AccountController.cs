@@ -17,15 +17,32 @@ namespace FitnessCenter.API.Controllers
         {
             _userManager = new UserManager(emailService);
         }
-
+        /*original
+         [HttpPost]
+         [Route("CreateUser")]
+         public IActionResult CreateUser(UserDetails user)
+         {
+             var result = _userManager.CreateUsuario(user);
+             var msg = result["Message"];
+             return Ok(msg);
+         }
+         */
         [HttpPost]
         [Route("CreateUser")]
         public IActionResult CreateUser(UserDetails user)
         {
             var result = _userManager.CreateUsuario(user);
-            var msg = result["Message"];
-            return Ok(msg);
+            if (result.ContainsKey("Success") && result["Success"] == "true")
+            {
+                return Ok(new { success = true, message = "Usuario creado exitosamente" });
+            }
+            else
+            {
+                return BadRequest(new { success = false, message = "Error al crear usuario" });
+            }
         }
+
+
 
         [HttpGet]
         [Route("PasswordReset")]

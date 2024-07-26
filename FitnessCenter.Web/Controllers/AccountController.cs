@@ -9,11 +9,12 @@ namespace FitnessCenter.Web.Controllers
     {
         private readonly UserManager _userManager;
 
+        
         public AccountController()
         {
             _userManager = new UserManager();
         }
-
+        
         [HttpGet]
         public IActionResult Login()
         {
@@ -70,7 +71,7 @@ namespace FitnessCenter.Web.Controllers
         {
             return View(); //cambiar esto
         }
-        
+
 
 
 
