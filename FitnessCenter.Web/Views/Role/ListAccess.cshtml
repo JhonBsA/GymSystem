@@ -1,0 +1,62 @@
+﻿@model IEnumerable<FitnessCenter.Web.Models.Role.RoleAccessViewModel>
+
+@{
+    ViewData["Title"] = "Gestión de Accesos";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Accesos</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
+    <link rel="stylesheet" type="text/css" href="~/css/Role/listAccess.css" />
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="login-logo">
+                <img src="~/images/login-logo.png" alt="Foto de inicio de sesión" />
+            </div>
+            <div class="titulo">
+                <h2>Gestión de Accesos</h2>
+            </div>
+        </div>
+        <div class="table-container">
+            <div class="subtitulo">
+                <h3>Lista de Accesos</h3>
+            </div>
+            <table class="table textoBlanco">
+                <thead>
+                    <tr class="contenido">
+                        <th cope="col">Acceso</th>
+                        <th cope="col">Descripción</th>
+                        <th cope="col">Roles con el Acceso</th>
+                        <th cope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var access in Model)
+                    {
+                        <tr>
+                            <td>@access.AccessName</td>
+                            <td>@access.Description</td>
+                            <td>@string.Join(", ", access.RolesWithAccess ?? new List<string>())</td>
+                            <td class="actions-btn">
+                                <a asp-action="AssignAccess" asp-route-accessId="@access.AccessId" class="btn btn-primary">Asignar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/site.js"></script>
+</html>

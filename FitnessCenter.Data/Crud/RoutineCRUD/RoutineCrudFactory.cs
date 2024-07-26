@@ -17,10 +17,9 @@ namespace FitnessCenter.Data.Dao
             dao = SqlDao.GetInstance();
         }
 
-        public Dictionary<string, string> Create(Routine routine, List<RoutineExercise> exercises, 
-            List<RoutineEquipment> equipment)
+        public Dictionary<string, string> Create(Routine routine, List<RoutineExerciseDetail> exerciseDetails)
         {
-            SqlOperation operation = mapper.GetCreateStatement(routine, exercises, equipment);
+            SqlOperation operation = mapper.GetCreateStatement(routine, exerciseDetails);
             var result = dao.ExecuteStoredProcedureWithResult(operation);
 
             var response = new Dictionary<string, string>();

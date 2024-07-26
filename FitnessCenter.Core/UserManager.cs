@@ -50,7 +50,7 @@ namespace FitnessCenter.Core
             if (result != null && result.ContainsKey("Email"))
             {
                 string userEmail = result["Email"];
-                string subject = "New user created";
+                string subject = "Password reset code";
                 string body = "Your account OTP Code: ";
 
                 if (result.ContainsKey("OTPCode"))

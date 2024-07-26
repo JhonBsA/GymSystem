@@ -9,30 +9,16 @@ namespace FitnessCenter.Core
     {
         private readonly RoutineCrudFactory routineCrud = new RoutineCrudFactory();
 
-        public Dictionary<string, string> CreateRoutine(Routine routine, 
-            List<RoutineExercise> exercises, List<RoutineEquipment> equipment)
+        public Dictionary<string, string> CreateRoutine(Routine routine, List<RoutineExerciseDetail> exerciseDetails)
         {
-            return routineCrud.Create(routine, exercises, equipment);
+            return routineCrud.Create(routine, exerciseDetails);
         }
+
 
         public Dictionary<string, string> UpdateRoutine(Routine routine, 
             List<RoutineExercise> exercises, List<RoutineEquipment> equipment)
         {
-            var result = routineCrud.Update(routine);
-
-            routineCrud.ClearExercises(routine.RoutineID);
-            foreach (var exercise in exercises)
-            {
-                routineCrud.AddExercise(exercise);
-            }
-
-            routineCrud.ClearEquipment(routine.RoutineID);
-            foreach (var equip in equipment)
-            {
-                routineCrud.AddEquipment(equip);
-            }
-
-            return result;
+            throw new NotImplementedException();
         }
 
         public Dictionary<string, string> DeleteRoutine(int routineID)

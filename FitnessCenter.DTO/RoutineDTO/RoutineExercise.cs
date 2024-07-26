@@ -17,5 +17,6 @@ namespace FitnessCenter.DTO.RoutineDTO
         public int DurationInSeconds { get; set; }
         public int AmrapTimeLimitInSeconds { get; set; }
         public int AmrapRepetitions { get; set; }
+        public int Dia { get; set; }
     }
 }
