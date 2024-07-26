@@ -1,45 +1,54 @@
-﻿@{
+﻿@model FitnessCenter.Web.Models.Account.CreateUserViewModel;
+@{
     ViewData["Title"] = "Create User";
     Layout = null; // No usar el layout predeterminado
 }
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Registro</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="~/css/Account/CreateRegisterUsers.css" />
-    <script src="~/js/Pages/createRegisterUsers.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
 </head>
+
 <body>
     <div class="form-container zanahoria-naranja">
         <h2 class="text-center mb-4">Datos Personales</h2>
         <form id="createUserForm" class="form-group">
             <div class="form-group texto">
-                <label for="identificacion">Identificación:</label>
-                <input id="identificacion" class="form-control" required>
+                <label asp-for="Identificacion" class="control-label"></label>
+                <input asp-for="Identificacion" class="form-control" />
+                <span asp-validation-for="Identificacion" class="text-danger"></span>
             </div>
             <div class="form-group texto">
-                <label for="nombre">Nombre:</label>
-                <input id="nombre" class="form-control" required>
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group texto">
-                <label for="primerApellido">Primer Apellido:</label>
-                <input id="primerApellido" class="form-control" required>
+                <label asp-for="PrimerApellido" class="control-label"></label>
+                <input asp-for="PrimerApellido" class="form-control" />
+                <span asp-validation-for="PrimerApellido" class="text-danger"></span>
             </div>
             <div class="form-group texto">
-                <label for="segundoApellido">Segundo Apellido:</label>
-                <input id="segundoApellido" class="form-control">
+                <label asp-for="SegundoApellido" class="control-label"></label>
+                <input asp-for="SegundoApellido" class="form-control" />
+                <span asp-validation-for="SegundoApellido" class="text-danger"></span>
             </div>
             <div class="form-group texto">
-                <label for="telefono">Teléfono:</label>
-                <input id="telefono" class="form-control" required>
+                <label asp-for="Telefono" class="control-label"></label>
+                <input asp-for="Telefono" class="form-control" />
+                <span asp-validation-for="Telefono" class="text-danger"></span>
             </div>
             <div class="form-group texto">
-                <label for="correoElectronico">Correo Electrónico:</label>
-                <input id="correoElectronico" class="form-control" required>
+                <label asp-for="CorreoElectronico" class="control-label"></label>
+                <input asp-for="CorreoElectronico" class="form-control" />
+                <span asp-validation-for="CorreoElectronico" class="text-danger"></span>
             </div>
             <div class="form-group text-center mt-4">
                 <button type="submit" class="btn zanahoria-naranja-b texto">Registrarse</button>
@@ -47,14 +56,10 @@
         </form>
     </div>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- Bootstrap JS y dependencias -->
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Scripts personalizados -->
-    
-    <script src="~/js/site.js"></script>
 </body>
+<!-- Bootstrap JS y dependencias -->
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/js/site.js"></script>
+<script src="~/js/Pages/createRegisterUsers.js"></script>
 </html>
