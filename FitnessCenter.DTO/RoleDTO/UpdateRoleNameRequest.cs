@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace FitnessCenter.DTO.RoleDTO
 {
-    public class Role
+    public class UpdateRoleNameRequest
     {
-        public int RoleID { get; set; }
-        public string Name { get; set; }
+        public string OldRoleName { get; set; }
+        public string NewRoleName { get; set; }
     }
+
 }

@@ -1,12 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FitnessCenter.Data.Dao;
+using FitnessCenter.Data.Crud.RoleCRUD;
+using FitnessCenter.DTO.RoleDTO;
+using FitnessCenter.DTO.AppointmentDTO;
 
 namespace FitnessCenter.Core
 {
-    internal class RoleManager
+    public class RoleManager
     {
+        private readonly RoleCrudFactory _roleCrudFactory;
+        public RoleManager()
+        {
+            _roleCrudFactory = new RoleCrudFactory();
+        }
+
+        public Dictionary<string, string> CreateRole(Role role)
+        {
+            var result = _roleCrudFactory.Create(role);
+            return result;
+        }
+
+        public List<Role> RetrieveAll()
+        {
+            var result = _roleCrudFactory.RetrieveAll();
+            return result;
+        }
+
+        public Dictionary<string, string> UpdateRoleName(string oldRoleName, string newRoleName)
+        {
+            var result = _roleCrudFactory.UpdateRoleName(oldRoleName, newRoleName);
+            return result;
+        }
+
     }
+
 }
