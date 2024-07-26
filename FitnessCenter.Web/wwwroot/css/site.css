@@ -20,10 +20,7 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     overflow: hidden;
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    background-color: #4a545f;
 }
 
 html {
@@ -36,6 +33,38 @@ body {
 }
 
 /*Clases para uso estatico*/
+
+.titulo {
+    display: flex;
+    color: #1ABC9C;
+    justify-content: center;
+}
+
+.textoAmarillo {
+    color: #F1C40F;
+}
+
+.textoBlanco {
+    color: #FFF;
+}
+
+.textoNegro {
+    color: #000000;
+}
+
+.textoTurquesa {
+    color: #1ABC9C;
+}
+
+.textoVerde {
+    color: #2ECC71;
+}
+
+.textoNaranja {
+    color: #E67E22;
+}
+
+
 .btn-primary {
     width: 50%;
     padding: 10px;
