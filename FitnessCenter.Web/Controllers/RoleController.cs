@@ -10,6 +10,12 @@ namespace FitnessCenter.Web.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult AssignRole()
+        {
+            return View();
+        }
+
 
         // GET: RoleController/Details/5
         public ActionResult Details(int id)
@@ -79,5 +85,6 @@ namespace FitnessCenter.Web.Controllers
                 return View();
             }
         }
+        
     }
 }
