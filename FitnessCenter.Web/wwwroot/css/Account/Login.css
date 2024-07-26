@@ -1,16 +1,4 @@
 ﻿
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    overflow: hidden;
-}
-
 .titulo {
     display: flex;
     color: #1ABC9C;

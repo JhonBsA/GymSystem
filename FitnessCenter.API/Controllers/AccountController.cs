@@ -33,7 +33,14 @@ namespace FitnessCenter.API.Controllers
         public IActionResult PasswordReset(string email)
         {
             var result = _userManager.RetrieveByEmail(email);
+            /*SE AGREGA IF PARA EL BADREQUEST*/
             var msg = result["Message"];
+
+            if (msg == "The email provided does not exist in our records.")
+            {
+                return NotFound(new { Message = msg });
+            }
+
             return Ok(msg);
         }
         /* original
