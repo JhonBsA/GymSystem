@@ -45,6 +45,18 @@ namespace FitnessCenter.Web.Controllers
 
 
         [HttpGet]
+        public IActionResult CreateRole()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult UpdateRole() 
+        {
+            return View();
+        }
+
+        [HttpGet]
         public IActionResult ListAccess()
         {
             // Simulación de datos para la vista
@@ -71,6 +83,12 @@ namespace FitnessCenter.Web.Controllers
 
         [HttpGet]
         public IActionResult AssignRoleAccess()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult ListRole()
         {
             return View();
         }

@@ -1,15 +1,15 @@
-﻿@model FitnessCenter.Web.Models.Role.CreateRoleViewModel;
+﻿@model FitnessCenter.Web.Models.Role.UpdateRoleAccessViewModel;
 @{
-    ViewData["Title"] = "CreateRole";
+    ViewData["Title"] = "UpdateRole";
     Layout = null;
 }
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Create Role</title>
+    <title>Edit Role</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" type="text/css" href="~/css/Role/CreateRole.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/Role/editRole.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 <body>
@@ -18,18 +18,21 @@
     </div>
     <div class="titulo">
         <h2>
-            Registrar Nuevo Rol
+            Editar Rol
         </h2>
     </div>
-    <div class="CreateRoleContainer">
+    <div class="UpdateRoleContainer">
         <div class="form-box">
             <form class="formulario">
                 <div class="margin">
                     <div class="form-group">
-                        <label asp-for="RoleName"></label>
-                        <input id="RoleName" asp-for="RoleName" class="form-control" placeholder="Example Rol" autocomplete="off" />
-                        <span asp-validation-for="RoleName" class="text-danger"></span>
-                        <span id="usuarioHelper" class="helper-text"></span>
+                        <label for="oldRoleName">Nombre Anterior</label><!--reemplazar placeholder="Antiguo nombre del rol" autocomplete="off" por readonly-->
+                        <input type="text" id="oldRoleName" class="form-control"  placeholder="Antiguo nombre del rol" autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <label for="newRoleName">Nuevo Nombre</label>
+                        <input type="text" id="newRoleName" class="form-control" placeholder="Nuevo nombre del rol" autocomplete="off" />
+                        <span id="roleNameHelper" class="helper-text"></span>
                     </div>
                 </div>
                 <div class="accesos form-group">
@@ -42,12 +45,12 @@
                     </select>
                 </div>
                 <div class="buttons">
-                <div class="form-group">
+                    <div class="form-group">
                         <input type="submit" id="saveButton" value="Guardar" class="btn btn-primary" />
-                </div>
-                <div class="form-group">
+                    </div>
+                    <div class="form-group">
                         <input type="submit" id="cancelButton" value="Cancelar" class="btn btn-primary" />
-                </div>
+                    </div>
                 </div>
             </form>
         </div>
@@ -55,7 +58,7 @@
 </body>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/js/Role/CreateRole.js"></script>
+    <script src="~/js/Role/editRole.js"></script>
     <script src="~/js/site.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </html>

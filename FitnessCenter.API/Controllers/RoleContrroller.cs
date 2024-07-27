@@ -35,19 +35,33 @@ namespace FitnessCenter.API.Controllers
             return Ok(result);
         }
 
+        //Anterior
+        //[HttpPut]
+        //[Route("UpdateRoleName")]
+        //public IActionResult UpdateRoleName([FromBody] UpdateRoleNameRequest request)
+        //{
+        //    var result = _roleManager.UpdateRoleName(request.OldRoleName, request.NewRoleName);
+        //    if (result.ContainsKey("Message"))
+        //    {
+        //        if (result["Message"].Contains("Error"))
+        //        {
+        //            return BadRequest(result["Message"]);
+        //        }
+        //        return Ok(result["Message"]);
+        //    }
+        //    return Ok(result);
+        //}
 
         [HttpPut]
         [Route("UpdateRoleName")]
         public IActionResult UpdateRoleName([FromBody] UpdateRoleNameRequest request)
         {
             var result = _roleManager.UpdateRoleName(request.OldRoleName, request.NewRoleName);
-            if (result.ContainsKey("Message"))
+            var message = result["Message"];
+
+            if (message == "Role not found.")
             {
-                if (result["Message"].Contains("Error"))
-                {
-                    return BadRequest(result["Message"]);
-                }
-                return Ok(result["Message"]);
+                return NotFound(new { Message = "Rol no encontrado" });
             }
             return Ok(result);
         }
