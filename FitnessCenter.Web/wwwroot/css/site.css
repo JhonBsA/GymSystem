@@ -13,23 +13,13 @@ html {
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    overflow: hidden;
     background-color: #4a545f;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-    margin-bottom: 60px;
+    margin: 0;
 }
 
 /*Clases para uso estatico*/
@@ -38,6 +28,7 @@ body {
     display: flex;
     color: #1ABC9C;
     justify-content: center;
+    background-color: #4a545f;
 }
 
 .textoAmarillo {
