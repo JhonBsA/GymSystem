@@ -7,6 +7,7 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
     <link rel="stylesheet" type="text/css" href="~/css/Role/AssignAccess.css" />
 </head>
+
 <body>
     <div class="container">
         <h1 class="title">Asignar Acceso</h1>
@@ -48,11 +50,13 @@
                         <td>
                             @if (role.HasAccess)
                             {
-                                <a href="@Url.Action("RemoveAccess", new { id = role.RoleId })" class="btn btn-danger">Eliminar</a>
+                                <a href="@Url.Action("RemoveAccess", new { id = role.RoleId })"
+                                    class="btn btn-danger">Eliminar</a>
                             }
                             else
                             {
-                                <a href="@Url.Action("AssignAccess", new { id = role.RoleId })" class="btn btn-primary">Asignar</a>
+                                <a href="@Url.Action("AssignAccess", new { id = role.RoleId })"
+                                    class="btn btn-primary">Asignar</a>
                             }
                         </td>
                     </tr>
@@ -64,4 +68,5 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="~/js/site.js"></script>
+
 </html>
