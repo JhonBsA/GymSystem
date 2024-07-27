@@ -1,7 +1,133 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "List Role";
+    Layout = null; // No usar el layout predeterminado
 }
 
-HOLA ESTO ES PARA PRUEBA
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
+</head>
+    <style>
+        .table-container {
+            margin: 20px auto;
+            padding: 2rem;
+            background-color: #2C3E50;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            width: 80%;
+            max-width: 1200px;
+        }
+
+        .table {
+            margin: 0 auto;
+        }
+
+            .table th, .table td {
+                text-align: center;
+                vertical-align: middle;
+                color: white;
+            }
+
+        .actions-btn {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+            .actions-btn .btn {
+                padding: 5px 10px;
+                font-size: 0.875rem;
+            }
+
+        .azul-turquesa {
+            color: #1ABC9C;
+        }
+    </style>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="login-logo">
+                <img src="~/images/login-logo.png" alt="Foto de inicio de sesión" />
+            </div>
+            <div class="titulo text-center azul-turquesa">
+                <h2>Gestión de Roles</h2>
+            </div>
+        </div>
+        <div id="obtenerDatos" class="table-container">
+            <div class="subtitulo text-center azul-turquesa">
+                <h3>Lista de Roles</h3>
+            </div>
+            <table id="rolesTable" class="table table-striped table-bordered custom-table">
+                <thead>
+                    <tr>
+                        <th>RoleID</th>
+                        <th>Nombre del Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+
+    <script>
+        // Configuración de DataTable
+        const dataTableConfig = {
+            columns: [
+                { data: 'roleID' },
+                { data: 'name' },
+                {
+                    data: null,
+                    render: (data, type, row) => {
+                        return `
+                                    <div class="actions-btn">
+                                        <a href="/Role/AssignRole?roleId=${row.roleID}" class="btn btn-primary">Asignar</a>
+                                        <a href="/Role/EditRole?roleId=${row.roleID}" class="btn btn-primary">Editar</a>
+                                        <a href="/Role/DeleteRole?roleId=${row.roleID}" class="btn btn-primary">Eliminar</a>
+                                    </div>`;
+                    }
+                }
+            ],
+            createdRow: (row, data, dataIndex) => {
+                $(row).find('td').css('background-color', '#34495E');
+            }
+        };
+
+        // Llamada AJAX para obtener los datos de los roles
+        $(document).ready(() => {
+            let apiUrl = API_URL_BASE + '/Role/RetrievaAllRoles';
+            $.ajax({
+                url: apiUrl,
+                method: 'GET',
+                success: (result) => {
+                    dataTableConfig.data = result;
+                    $('#rolesTable').DataTable(dataTableConfig);
+                },
+                error: (error) => {
+                    Swal.fire({
+                        title: "Mensaje",
+                        text: "Hubo un error al obtener los datos: " + error.statusText,
+                        icon: "error",
+                    });
+                }
+            });
+        });
+    </script>
+    <script src="~/js/site.js"></script>
+</body>
+</html>
+
+
+

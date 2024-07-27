@@ -18,15 +18,15 @@ namespace FitnessCenter.API.Controllers
         {
             _userManager = new UserManager(emailService);
         }
-
-        [HttpPost]
-        [Route("CreateUser")]
-        public IActionResult CreateUser(UserDetails user)
-        {
-            var result = _userManager.CreateUsuario(user);
-            var msg = result["Message"];
-            return Ok(msg);
-        }
+    
+         [HttpPost]
+         [Route("CreateUser")]
+         public IActionResult CreateUser(UserDetails user)
+         {
+             var result = _userManager.CreateUsuario(user);
+             var msg = result["Message"];
+             return Ok(msg);
+         }
 
         [HttpGet]
         [Route("PasswordReset")]
@@ -113,6 +113,13 @@ namespace FitnessCenter.API.Controllers
         public IActionResult DeleteUser(UserDetails user)
         {
             var result = _userManager.DeleteUser(user);
+            return Ok(result);
+        }
+        [HttpGet]
+        [Route("GetAllUsers")]
+        public IActionResult GetAllUsers()
+        {
+            var result = _userManager.GetAllUsers(); // Asegúrate de que este método esté implementado en UserManager
             return Ok(result);
         }
     }

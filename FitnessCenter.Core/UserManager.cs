@@ -96,5 +96,10 @@ namespace FitnessCenter.Core
         {
             return userCrud.Delete(user);
         }
+        public List<UserDetails> GetAllUsers()
+        {
+            return userCrud.RetrieveAll<UserDetails>();
+        }
+
     }
 }
