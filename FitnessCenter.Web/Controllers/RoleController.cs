@@ -43,13 +43,6 @@ namespace FitnessCenter.Web.Controllers
         }
 
 
-
-        [HttpGet]
-        public IActionResult CreateRole()
-        {
-            return View();
-        }
-
         [HttpGet]
         public IActionResult UpdateRole() 
         {

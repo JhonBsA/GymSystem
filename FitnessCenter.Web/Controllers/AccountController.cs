@@ -13,6 +13,12 @@ namespace FitnessCenter.Web.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult Profile()
+        {
+            return View();
+        }
+
 
         [HttpGet]
         public IActionResult Verify()
@@ -31,5 +37,12 @@ namespace FitnessCenter.Web.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult MonthlyPayments()
+        {
+            return View();
+        }
+
     }
 }
