@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Monthly Payments";
+    Layout = null; // No usar el layout predeterminado
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensualidades</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/Account/MonthlyPayments.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/Account/monthlyPayments.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+          rel="stylesheet" />
+    
+</head>
+
+<body class="blue">
+    <section class="section__container price__container">
+        <h2 class="section__header textoTurquesa">NUESTRO PLAN DE PRECIOS</h2>
+        <p class="section__subheader textoBlanco">
+            Ofrecemos opciones diseñadas para adaptarse a diferentes objetivos y niveles de acondicionamiento físico, permitiéndote elegir el plan que mejor se ajuste a tus necesidades y aspiraciones personales
+
+
+        </p>
+        <div class="price__grid">
+            <div class="price__card">
+                <div class="price__card__content">
+                    <h4>Mensualidad Básica</h4>
+                    <h3>₡12 000</h3>
+                    <p>
+                        <i class="ri-checkbox-circle-line"></i>
+                        Equipos de entrenamiento
+                    </p>
+
+                </div>
+                <button class="btn price__btn">Seleccionar</button>
+            </div>
+            <div class="price__card">
+                <div class="price__card__content">
+                    <h4>Mensualidad Regular</h4>
+                    <h3>₡20 000</h3>
+                    <p>
+                        <i class="ri-checkbox-circle-line"></i>
+                        Equipos de entrenamiento
+                    </p>
+                    <p>
+                        <i class="ri-checkbox-circle-line"></i>
+                        2 clases por semana
+                    </p>
+                    <p>
+                        <i class="ri-checkbox-circle-line"></i>
+                        Clases grupales
+                    </p>
+                </div>
+                <button class="btn price__btn">Seleccionar</button>
+            </div>
+            <div class="price__card">
+                <div class="price__card__content">
+                    <h4>Mensualidad Premium</h4>
+                    <h3>₡30 000</h3>
+                    <p>
+                        <i class="ri-checkbox-circle-line"></i>
+                        Equipos de entrenamiento
+                    </p>
+                    <p>
+                        <i class="ri-checkbox-circle-line"></i>
+                        Clases ilimitadas
+                    </p>
+                    <p>
+                        <i class="ri-checkbox-circle-line"></i>
+                        Clases grupales
+                    </p>
+                </div>
+                <button class="btn price__btn">Seleccionar</button>
+            </div>
+        </div>
+    </section>
+   
+    <!-- Bootstrap JS y dependencias -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+
+</html>

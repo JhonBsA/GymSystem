@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using FitnessCenter.DTO;
 using FitnessCenter.Core;
 using FitnessCenter.Web.Models.Account;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace FitnessCenter.API.Controllers
 {
@@ -115,12 +116,35 @@ namespace FitnessCenter.API.Controllers
             var result = _userManager.DeleteUser(user);
             return Ok(result);
         }
+        /*
         [HttpGet]
         [Route("GetAllUsers")]
         public IActionResult GetAllUsers()
         {
-            var result = _userManager.GetAllUsers(); // Asegúrate de que este método esté implementado en UserManager
+             var result = _userManager.GetAllUsers(); // obtiene todos los usuarios
+            
             return Ok(result);
         }
+        */
+        
+        [HttpGet]
+        [Route("GetAllUsers")]
+        public IActionResult GetAllUsers()
+        {
+            var result = _userManager.GetAllUsers(); // Obtén todos los usuarios
+
+            // Asegúrate de que _userManager.GetAllUsers() devuelva una lista de usuarios
+            var firstUser = result.FirstOrDefault(); // Obtén el primer usuario de la lista
+
+            if (firstUser == null)
+            {
+                return NotFound(); // Devuelve un 404 si no hay usuarios
+            }
+
+            return Ok(firstUser); // Devuelve el primer usuario como JSON
+        }
+        
+        
+
     }
 }
