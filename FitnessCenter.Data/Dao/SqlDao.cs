@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+﻿  using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using System.Data;
 

@@ -5,4 +5,4 @@
 
 /*https://localhost:7154*/
 
-var API_URL_BASE = "https://localhost:7154/api";
+var API_URL_BASE = "https://localhost:7154/api";  // 7154 (7252) JBHS  7254*

@@ -4,14 +4,15 @@
     Layout = null;
 }
 
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title>Inicio de Sesión</title>
-    <link rel="stylesheet" type="text/css" href="~/css/Account/Login.css" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/Account/Login.css" /> 
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> 
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> 
 </head>
 <body>
     <div class="login-container">
@@ -25,14 +26,14 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Email"></label>
-                    <input id ="email" asp-for="Email" class="form-control"  placeholder="Correo electrónico" autocomplete="off"/>
-                    <span asp-validation-for="Email" class="text-danger" ></span>
+                    <input id="email" asp-for="Email" class="form-control" placeholder="Correo electrónico" autocomplete="off" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
                     <span id="usuarioHelper" class="helper-text"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Password"></label>
-                    <input id="password" asp-for="Password" class="form-control"  placeholder="Contraseña" autocomplete="off" />
-                    <span asp-validation-for="Password" class="text-danger" ></span>
+                    <input id="password" asp-for="Password" class="form-control" placeholder="Contraseña" autocomplete="off" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Iniciar Sesión" class="btn btn-primary" />
@@ -45,11 +46,11 @@
             </form>
         </div>
         <div class="login-photo">
-            <img src="~/images/Login_Image.jpg" alt="Foto de inicio de sesión" />
+            <img src="~/Images/Login_Image.jpg" alt="Foto de inicio de sesión" />  
         </div>
     </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/Account/login.js"></script>   
 </body>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="~/js/Account/login.js"></script>
 </html>

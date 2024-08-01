@@ -8,9 +8,9 @@ namespace FitnessCenter.Web.Models
         [Required]
         [Display(Name = "Correo electrónico")]
         [EmailAddress]
-        public string Email { get; set; }
+        public string  Email { get; set; } 
 
-        [Required]
+		[Required]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }

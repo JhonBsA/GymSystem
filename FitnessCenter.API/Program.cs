@@ -36,8 +36,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options => {
     options.AddPolicy(name: "NocheCorsPolicy",
         policy => {
-            policy.WithOrigins("https://localhost:5000");
-            policy.AllowAnyHeader(); //application/json  application/xml application/text
+            policy.WithOrigins("https://localhost:7154");  //7152  7154
+			policy.AllowAnyHeader(); //application/json  application/xml application/text
             policy.AllowAnyMethod(); //GET, POST, PUT, DELETE
         });
 });
@@ -53,9 +53,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseRouting(); // nuevo
+
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Default route for root URL
+app.MapGet("/", () => "Welcome to the Fitness Center API");
 
 app.UseCors("NocheCorsPolicy");
 

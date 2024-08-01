@@ -12,4 +12,12 @@
     <ProjectReference Include="..\FitnessCenter.DTO\FitnessCenter.DTO.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\js\Admin\" />
+  </ItemGroup>
+
 </Project>
