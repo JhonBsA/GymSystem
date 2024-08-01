@@ -1,0 +1,64 @@
+﻿@model FitnessCenter.Web.Models.Role.UpdateRoleAccessViewModel;
+@{
+    ViewData["Title"] = "UpdateRole";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Role</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/Role/editRole.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="login-logo">
+        <img src="/Images/login-logo.png" alt="Alternate Text" />
+    </div>
+    <div class="titulo">
+        <h2>
+            Editar Rol
+        </h2>
+    </div>
+    <div class="UpdateRoleContainer">
+        <div class="form-box">
+            <form class="formulario">
+                <div class="margin">
+                    <div class="form-group">
+                        <label for="oldRoleName">Nombre Anterior</label><!--reemplazar placeholder="Antiguo nombre del rol" autocomplete="off" por readonly-->
+                        <input type="text" id="oldRoleName" class="form-control"  placeholder="Antiguo nombre del rol" autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <label for="newRoleName">Nuevo Nombre</label>
+                        <input type="text" id="newRoleName" class="form-control" placeholder="Nuevo nombre del rol" autocomplete="off" />
+                        <span id="roleNameHelper" class="helper-text"></span>
+                    </div>
+                </div>
+                <div class="accesos form-group">
+                    <label asp-for="RoleAccess"></label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Seleccione los permisos</option>
+                        <option value="1">Administrador</option>
+                        <option value="2">Recepcionista</option>
+                        <option value="3">Entrenador</option>
+                    </select>
+                </div>
+                <div class="buttons">
+                    <div class="form-group">
+                        <input type="submit" id="saveButton" value="Guardar" class="btn btn-primary" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" id="cancelButton" value="Cancelar" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/Role/editRole.js"></script>
+    <script src="~/js/site.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</html>

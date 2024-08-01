@@ -1,5 +1,61 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model FitnessCenter.Web.Models.Role.CreateRoleViewModel;
 @{
+    ViewData["Title"] = "CreateRole";
+    Layout = null;
 }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Role</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/Role/CreateRole.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="login-logo">
+        <img src="/Images/login-logo.png" alt="Alternate Text" />
+    </div>
+    <div class="titulo">
+        <h2>
+            Registrar Nuevo Rol
+        </h2>
+    </div>
+    <div class="CreateRoleContainer">
+        <div class="form-box">
+            <form class="formulario">
+                <div class="margin">
+                    <div class="form-group">
+                        <label asp-for="RoleName"></label>
+                        <input id="RoleName" asp-for="RoleName" class="form-control" placeholder="Example Rol" autocomplete="off" />
+                        <span asp-validation-for="RoleName" class="text-danger"></span>
+                        <span id="usuarioHelper" class="helper-text"></span>
+                    </div>
+                </div>
+                <div class="accesos form-group">
+                    <label asp-for="RoleAccess"></label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Seleccione los permisos</option>
+                        <option value="1">Administrador</option>
+                        <option value="2">Recepcionista</option>
+                        <option value="3">Entrenador</option>
+                    </select>
+                </div>
+                <div class="buttons">
+                <div class="form-group">
+                        <input type="submit" id="saveButton" value="Guardar" class="btn btn-primary" />
+                </div>
+                <div class="form-group">
+                        <input type="submit" id="cancelButton" value="Cancelar" class="btn btn-primary" />
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/Role/CreateRole.js"></script>
+    <script src="~/js/site.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</html>

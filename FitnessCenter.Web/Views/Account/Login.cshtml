@@ -1,4 +1,4 @@
-﻿@model FitnessCenter.Web.Models.LoginViewModel;
+﻿@model FitnessCenter.Web.Models.Account.LoginViewModel;
 @{
     ViewData["Title"] = "Login";
     Layout = null;
@@ -10,15 +10,15 @@
 <head>
     <meta charset="utf-8" />
     <title>Inicio de Sesión</title>
-    <link rel="stylesheet" type="text/css" href="~/css/Account/Login.css" /> 
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> 
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> 
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/Account/Login.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 <body>
     <div class="login-container">
         <div class="login-box">
             <div class="login-logo">
-                <img src="~/images/login-logo.png" alt="Foto de inicio de sesión" />
+                <img src="~/Images/login-logo.png" alt="Foto de inicio de sesión" />
             </div>
             <form id="loginForm" asp-action="Login" method="post">
                 <div class="titulo">
@@ -49,8 +49,9 @@
             <img src="~/Images/Login_Image.jpg" alt="Foto de inicio de sesión" />  
         </div>
     </div>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>  
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/js/Account/login.js"></script>   
 </body>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/js/Account/login.js"></script>
+<script src="~/js/site.js"></script>
 </html>

@@ -117,3 +117,4 @@ namespace FitnessCenter.Data.Mapper.AppointmentMapper
         }
     }
 }
+

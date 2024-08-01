@@ -1,0 +1,52 @@
+﻿.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo {
+    margin-bottom: 100px;
+    margin-top: 100px;
+}
+
+.subtitulo {
+    display: flex;
+    color: #1ABC9C;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.table-container {
+    margin: 2rem;
+    background-color: #2C3E50;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    align-content: center;
+}
+
+.table-container h3 {
+    justify-content: center;
+}
+
+.btn /*No se porque, pero esto acaba de acomodar el boton*/
+
+.actions-btn {
+    display: flex;
+    justify-content: center;
+    text-align: left;
+}
+
+.login-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+    .login-logo img {
+        width: 120px;
+    }
+
+.table-group-divider {
+    color: #F1C40F
+}

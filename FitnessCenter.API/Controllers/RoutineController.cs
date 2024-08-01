@@ -33,12 +33,14 @@ namespace FitnessCenter.API.Controllers
         public IActionResult CreateRoutine([FromBody] RoutineRequest request)
         {
             var routine = request.Routine;
-            var exercises = request.Exercises;
-            var equipment = request.Equipment;
+            var exerciseDetails = request.ExerciseDetails;
 
-            var result = _routineManager.CreateRoutine(routine, exercises, equipment);
+            var result = _routineManager.CreateRoutine(routine, exerciseDetails);
 
             return Ok(result);
         }
+
+
     }
 }
+

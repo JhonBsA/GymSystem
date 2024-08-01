@@ -11,5 +11,7 @@ namespace FitnessCenter.DTO.RoutineDTO
         public int RoutineEquipmentID { get; set; }
         public int RoutineExerciseID { get; set; }
         public int EquipmentID { get; set; }
+        public int ExerciseID { get; set; }
+
     }
 }

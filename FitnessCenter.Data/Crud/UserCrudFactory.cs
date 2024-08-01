@@ -34,6 +34,18 @@ namespace FitnessCenter.Data.Crud
             {
                 response[key] = firstRow[key].ToString();
             }
+            if (firstRow.ContainsKey("Message"))
+            {
+                response["Message"] = firstRow["Message"].ToString();
+            }
+            if (firstRow.ContainsKey("OTPCode"))
+            {
+                response["OTPCode"] = firstRow["OTPCode"].ToString();
+            }
+            if (firstRow.ContainsKey("Email"))
+            {
+                response["Email"] = firstRow["Email"].ToString();
+            }
 
             return response;
         }
@@ -59,10 +71,7 @@ namespace FitnessCenter.Data.Crud
             return response;
         }
 
-        public override List<T> RetrieveAll<T>()
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public override BaseClass RetrieveById(int id)
         {
@@ -128,6 +137,10 @@ namespace FitnessCenter.Data.Crud
             {
                 response["OTPState"] = firstRow["OTPState"].ToString();
             }
+            if (firstRow.ContainsKey("Email"))
+            {
+                response["Email"] = firstRow["Email"].ToString();
+            }
 
             return response;
         }
@@ -190,5 +203,26 @@ namespace FitnessCenter.Data.Crud
 
             return response;
         }
+        public override List<T> RetrieveAll<T>()
+        {
+            SqlOperation operation = mapper.GetRetrieveAllStatement();
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+
+            if (result.Count == 0)
+            {
+                throw new Exception("No response from stored procedure.");
+            }
+
+            var users = new List<T>();
+
+            foreach (var row in result)
+            {
+                var user = mapper.BuildObject(row);
+                users.Add((T)Convert.ChangeType(user, typeof(T)));
+            }
+
+            return users;
+        }
+
     }
 }

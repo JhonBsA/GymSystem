@@ -1,0 +1,61 @@
+.navbar-brand,
+.navbar-custom .nav-link {
+    color: #F1C40F; /* Color de los enlaces */
+}
+
+.fondo {
+    background-color: #4a545f;
+}
+
+.fondoNav {
+    background-color: #2e4257;
+}
+
+.profile-icon {
+    color: #000; /* Cambiar el color a negro */
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.nav-item {
+    position: relative;
+    margin-left: 10px;
+}
+
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px; /*Tamaño estándar de la barra nav*/
+    background: #F1C40F;
+    transition: width .3s;
+    margin: 0 auto;
+}
+
+.nav-link:hover::after { /*Efecto de la línea de los btn*/
+    width: 100%;
+    transition: width .3s; /*Velocidad de la raya al abrirse*/
+}
+
+#hero {
+    position: relative;
+    height: 650px;
+    background: url('../../static/home2.jpg') no-repeat center 0% fixed;
+    background-size: cover;
+    text-align: center;
+    color: white;
+}
+
+.logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.logo {
+    max-width: 200px;
+    opacity: 0.8;
+}

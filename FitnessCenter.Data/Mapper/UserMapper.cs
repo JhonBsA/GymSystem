@@ -42,13 +42,13 @@ namespace FitnessCenter.Data.Mapper
 
             UserDetails user = (UserDetails)entityDTO;
 
-            operation.AddIntegerParam("CedulaP", user.Cedula); 
+            operation.AddIntegerParam("CedulaP", user.Cedula);
             operation.AddVarcharParam("NombreP", user.Nombre);
             operation.AddVarcharParam("FirstLastNameP", user.FirstLastName);
             operation.AddVarcharParam("SecondLastNameP", user.SecondLastName);
             operation.AddVarcharParam("PhoneP", user.Phone);
             operation.AddVarcharParam("EmailP", user.Email);
-            operation.AddVarcharParam("RoleNameP", user.RoleName);
+            operation.AddVarcharParam("RoleNameP", "Cliente");
             return operation;
         }
 
@@ -61,7 +61,7 @@ namespace FitnessCenter.Data.Mapper
 
             UserDetails user = (UserDetails)entityDTO;
 
-            operation.AddIntegerParam("UserID", user.UserID ?? 0);
+            //operation.AddIntegerParam("UserID", user.UserID ?? 0);
             operation.AddIntegerParam("CedulaP", user.Cedula);
             operation.AddVarcharParam("NombreP", user.Nombre);
             operation.AddVarcharParam("FirstLastNameP", user.FirstLastName);
@@ -86,7 +86,11 @@ namespace FitnessCenter.Data.Mapper
 
         public SqlOperation GetRetrieveAllStatement()
         {
-            throw new NotImplementedException();
+            var operation = new SqlOperation
+            {
+                ProcedureName = "GetAllUsers"
+            };
+            return operation;
         }
 
         public SqlOperation GetRetrieveByIdStatement(int ID)
@@ -99,6 +103,7 @@ namespace FitnessCenter.Data.Mapper
             operation.AddIntegerParam("UserID", ID);
             return operation;
         }
+        
 
 
         public SqlOperation GetRetrieveByEmailStatement(string email)

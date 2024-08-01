@@ -1,0 +1,72 @@
+﻿@model IEnumerable<FitnessCenter.Web.Models.Role.AssignRoleAccessViewModel>
+
+@{
+    ViewData["Title"] = "Asignar Accesos";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignar Acceso</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
+    <link rel="stylesheet" type="text/css" href="~/css/Role/AssignAccess.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">Asignar Acceso</h1>
+
+        <div class="filter-container">
+            <input type="text" class="filter-input" placeholder="BUSCAR Y FILTRAR">
+            <span class="filter-icon">
+                <i class="fa fa-filter"></i> <!-- Asegúrate de incluir FontAwesome para el ícono -->
+            </span>
+        </div>
+
+        <h2 class="sub-title">Lista de Roles</h2>
+
+        <table class="roles-table">
+            <thead>
+                <tr>
+                    <th>IdRol</th>
+                    <th>Nombre del Rol</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var role in Model)
+                {
+                    <tr>
+                        <td>@role.RoleId</td>
+                        <td>@role.RoleName</td>
+                        <td>@role.Description</td>
+                        <td>
+                            @if (role.HasAccess)
+                            {
+                                <a href="@Url.Action("RemoveAccess", new { id = role.RoleId })"
+                                    class="btn btn-danger">Eliminar</a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("AssignAccess", new { id = role.RoleId })"
+                                    class="btn btn-primary">Asignar</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/js/site.js"></script>
+
+</html>

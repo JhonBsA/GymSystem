@@ -1,0 +1,172 @@
+body {
+    background-color: #4a545f;
+    color: white;
+}
+
+.navbar {
+    background-color: #2C3E50;
+    z-index: 1000;
+    padding: 1rem 1rem;
+    /* A�ade padding para espacio */
+}
+
+    .navbar .nav-link.custom-color {
+        color: #F1C40F !important;
+        /* Amarillo girasol */
+        cursor: pointer;
+    }
+
+.price__btn {
+    color: #f9ac54;
+    background-color: transparent;
+    border: 2px solid #f9ac54;
+}
+
+
+/*Efecto de los botones del nav - inicio*/
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #F1C40F;
+    transition: width .3s;
+    margin: 0 auto;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+/*Efecto de los botones del nav - fin*/
+
+#hero {
+    position: relative;
+    height: 630px;
+    background: url('/static/side-view-male-exercise-bicycle.jpg') no-repeat center 10% fixed;
+    background-size: cover;
+    text-align: center;
+    color: white;
+}
+
+.logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.logo {
+    max-width: 200px;
+    opacity: 0.8;
+}
+
+.azul-turquesa {
+    color: #1ABC9C;
+}
+
+.azul-turquesa-fondo {
+    background-color: #1ABC9C;
+}
+
+.azul-medianoche {
+    color: #2C3E50;
+}
+
+.verde-esmeralda {
+    color: #2ECC71;
+}
+
+.zanahoria-naranja {
+    background-color: #E67E22;
+}
+
+.custom-color {
+    color: #F1C40F;
+    /* Amarillo girasol */
+}
+
+
+.rojo-alizarina {
+    color: #E74C3C;
+}
+
+.texto {
+    color: white;
+}
+
+#servicios h2 {
+    color: #1ABC9C;
+}
+
+#contacto {
+    background-color: #E67E22;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer {
+    background-color: #2C3E50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+    footer a {
+        color: #1ABC9C;
+    }
+
+        footer a:hover {
+            color: #16A085;
+        }
+
+.boto {
+    color: white;
+}
+
+.circle-container {
+    border-radius: 100%;
+    overflow: hidden;
+    width: 160px;
+    height: 100px;
+}
+
+.line-separator {
+    border: none;
+    border-bottom: 2px solid #16A085;
+    width: 30%;
+    margin: 10px auto;
+}
+
+.line-separator2 {
+    border: none;
+    border-bottom: 2px solid #16A085;
+    width: 80%;
+    margin: 10px auto;
+}
+
+#servicios .card {
+    width: 100%;
+    min-height: 105%;
+}
+
+    #servicios .card img {
+        height: 400px;
+        object-fit: cover;
+    }
+
+.row-cols-4 > .col,
+.row-cols-md-3 > .col {
+    flex: 0 0 auto;
+    width: calc(40.333% - 1rem);
+    margin-right: 11.0rem;
+    margin-left: 0.5rem;
+}
+
+#servicios .g-4 > .col {
+    padding: 0.5rem;
+}
+
+#servicios .row {
+    margin-left: 2rem;
+}

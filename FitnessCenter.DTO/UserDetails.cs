@@ -4,7 +4,7 @@ namespace FitnessCenter.DTO
 {
     public class UserDetails : BaseClass
     {
-        public int? UserID { get; set; }
+        public int UserID { get; set; }
         public string? Nombre { get; set; }
         public string? FirstLastName { get; set; }
         public string? SecondLastName { get; set; }

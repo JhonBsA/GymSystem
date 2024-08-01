@@ -1,83 +1,88 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FitnessCenter.Web.Models.Role;
+using FitnessCenter.Web.Models.User;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FitnessCenter.Web.Controllers
 {
     public class RoleController : Controller
     {
-        // GET: RoleController
-        public ActionResult Index()
+        [HttpGet]
+        public IActionResult CreateRole()
+        {
+            return View();
+        }
+        [HttpGet]
+        public IActionResult AssignRole()
+        {
+            
+
+            return View();
+        }
+
+
+        [HttpGet]
+        public IActionResult ListRoles()
+        {
+            // Simulación de datos para la vista
+            var roleList = new List<ListRolesViewModel>
+            {
+                new ListRolesViewModel
+                {
+                    RoleID = 1,
+                    Name = "Admin"
+                },
+                new ListRolesViewModel
+                {
+                    RoleID = 2,
+                    Name = "User"
+                }
+            };
+
+            return View(roleList);
+        }
+
+        [HttpGet]
+        public IActionResult UpdateRole() 
         {
             return View();
         }
 
-        // GET: RoleController/Details/5
-        public ActionResult Details(int id)
+        [HttpGet]
+        public IActionResult ListAccess()
+        {
+            // Simulación de datos para la vista
+            var accessList = new List<RoleAccessViewModel>
+            {
+                new RoleAccessViewModel
+                {
+                    AccessId = 1,
+                    AccessName = "Admin Access",
+                    Description = "Access for admins",
+                    RolesWithAccess = new List<string> { "Admin", "SuperAdmin" }
+                },
+                new RoleAccessViewModel
+                {
+                    AccessId = 2,
+                    AccessName = "User Access",
+                    Description = "Access for users",
+                    RolesWithAccess = new List<string> { "User", "Member" }
+                }
+            };
+
+            return View(accessList);
+        }
+
+        [HttpGet]
+        public IActionResult AssignRoleAccess()
         {
             return View();
         }
 
-        // GET: RoleController/Create
-        public ActionResult Create()
+        [HttpGet]
+        public IActionResult ListRole()
         {
             return View();
-        }
-
-        // POST: RoleController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: RoleController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: RoleController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: RoleController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: RoleController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

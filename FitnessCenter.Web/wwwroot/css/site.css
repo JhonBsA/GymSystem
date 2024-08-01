@@ -1,22 +1,119 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    background-color: #4a545f;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+        background-color: #4a545f;
+    }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+* {
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  margin-bottom: 60px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #4a545f;
+    margin: 0;
+}
+
+/*Clases para uso estatico*/
+
+.titulo {
+    display: flex;
+    color: #1ABC9C;
+    justify-content: center;
+    background-color: #4a545f;
+}
+
+.textoAmarillo {
+    color: #F1C40F;
+}
+
+.textoBlanco {
+    color: #FFF;
+}
+
+.textoNegro {
+    color: #000000;
+}
+
+.textoTurquesa {
+    color: #1ABC9C;
+}
+
+.textoVerde {
+    color: #2ECC71;
+}
+
+.textoNaranja {
+    color: #E67E22;
+}
+
+
+.btn-primary {
+    width: 50%;
+    padding: 10px;
+    background-color: #E67E22 !important;
+    border-color: none !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+}
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+        background-color: #d35400 !important;
+        border-color: none !important;
+        color: white !important;
+        border: 3px solid #E67E22 !important;
+        transition: border 0.15s !important;
+    }
+
+    .btn-primary:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+.form-group {
+    margin-bottom: 50px;
+    text-align: center;
+    margin-top: 50px;
+    color: white;
+    border: none !important;
+    outline: none !important;
+    width: 320px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5) !important;
+}
+
+    .form-control:focus,
+    .form-control:hover {
+        border: 3px solid #E67E22 !important;
+        transition: border 0.15s !important;
+    }
+
+    .url {
+        color: #E67E22;
+        text-decoration: none;
+    }
+
+    .url:visited {
+        color: #E67E22;
+    }
+     
+.url:hover,
+.url:active {
+    color: white;
+    text-decoration: none;
 }
