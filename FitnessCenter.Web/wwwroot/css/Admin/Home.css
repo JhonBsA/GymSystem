@@ -1,0 +1,137 @@
+﻿
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    overflow: hidden;
+}
+
+
+div.container.text-center {
+    background-color: #2C3E50;
+   
+}
+
+
+section.p-5 {
+    margin: 0 auto;
+    width: 55%;
+    text-align: center;
+    background-color: #2C3E50;
+}
+
+
+div.row {
+   
+    margin-bottom: 45px;
+}
+
+
+.admin-container {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    height: 100vh;
+    padding: 20px;
+    background-color: #4a545f; /*#4a545f*/
+}
+
+.admin-box {
+    width: 140%;
+    padding: 200px;
+    background-color: #2C3E50;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: #2C3E50;
+    z-index: 2;
+}
+
+.card img {
+    object-fit: cover;    
+    
+}
+
+.card-text {
+    font-size: small;
+
+}
+
+.col {
+    margin-block-end: unset;
+
+}
+
+a.btn.btn-primary {
+    background-color: #E67E22;
+    color: #fff;
+    border-color: #e67e22;
+}
+
+
+
+    .login-photo img {
+        width: 100%;
+        object-fit: cover;
+        filter: brightness(70%) contrast(70%);
+    }
+
+.login-logo {
+    position: absolute;
+    top: 30px;
+    left: 60px;
+}
+
+    .login-logo img {
+        width: 190px;
+    }
+
+
+
+nav.menu-options {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 100px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+    ul li {
+        display: inline-block;
+        margin-left: 30px;
+    }
+
+    #perfil-menu {
+        color: #1ABC9C !important;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    #inicio-landing-page {
+        color: #1ABC9C !important;
+        text-decoration: none;
+        font-weight:bold;
+    }
+
+    #perfil-menu:hover {
+        color: #d35400 !important;
+    }
+
+    #inicio-landing-page:hover 
+    {
+        color: #d35400 !important;
+    }
