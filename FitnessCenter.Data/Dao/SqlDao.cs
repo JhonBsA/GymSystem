@@ -6,6 +6,10 @@ namespace FitnessCenter.Data.Dao
 {
     public class SqlDao
     {
+
+
+
+
         private static SqlDao instance = new SqlDao();
 
         private string _server = "DIEGO\\SQLEXPRESS"; // Usa doble barra invertida
@@ -13,7 +17,6 @@ namespace FitnessCenter.Data.Dao
         private string _userId = "sa";
 
         private string _password = "diego123";
-
 
         private string _trustServerCertificate = "True";
 

@@ -1,5 +1,127 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @{
+    ViewData["Title"] = "List Routines";
+    Layout = null; // No usar el layout predeterminado
 }
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Visualizacion de rutinas</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/Account/CreateRegisterUsers.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4;
+    }
+
+    .container {
+        width: 80%;
+        max-width: 900px;
+        margin: auto;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    table.dataTable {
+        width: 100%;
+        margin: auto;
+    }
+</style>
+<body>
+
+        <div class="main-container">
+            <div class="visualization-container">
+                <h2 class="text-center mb-4">Visualización de Rutinas</h2>
+                <div class="table-container">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nombre del Ejercicio</th>
+                                <th>Tipo</th>
+                                <th>Sets</th>
+                                <th>Repeticiones</th>
+                                <th>Peso (kg)</th>
+                                <th>Tiempo (min)</th>
+                                <th>Equipo</th>
+                            </tr>
+                        </thead>
+                        <tbody id="routineTableBody">
+                            <!-- Las filas se llenarán dinámicamente con JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <script>
+           
+
+            const getRoutines = () => {
+                let apiUrl = API_URL_BASE + '/Routine/GetRoutinesByClient'; // Ajusta la URL y el parámetro según sea necesario
+
+                $.ajax({
+                    url: apiUrl,
+                    method: "GET",
+                    dataType: "json",
+                })
+                    .done((result) => {
+                        console.log("Datos de las Rutinas", result); // Imprime en la consola los datos obtenidos exitosamente de la DB
+                        if (result && result.length) {
+                            const tableBody = $("#routineTableBody");
+                            tableBody.empty(); // Limpiar el contenido anterior
+
+                            result.forEach(routine => {
+                                const row = `<tr>
+                                    <td>${routine.exerciseName}</td>
+                                    <td>${routine.type}</td>
+                                    <td>${routine.sets !== null ? routine.sets : ''}</td>
+                                    <td>${routine.repetitions !== null ? routine.repetitions : ''}</td>
+                                    <td>${routine.weight !== null ? routine.weight : ''}</td>
+                                    <td>${routine.durationInMinutes !== null ? routine.durationInMinutes : ''}</td>
+                                    <td>${routine.equipmentName !== null ? routine.equipmentName : 'Ninguno'}</td>
+                                </tr>`;
+                                tableBody.append(row);
+                            });
+                        }
+                    })
+                    .fail((error) => {
+                        Swal.fire({
+                            title: "Error",
+                            text: "No se pudo obtener la información de las rutinas.",
+                            icon: "error",
+                        });
+                    });
+            };
+
+            $(document).ready(() => {
+                getRoutines();
+            });
+        </script>
+
+</body>
+<!-- Bootstrap JS y dependencias -->
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/js/site.js"></script>
+
+</html>

@@ -5,6 +5,13 @@ namespace FitnessCenter.Web.Controllers
 {
     public class RoutineController : Controller
     {
+
+
+        [HttpGet]
+        public IActionResult ListRoutines()
+        {
+            return View();
+        }
         // GET: RoutineController
         public ActionResult Index()
         {
