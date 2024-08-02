@@ -48,7 +48,7 @@ namespace FitnessCenter.Data.Mapper
             operation.AddVarcharParam("SecondLastNameP", user.SecondLastName);
             operation.AddVarcharParam("PhoneP", user.Phone);
             operation.AddVarcharParam("EmailP", user.Email);
-            //operation.AddVarcharParam("RoleNameP", user.RoleName);
+            operation.AddVarcharParam("RoleNameP", "Cliente");
             return operation;
         }
 

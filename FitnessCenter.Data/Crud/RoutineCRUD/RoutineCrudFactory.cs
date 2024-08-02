@@ -97,12 +97,13 @@ namespace FitnessCenter.Data.Dao
             return mapper.BuildObjects<T>(result);
         }
 
-        public List<T> RetrieveByClient<T>(int clientID)
+        public List<RoutineWithID> RetrieveByClient(int clientID)
         {
             SqlOperation operation = mapper.GetRetrieveByClientStatement(clientID);
             var result = dao.ExecuteStoredProcedureWithResult(operation);
-            return mapper.BuildObjects<T>(result);
+            return mapper.BuildObjects<RoutineWithID>(result);
         }
+
 
         public void AddExercise(RoutineExercise exercise)
         {
