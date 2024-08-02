@@ -58,12 +58,6 @@ namespace FitnessCenter.Data.Mapper.RoutineMapper
             return operation;
         }
 
-
-
-
-
-
-
         public SqlOperation GetUpdateStatement(Routine routine)
         {
             var operation = new SqlOperation
@@ -116,10 +110,10 @@ namespace FitnessCenter.Data.Mapper.RoutineMapper
         {
             var operation = new SqlOperation
             {
-                ProcedureName = "RetrieveRoutinesByClient"
+                ProcedureName = "GetUserRoutinesWithDetails"
             };
 
-            operation.AddIntegerParam("ClientID", clientID);
+            operation.AddIntegerParam("UserID", clientID);
 
             return operation;
         }
@@ -182,14 +176,79 @@ namespace FitnessCenter.Data.Mapper.RoutineMapper
 
         public T BuildObject<T>(Dictionary<string, object> row)
         {
-            // Implementation to build a single object from a dictionary row
-            throw new NotImplementedException();
+            if (typeof(T) == typeof(RoutineWithID))
+            {
+                var routineWithID = new RoutineWithID
+                {
+                    RoutineID = row.ContainsKey("RoutineID") ? Convert.ToInt32(row["RoutineID"]) : 0,
+                    ClientID = row.ContainsKey("ClientID") ? Convert.ToInt32(row["ClientID"]) : 0,
+                    TrainerID = row.ContainsKey("TrainerID") ? Convert.ToInt32(row["TrainerID"]) : 0,
+                    CreatedAt = row.ContainsKey("CreatedAt") ? Convert.ToDateTime(row["CreatedAt"]) : DateTime.MinValue,
+                    ExerciseDetails = new List<FitnessCenter.DTO.RoutineDTO.RoutineExerciseDetail>()
+                };
+
+                return (T)(object)routineWithID;
+            }
+            else if (typeof(T) == typeof(FitnessCenter.DTO.RoutineDTO.RoutineExerciseDetail))
+            {
+                var exerciseDetail = new FitnessCenter.DTO.RoutineDTO.RoutineExerciseDetail
+                {
+                    ExerciseID = row.ContainsKey("ExerciseID") ? Convert.ToInt32(row["ExerciseID"]) : 0,
+                    EquipmentID = row.ContainsKey("EquipmentID") ? Convert.ToInt32(row["EquipmentID"]) : 0,
+                    Sets = row.ContainsKey("Sets") ? Convert.ToInt32(row["Sets"]) : (int?)null,
+                    Repetitions = row.ContainsKey("Repetitions") ? Convert.ToInt32(row["Repetitions"]) : (int?)null,
+                    Weight = row.ContainsKey("Weight") ? Convert.ToDecimal(row["Weight"]) : (decimal?)null,
+                    DurationInSeconds = row.ContainsKey("DurationInSeconds") ? Convert.ToInt32(row["DurationInSeconds"]) : (int?)null,
+                    AmrapTimeLimitInSeconds = row.ContainsKey("AmrapTimeLimitInSeconds") ? Convert.ToInt32(row["AmrapTimeLimitInSeconds"]) : (int?)null,
+                    AmrapRepetitions = row.ContainsKey("AmrapRepetitions") ? Convert.ToInt32(row["AmrapRepetitions"]) : (int?)null,
+                    Dia = row.ContainsKey("Dia") ? Convert.ToInt32(row["Dia"]) : (int?)null
+                };
+
+                return (T)(object)exerciseDetail;
+            }
+
+            
+            return default(T);
         }
 
         public List<T> BuildObjects<T>(List<Dictionary<string, object>> rows)
         {
-            // Implementation to build a list of objects from a list of dictionary rows
-            throw new NotImplementedException();
+            var lstResults = new List<T>();
+
+            if (typeof(T) == typeof(RoutineWithID))
+            {
+                var routineDictionary = new Dictionary<int, RoutineWithID>();
+
+                foreach (var row in rows)
+                {
+                    var routineID = Convert.ToInt32(row["RoutineID"]);
+                    if (!routineDictionary.ContainsKey(routineID))
+                    {
+                        var routine = BuildObject<RoutineWithID>(row);
+                        routineDictionary[routineID] = routine;
+                    }
+
+                    var exerciseDetail = BuildObject<FitnessCenter.DTO.RoutineDTO.RoutineExerciseDetail>(row);
+                    routineDictionary[routineID].ExerciseDetails.Add(exerciseDetail);
+                }
+
+                lstResults = routineDictionary.Values.Cast<T>().ToList();
+            }
+            else
+            {
+                foreach (var row in rows)
+                {
+                    var obj = BuildObject<T>(row);
+                    if (obj != null)
+                    {
+                        lstResults.Add(obj);
+                    }
+                }
+            }
+
+            return lstResults;
         }
     }
+
 }
+

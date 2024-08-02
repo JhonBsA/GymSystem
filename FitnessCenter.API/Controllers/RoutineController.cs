@@ -40,6 +40,19 @@ namespace FitnessCenter.API.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        [Route("RetrieveRoutineByClient")]
+        public IActionResult RetrieveRoutineByClient(int userId)
+        {
+            var result = _routineManager.RetrieveByClient(userId);
+
+            if (result == null || result.Count == 0)
+            {
+                return BadRequest("No routines found for the specified client.");
+            }
+
+            return Ok(result);
+        }
 
     }
 }
