@@ -22,7 +22,7 @@
     <div class="container mt-4 table-container">
         <div class="appointmentContainer">
             <div class="sidebar">
-                <button class="btn btn-custom">Crear Cita</button>
+                <button onclick="window.location.href='@Url.Action("CreateAppointment", "Appointment")'" class="btn btn-custom">Crear Cita</button>
                 <button class="btn btn-custom">Clientes</button>
                 <button class="btn btn-custom">Clases Grupales</button>
                 <button class="btn btn-custom">Pagos</button>
@@ -35,7 +35,7 @@
                             <th>Cliente</th>
                             <th>Entrenador</th>
                             <th>Fecha y Hora</th>
-                            <th>Estado</th>
+                            <!-- <th>Estado</th> -->
                             <th>Acciones</th>
                         </tr>
                     </thead>

@@ -43,6 +43,10 @@
     /* Opcional: establece un ancho máximo */
 }
 
+.main-content {
+    width: 80%;
+}
+
 .table {
     background-color: #34495E;
     /* Fondo de la tabla */

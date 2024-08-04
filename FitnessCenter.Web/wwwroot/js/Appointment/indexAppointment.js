@@ -1,20 +1,26 @@
-﻿console.log("probando conexión");
-
+﻿
 let table = $('#appointmentTable').DataTable({
     data: [], // Inicialmente la tabla no tiene datos
     columns: [
-        { data: 'cliente' },
-        { data: 'entrenador' },
-        { data: 'fechaHora' },
-        { data: 'estado' },
+        { data: 'ClientName' },
+        { data: 'TrainerName' },
+        {
+            data: 'AppointmentDate',
+            render: function (data, type, row) {
+                const date = new Date(data);
+                const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: 'numeric', minute: 'numeric', hour12: true }
+                return date.toLocaleDateString('en-US', options).replace(',', '');
+            }
+        },
+        //{ data: 'States' },
         {
             data: null,
             render: function (data, type, row) {
                 return `
-                                            <div class="actions-btn">
-                                                <button class="btn btn-assign" onclick="viewDetails('${row.cliente}')">Detalles</button>
-                                            </div>
-                                        `;
+                    <div class="actions-btn">
+                    <button class="btn btn-assign" onclick="viewDetails('${row.appointmentId}')">Detalles</button>
+                    </div>
+                `;
             }
         }
     ],
@@ -23,22 +29,38 @@ let table = $('#appointmentTable').DataTable({
     }
 });
 
-const prepareTableData = (result) => {
-    result.map(appointment => {
-        appointment.cliente = appointment.cliente ? appointment.cliente.charAt(0).toUpperCase() + appointment.cliente.slice(1) : '';
-        appointment.entrenador = appointment.entrenador ? appointment.entrenador.charAt(0).toUpperCase() + appointment.entrenador.slice(1) : '';
-        appointment.fechaHora = appointment.fechaHora || '';
-        appointment.estado = appointment.estado ? appointment.estado.charAt(0).toUpperCase() + appointment.estado.slice(1) : '';
-    });
-    table.clear().rows.add(result).draw(); // Limpia la tabla y agrega las filas con los datos preparados
+const getTodayDate = () => {
+    let today = new Date();
+    let day = String(today.getDate()).padStart(2, '0');
+    let month = String(today.getMonth() + 1).padStart(2, '0'); // Enero es 0
+    let year = today.getFullYear();
+    return `${year}-${day}-${month}`;
+}
+
+const getTomorrowDate = () => {
+    let today = new Date();
+    today.setDate(today.getDate() + 1); // Sumar un día
+    let day = String(today.getDate()).padStart(2, '0');
+    let month = String(today.getMonth() + 1).padStart(2, '0'); // Enero es 0
+    let year = today.getFullYear();
+    return `${year}-${day}-${month}`;
 }
 
 $(document).ready(() => {
-    let apiUrl = API_URL_BASE + '/Appointment/GetAllAppointments'; // URL de la API para obtener los datos de las citas
+    let apiUrl = API_URL_BASE + '/Appointment/RetrieveByDateRange'; // URL de la API para obtener los datos de las citas
+    let today = getTodayDate();
+    let tomorrow = getTomorrowDate();
+
     $.ajax({
         url: apiUrl,
+        type: 'GET',
+        data: {
+            StartDate: today + 'T00:00:00',
+            EndDate: tomorrow + 'T00:00:00'
+        }
     })
         .done((result) => {
+            console.log('API response:', result);
             prepareTableData(result); // Si la solicitud es exitosa, prepara los datos y actualiza la tabla
         })
         .fail((error) => {
@@ -49,6 +71,16 @@ $(document).ready(() => {
             });
         });
 });
+
+const prepareTableData = (result) => {
+    result.forEach(appointment => {
+        appointment.ClientName = appointment.clientName || '';
+        appointment.TrainerName = appointment.trainerName || '';
+        appointment.AppointmentDate = appointment.appointmentDate || '';
+
+    });
+    table.clear().rows.add(result).draw(); // Limpia la tabla y agrega las filas con los datos preparados
+}
 
 function viewDetails(appointmentId) {
     // Implementar lógica para ver detalles de la cita

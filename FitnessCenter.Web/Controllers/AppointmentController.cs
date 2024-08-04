@@ -16,5 +16,17 @@ namespace FitnessCenter.Web.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult CreateAppointment()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult UpdateAppointment()
+        {
+            return View();
+        }
     }
 }
