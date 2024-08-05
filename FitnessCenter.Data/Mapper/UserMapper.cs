@@ -86,7 +86,11 @@ namespace FitnessCenter.Data.Mapper
 
         public SqlOperation GetRetrieveAllStatement()
         {
-            throw new NotImplementedException();
+            var operation = new SqlOperation
+            {
+                ProcedureName = "GetAllUsers"
+            };
+            return operation;
         }
 
         public SqlOperation GetRetrieveByIdStatement(int ID)
@@ -99,6 +103,7 @@ namespace FitnessCenter.Data.Mapper
             operation.AddIntegerParam("UserID", ID);
             return operation;
         }
+        
 
 
         public SqlOperation GetRetrieveByEmailStatement(string email)

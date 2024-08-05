@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Profilee";
+    Layout = null; // No usar el layout predeterminado
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi perfil</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+     <link rel="stylesheet" type="text/css" href="~/css/Account/Profile.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="~/js/Account/profile.js" defer></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <a class="navbar-brand" asp-controller="Customers" asp-action="Home">
+            <img src="~/Images/login-logo.png" alt="Logo del Sistema" height="40">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Customers" asp-action="Home">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Rutinas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Citas de medición</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Clases</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Entrenamientos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Progreso</a>
+                </li>
+                <li class="nav-item">
+                    <a class="profile-icon nav-link" href="#">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="titulo">
+        <h3>Mi perfil</h3>
+    </div>
+
+    <div class="centered-container">
+        <div class="price__card">
+            <div class="price__card__content">
+                <h4 id="nombre"></h4>
+                <p id="cedula"></p>
+                <p id="telefono"></p>
+                <p id="correo"></p>
+            </div>
+            <a class="btn price__btn" asp-controller="Account" asp-action="ForgotPassword">Cambiar contraseña</a>
+        </div>
+    </div>
+
+   
+    <!-- Bootstrap JS y dependencias -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+
+</html>

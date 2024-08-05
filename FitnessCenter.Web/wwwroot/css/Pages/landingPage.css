@@ -1,5 +1,5 @@
 body {
-    background-color: #2C3E50;
+    background-color: #4a545f;
     color: white;
 }
 
@@ -7,7 +7,7 @@ body {
     background-color: #2C3E50;
     z-index: 1000;
     padding: 1rem 1rem;
-    /* Añade padding para espacio */
+    /* Aï¿½ade padding para espacio */
 }
 
     .navbar .nav-link.custom-color {
@@ -16,10 +16,33 @@ body {
         cursor: pointer;
     }
 
+.price__btn {
+    color: #f9ac54;
+    background-color: transparent;
+    border: 2px solid #f9ac54;
+}
+
+
+/*Efecto de los botones del nav - inicio*/
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #F1C40F;
+    transition: width .3s;
+    margin: 0 auto;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+/*Efecto de los botones del nav - fin*/
+
 #hero {
     position: relative;
     height: 630px;
-    background: url('../static/side-view-male-exercise-bicycle.jpg') no-repeat center 20% fixed;
+    background: url('/static/side-view-male-exercise-bicycle.jpg') no-repeat center 10% fixed;
     background-size: cover;
     text-align: center;
     color: white;

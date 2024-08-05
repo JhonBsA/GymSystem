@@ -37,7 +37,7 @@ namespace FitnessCenter.Core
         }
 
         public List<RoutineWithID> RetrieveByClient(int clientID)
-        {
+        { 
             return routineCrud.RetrieveByClient(clientID);
         }
     }

@@ -5,79 +5,28 @@ namespace FitnessCenter.Web.Controllers
 {
     public class AppointmentController : Controller
     {
-        // GET: AppointmentController
-        public ActionResult Index()
+        [HttpGet]
+        public IActionResult IndexAppointments()
         {
             return View();
         }
 
-        // GET: AppointmentController/Details/5
-        public ActionResult Details(int id)
+        [HttpGet]
+        public IActionResult ListAppointments()
         {
             return View();
         }
 
-        // GET: AppointmentController/Create
-        public ActionResult Create()
+        [HttpGet]
+        public IActionResult CreateAppointment()
         {
             return View();
         }
 
-        // POST: AppointmentController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: AppointmentController/Edit/5
-        public ActionResult Edit(int id)
+        [HttpGet]
+        public IActionResult UpdateAppointment()
         {
             return View();
-        }
-
-        // POST: AppointmentController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: AppointmentController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: AppointmentController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

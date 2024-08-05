@@ -1,4 +1,5 @@
 ﻿using FitnessCenter.Web.Models.Role;
+using FitnessCenter.Web.Models.User;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +11,35 @@ namespace FitnessCenter.Web.Controllers
         public IActionResult CreateRole()
         {
             return View();
+        }
+        [HttpGet]
+        public IActionResult AssignRole()
+        {
+            
+
+            return View();
+        }
+
+
+        [HttpGet]
+        public IActionResult ListRoles()
+        {
+            // Simulación de datos para la vista
+            var roleList = new List<ListRolesViewModel>
+            {
+                new ListRolesViewModel
+                {
+                    RoleID = 1,
+                    Name = "Admin"
+                },
+                new ListRolesViewModel
+                {
+                    RoleID = 2,
+                    Name = "User"
+                }
+            };
+
+            return View(roleList);
         }
 
         [HttpGet]

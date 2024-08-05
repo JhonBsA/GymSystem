@@ -30,9 +30,9 @@ namespace FitnessCenter.Data.Dao
             Parameters.Add(new SqlParameter("@" + parameterName, paramValue));
         }
 
-        internal void AddDecimalParam(string v, decimal weight)
+        internal void AddDecimalParam(string parameterName, decimal paramValue)
         {
-            throw new NotImplementedException();
+            Parameters.Add(new SqlParameter("@" + parameterName, paramValue));
         }
     }
 }
