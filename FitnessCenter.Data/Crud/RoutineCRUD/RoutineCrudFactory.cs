@@ -3,6 +3,8 @@ using FitnessCenter.DTO.EquipmentDTO;
 using FitnessCenter.Data.Mapper.RoutineMapper;
 using System;
 using System.Collections.Generic;
+using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace FitnessCenter.Data.Dao
 {
@@ -128,7 +130,7 @@ namespace FitnessCenter.Data.Dao
             SqlOperation operation = mapper.GetClearEquipmentStatement(routineID);
             dao.ExecuteStoredProcedure(operation);
         }
-
+        
         public RoutineRequest RetrieveRoutineById(int routineID)
         {
             SqlOperation operation = mapper.GetRetrieveByIdStatement(routineID);
@@ -154,6 +156,12 @@ namespace FitnessCenter.Data.Dao
                 ExerciseDetails = exerciseDetails
             };
         }
+        
+
+        
+
+
+
 
 
     }

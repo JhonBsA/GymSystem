@@ -39,6 +39,7 @@ namespace FitnessCenter.API.Controllers
 
             return Ok(result);
         }
+        
 
         [HttpGet]
         [Route("RetrieveRoutineByClient")]
@@ -53,6 +54,11 @@ namespace FitnessCenter.API.Controllers
 
             return Ok(result);
         }
+      
+
+
+
+
 
     }
 }

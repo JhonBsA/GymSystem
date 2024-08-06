@@ -1,0 +1,71 @@
+.table-container {
+    margin: 20px auto;
+    padding: 2rem;
+    background-color: #34495E;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    width: 80%;
+    max-width: 1200px;
+}
+
+.table {
+    background-color: #34495E; /* Fondo de la tabla */
+}
+
+    .table thead th {
+        background-color: #2C3E50; /* Fondo del encabezado de la tabla */
+        color: white; /* Color del texto del encabezado */
+    }
+
+    .table tbody tr {
+        background-color: #34495E; /* Fondo de las filas */
+    }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #2C3E50; /* Fondo de las filas pares */
+        }
+
+    .table th,
+    .table td {
+        text-align: center;
+        vertical-align: middle;
+        color: white; /* Color del texto */
+    }
+
+.form-container {
+    margin: 30px auto;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+    .form-container h2 {
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+    }
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+.form-group label {
+    font-weight: bold;
+}
+
+.textoBlanco {
+    color: white;
+}
