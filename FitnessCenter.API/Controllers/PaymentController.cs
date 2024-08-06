@@ -70,5 +70,18 @@ namespace FitnessCenter.API.Controllers
 
             return Ok(paymentMethods);
         }
+
+        [HttpGet("GetPaymentMethod")]
+        public IActionResult GetPaymentMethod(string displayPaymentMethod, int UserId)
+        {
+            var result = _paymentManager.GetPaymentMethod(displayPaymentMethod, UserId);
+            if (result.ContainsKey("Message"))
+            {
+                return BadRequest(result["Message"]);
+            }
+            return Ok(result);
+        }
+    
     }
+    
 }

@@ -99,6 +99,26 @@ namespace FitnessCenter.Data.Crud.PayementCRUD
             var paymentMethods = mapper.BuildUserPaymentMethodResponseObjects(result);
             return paymentMethods;
         }
-    
+
+        public Dictionary<string, string> GetPaymentMethod(string displayPaymentMethod, int UserId)
+        {
+            SqlOperation operation = mapper.GetPaymentMethodStatement(displayPaymentMethod, UserId);
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+            if (result.Count == 0)
+            {
+                throw new Exception("No response from stored procedure.");
+            }
+            var firstRow = result[0];
+            var response = new Dictionary<string, string>();
+
+            foreach (var key in firstRow.Keys)
+            {
+                response[key] = firstRow[key].ToString();
+            }
+
+            return response;
+        }
+
+
     }
 }

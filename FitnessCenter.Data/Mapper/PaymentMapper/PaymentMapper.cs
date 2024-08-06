@@ -135,5 +135,18 @@ namespace FitnessCenter.Data.Mapper.PaymentMapper
         {
             throw new NotImplementedException();
         }
+
+        public SqlOperation GetPaymentMethodStatement(string displayPaymentMethod, int UserId)
+        {
+            var operation = new SqlOperation
+            {
+                ProcedureName = "GetPaymentMethod"
+            };
+
+            operation.AddVarcharParam("displayPaymentMethod", displayPaymentMethod);
+            operation.AddIntegerParam("UserID", UserId);
+            return operation;
+
+        }
     }
 }

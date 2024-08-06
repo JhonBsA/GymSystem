@@ -36,5 +36,11 @@ namespace FitnessCenter.Core
             return result;
         }
 
+        public Dictionary<string, string> GetPaymentMethod(string displayPaymentMethod, int UserId)
+        {
+            var result = _paymentCrudFactory.GetPaymentMethod(displayPaymentMethod, UserId);
+            return result;
+        }
+
     }
 }
