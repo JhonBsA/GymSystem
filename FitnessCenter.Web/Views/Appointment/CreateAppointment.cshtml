@@ -17,39 +17,39 @@
 </head>
 
 <body>
+    <div class="login-logo">
+        <img src="~/Images/login-logo.png">
+    </div>
     <div class="container mt-4">
-        <div class="row">
-            <div class="col-md-3">
-                <img src="~/images/login-logo.png" alt="Logo" class="img-fluid">
-            </div>
-            <div class="col-md-9 text-center">
-                <h2>@ViewData["Title"]</h2>
-            </div>
+        <div class="form-container">
+            <form id="createAppointmentForm" class="form-group">
+                <div class="titulo">
+                    <h2>@ViewData["Title"]</h2>
+                </div>
+                <div class="form-group">
+                    <label for="Cliente">Cliente</label>
+                    <select class="form-control" id="Cliente" name="ClienteId">
+                        <!-- Opciones de cliente -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="FechaHora">Fecha y Hora</label>
+                    <input type="datetime-local" class="form-control" id="FechaHora" name="FechaHora">
+                </div>
+                <div class="form-group">
+                    <label for="Entrenador">Entrenador</label>
+                    <select class="form-control" id="Entrenador" name="EntrenadorId">
+                        <!-- Opciones de entrenador -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Duracion">Duración (minutos)</label>
+                    <input type="number" class="form-control" id="DurationInMinutes" name="DurationInMinutes">
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="@Url.Action("IndexAppointments", "Appointment")" class="btn btn-secondary">Cancelar</a>
+            </form>
         </div>
-        <form asp-action="GetAllUsers" method="get">
-            <div class="form-group">
-                <label for="Cliente">Cliente</label>
-                <select class="form-control" id="Cliente" name="ClienteId">
-                    <!-- Opciones de cliente -->
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="FechaHora">Fecha y Hora</label>
-                <input type="datetime-local" class="form-control" id="FechaHora" name="FechaHora">
-            </div>
-            <div class="form-group">
-                <label for="Entrenador">Entrenador</label>
-                <select class="form-control" id="Entrenador" name="EntrenadorId">
-                    <!-- Opciones de entrenador -->
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="Duracion">Duración (minutos)</label>
-                <input type="number" class="form-control" id="DurationInMinutes" name="DurationInMinutes">
-            </div>
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <a href="@Url.Action("IndexAppointments", "Appointment")" class="btn btn-secondary">Cancelar</a>
-        </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
