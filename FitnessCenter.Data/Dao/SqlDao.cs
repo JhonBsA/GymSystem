@@ -11,7 +11,6 @@ namespace FitnessCenter.Data.Dao
         private string _server = "localhost"; // Usa doble barra invertida
         private string _database = "BioSport";
         private string _userId = "sa";
-
         private string _password = "Makober33*";
 
         private string _trustServerCertificate = "True";
