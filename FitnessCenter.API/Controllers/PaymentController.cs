@@ -44,5 +44,31 @@ namespace FitnessCenter.API.Controllers
             }
             return Ok(result);
         }
+
+        [HttpDelete]
+        [Route("DeleteUserPaymentMethod")]
+        public IActionResult DeleteUserPaymentMethod(int id)
+        {
+            var result = _paymentManager.DeleteUserPaymentMethod(id);
+            if (result.ContainsKey("Message"))
+            {
+                return BadRequest(result["Message"]);
+            }
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("GetUserPaymentMethods")]
+        public IActionResult GetUserPaymentMethods(int userId)
+        {
+            var paymentMethods = _paymentManager.GetAllUserPaymentMethods(userId);
+
+            if (paymentMethods == null || paymentMethods.Count == 0)
+            {
+                return NotFound("No payment methods found for this user.");
+            }
+
+            return Ok(paymentMethods);
+        }
     }
 }

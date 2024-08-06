@@ -13,6 +13,7 @@ namespace FitnessCenter.DTO.PaymentDTO
         public string CreditCardNumber { get; set; }
         public DateTime? CreditCardExpiryDate { get; set; }
         public string PayPalEmail { get; set; }
+        public string DisplayPaymentMethod { get; set; }
     }
 }
 

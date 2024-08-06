@@ -1,5 +1,6 @@
 ﻿using FitnessCenter.DTO.PaymentDTO;
 using FitnessCenter.Data.Crud.PayementCRUD;
+using FitnessCenter.DTO.PaymentDTO.FitnessCenter.DTO.PaymentDTO;
 
 namespace FitnessCenter.Core
 {
@@ -20,6 +21,18 @@ namespace FitnessCenter.Core
         public Dictionary<string, string> AddUserPaymentMethod(UserPaymentMethod payment) 
         {
             var result = _paymentCrudFactory.AddUserPaymentMethod(payment);
+            return result;
+        }
+
+        public Dictionary<string, string> DeleteUserPaymentMethod(int id)
+        {
+            var result = _paymentCrudFactory.Delete(id);
+            return result;
+        }
+
+        public List<UserPaymentMethodResponse> GetAllUserPaymentMethods(int UserId)
+        {
+            var result = _paymentCrudFactory.GetAllUserPaymentMethod(UserId);
             return result;
         }
 

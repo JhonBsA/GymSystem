@@ -17,7 +17,8 @@ namespace FitnessCenter.Data.Mapper.PaymentMapper
         SqlOperation GetCreateUserPaymentMethodStatement(UserPaymentMethod entityDTO);
         SqlOperation GetUpdateUserPaymentMethodStatement(UserPaymentMethod entityDTO);
         SqlOperation GetDeleteUserPaymentMethodStatement(int paymentMethodID);
-        SqlOperation GetRetrieveAllUserPaymentMethodsStatement();
+        SqlOperation GetRetrieveAllUserPaymentMethodsStatement(int UserID);
+
     }
 }
 
