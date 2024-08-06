@@ -19,6 +19,10 @@ namespace FitnessCenter.DTO.RoutineDTO
 
     public class RoutineExerciseDetail
     {
+        public string? ExerciseName { get; set; }
+        public string? EquipmentName {  get; set; }
+        public string? ExerciseTypeName { get; set; }
+
         public int ExerciseID { get; set; }
         public int EquipmentID { get; set; }
         public int? Sets { get; set; }

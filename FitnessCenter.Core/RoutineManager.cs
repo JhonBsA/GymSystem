@@ -36,9 +36,9 @@ namespace FitnessCenter.Core
             return routineCrud.RetrieveAll<Routine>();
         }
 
-        public List<RoutineWithID> RetrieveByClient(int clientID)
-        { 
-            return routineCrud.RetrieveByClient(clientID);
+        public List<RoutineWithID> RetrieveByClient(int userId)
+        {
+            return routineCrud.RetrieveByClient(userId);
         }
     }
 }

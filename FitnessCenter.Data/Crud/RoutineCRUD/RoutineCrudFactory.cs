@@ -1,8 +1,10 @@
 ﻿using FitnessCenter.DTO.RoutineDTO;
 using FitnessCenter.DTO.EquipmentDTO;
+using FitnessCenter.Data.Mapper.RoutineMapper;
 using System;
 using System.Collections.Generic;
-using FitnessCenter.Data.Mapper.RoutineMapper;
+using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace FitnessCenter.Data.Dao
 {
@@ -40,7 +42,6 @@ namespace FitnessCenter.Data.Dao
 
             return response;
         }
-
 
         public Dictionary<string, string> Update(Routine routine)
         {
@@ -129,5 +130,39 @@ namespace FitnessCenter.Data.Dao
             SqlOperation operation = mapper.GetClearEquipmentStatement(routineID);
             dao.ExecuteStoredProcedure(operation);
         }
+        
+        public RoutineRequest RetrieveRoutineById(int routineID)
+        {
+            SqlOperation operation = mapper.GetRetrieveByIdStatement(routineID);
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+
+            if (result.Count == 0)
+            {
+                return new RoutineRequest();
+            }
+
+            var routine = mapper.BuildObject<Routine>(result[0]);
+
+            var exerciseDetails = new List<RoutineExerciseDetail>();
+            for (int i = 1; i < result.Count; i++)
+            {
+                var detail = mapper.BuildObject<RoutineExerciseDetail>(result[i]);
+                exerciseDetails.Add(detail);
+            }
+
+            return new RoutineRequest
+            {
+                Routine = routine,
+                ExerciseDetails = exerciseDetails
+            };
+        }
+        
+
+        
+
+
+
+
+
     }
 }

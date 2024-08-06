@@ -12,8 +12,7 @@ namespace FitnessCenter.Data.Dao
         private string _database = "BioSport";
         private string _userId = "sa";
 
-        private string _password = "Jennifer1!";
-
+        private string _password = "Makober33*";
 
         private string _trustServerCertificate = "True";
 

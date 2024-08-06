@@ -100,6 +100,7 @@ namespace FitnessCenter.Core
         {
             return userCrud.RetrieveAll<UserDetails>();
         }
+        
 
     }
 }
