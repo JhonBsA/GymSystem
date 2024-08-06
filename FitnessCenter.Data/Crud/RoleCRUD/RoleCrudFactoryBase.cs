@@ -9,7 +9,6 @@ namespace FitnessCenter.Data.Crud.RoleCRUD
         protected SqlDao dao;
 
         public abstract Dictionary<string, string> Create(Role entityDTO);
-        // Remove the Update method
         public abstract List<Role> RetrieveAll();
         public abstract Role RetrieveById(int id);
     }
