@@ -43,5 +43,10 @@ namespace FitnessCenter.Core
         {
             return appointmentCrud.RetrieveByDateRange(startDate, endDate);
         }
+
+        public DateTime GetLastAppointmentDate()
+        {
+            return appointmentCrud.RetrieveLastAppointmentDate();
+        }
     }
 }

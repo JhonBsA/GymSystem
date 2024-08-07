@@ -25,7 +25,14 @@
     display: flex;
     justify-content: center;
     gap: 50px;
-    margin-top: 70px;
+}
+
+
+.idAppointment {
+    display: flex;
+    justify-items: flex-start;
+    margin-top: 30px;
+    margin-left: -185px;
 }
 
 .buttons {

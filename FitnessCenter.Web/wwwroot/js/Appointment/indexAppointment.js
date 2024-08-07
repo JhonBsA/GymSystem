@@ -18,7 +18,7 @@ let table = $('#appointmentTable').DataTable({
             render: function (data, type, row) {
                 return `
                     <div class="actions-btn">
-                    <button class="btn btn-assign" onclick="viewDetails('${row.appointmentId}')">Detalles</button>
+                    <button class="btn btn-assign" onclick="List()">Detalles</button>
                     </div>
                 `;
             }
@@ -28,6 +28,11 @@ let table = $('#appointmentTable').DataTable({
         $(row).find('td').css('background-color', '#34495E'); // Color de fondo de las celdas
     }
 });
+
+function List() {
+    console.log("llegue")
+    window.location.href = `ListAppointments`;
+}
 
 const getTodayDate = () => {
     let today = new Date();
@@ -60,7 +65,6 @@ $(document).ready(() => {
         }
     })
         .done((result) => {
-            console.log('API response:', result);
             prepareTableData(result); // Si la solicitud es exitosa, prepara los datos y actualiza la tabla
         })
         .fail((error) => {
