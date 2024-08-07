@@ -17,6 +17,11 @@ namespace FitnessCenter.Core
             var result = _paymentCrudFactory.Create(payment);
             return result;
         }
+        public List<Payment> GetPaymentByUserId(int UserId)
+        {
+            var result = _paymentCrudFactory.GetPaymentByUserId(UserId);
+            return result;
+        }
 
         public Dictionary<string, string> AddUserPaymentMethod(UserPaymentMethod payment) 
         {

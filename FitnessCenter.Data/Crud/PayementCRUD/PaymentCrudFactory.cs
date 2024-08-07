@@ -34,15 +34,19 @@ namespace FitnessCenter.Data.Crud.PayementCRUD
             return response;
         }
 
-        public override List<Payment> RetrieveAll()
+        public override List<Payment> RetrieveAll(int userId)
         {
-            throw new NotImplementedException();
+            SqlOperation operation = mapper.GetRetrievePaymentByUserIdStatement(userId);
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+            if (result.Count == 0)
+            {
+                throw new Exception("No response from stored procedure.");
+            }
+            var payments = mapper.BuildUserPaymentObjects(result);
+            return payments;
         }
 
-        public override Payment RetrieveById(int id)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public override Dictionary<string, string> Update(Payment entityDTO)
         {
@@ -120,5 +124,16 @@ namespace FitnessCenter.Data.Crud.PayementCRUD
         }
 
 
+        public List<Payment> GetPaymentByUserId(int userId)
+        {
+            SqlOperation operation = mapper.GetRetrievePaymentByUserIdStatement(userId);
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+            if (result.Count == 0)
+            {
+                throw new Exception("No response from stored procedure.");
+            }
+            var payments = mapper.BuildUserPaymentObjects(result);
+            return payments;
+        }
     }
 }
