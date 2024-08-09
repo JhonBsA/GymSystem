@@ -137,5 +137,15 @@ namespace FitnessCenter.Data.Mapper
             operation.AddVarcharParam("PasswordP", Password);
             return operation;
         }
+
+        public SqlOperation GetUsersByRoleStatement(string roleName)
+        {
+            var operation = new SqlOperation
+            {
+                ProcedureName = "GetUsersByRole"
+            };
+            operation.AddVarcharParam("RoleName", roleName);
+            return operation;
+        }
     }
 }

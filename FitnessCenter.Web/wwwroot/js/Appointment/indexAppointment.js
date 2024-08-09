@@ -18,7 +18,7 @@ let table = $('#appointmentTable').DataTable({
             render: function (data, type, row) {
                 return `
                     <div class="actions-btn">
-                    <button class="btn btn-assign" onclick="viewDetails('${row.appointmentId}')">Detalles</button>
+                    <button class="btn btn-assign" onclick="List()">Detalles</button>
                     </div>
                 `;
             }
@@ -29,12 +29,17 @@ let table = $('#appointmentTable').DataTable({
     }
 });
 
+function List() {
+    console.log("llegue")
+    window.location.href = `ListAppointments`;
+}
+
 const getTodayDate = () => {
     let today = new Date();
     let day = String(today.getDate()).padStart(2, '0');
     let month = String(today.getMonth() + 1).padStart(2, '0'); // Enero es 0
     let year = today.getFullYear();
-    return `${year}-${day}-${month}`;
+    return `${year}-${month}-${day}`;
 }
 
 const getTomorrowDate = () => {
@@ -43,7 +48,7 @@ const getTomorrowDate = () => {
     let day = String(today.getDate()).padStart(2, '0');
     let month = String(today.getMonth() + 1).padStart(2, '0'); // Enero es 0
     let year = today.getFullYear();
-    return `${year}-${day}-${month}`;
+    return `${year}-${month}-${day}`;
 }
 
 $(document).ready(() => {
@@ -60,7 +65,6 @@ $(document).ready(() => {
         }
     })
         .done((result) => {
-            console.log('API response:', result);
             prepareTableData(result); // Si la solicitud es exitosa, prepara los datos y actualiza la tabla
         })
         .fail((error) => {

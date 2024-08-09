@@ -117,3 +117,38 @@ body {
     color: white;
     text-decoration: none;
 }
+
+/*nav estilos*/
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.nav-item {
+    position: relative;
+    margin-left: 10px;
+}
+
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px; /*Tamaño estándar de la barra nav*/
+    background: #F1C40F;
+    transition: width .3s;
+    margin: 0 auto;
+}
+
+.nav-link:hover::after { /*Efecto de la línea de los btn*/
+    width: 100%;
+    transition: width .3s; /*Velocidad de la raya al abrirse*/
+}
+
+.fondoNav {
+    background-color: #2e4257;
+}
+
+.navbar-brand,
+.navbar-custom .nav-link {
+    color: #F1C40F; /* Color de los enlaces */
+}

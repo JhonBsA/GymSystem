@@ -1,8 +1,3 @@
-.navbar-brand,
-.navbar-custom .nav-link {
-    color: #F1C40F; /* Color de los enlaces */
-}
-
 .fondo {
     background-color: #4a545f;
 }
@@ -105,26 +100,11 @@
 .table.dataTable tbody tr {
     background-color: #34495E;
 }
-/*
-.dataTables_wrapper .dataTables_filter {
-    display: none; /* Oculta el campo de búsqueda 
-}
 
-.dataTables_wrapper .dataTables_length {
-    display: none; /* Oculta el control de "Show entries" 
-}
+/* Estilos comentados para ocultar controles de DataTables */
 
-.dataTables_wrapper .dataTables_info {
-    display: none; /* Oculta la información de la tabla 
-}
-.dataTables_wrapper .dataTables_paginate {
-    display: none; /* Oculta los controles de paginación (anterior/siguiente) 
-}
 
-.dataTables_wrapper .dataTables_info {
-    display: none; /* Oculta la información de la tabla 
-}
+
 .mt-3 {
     margin-top: 2rem !important;
 }
-*/

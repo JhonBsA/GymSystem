@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using FitnessCenter.Core;
 using Microsoft.AspNetCore.Identity;
 using FitnessCenter.DTO.AppointmentDTO;
+using Microsoft.Data.SqlClient;
 
 namespace FitnessCenter.API.Controllers
 {
@@ -21,7 +22,7 @@ namespace FitnessCenter.API.Controllers
 
         [HttpPost]
         [Route("CreateAppointment")]
-        public IActionResult CreateAppoinment(Appointment appointment)
+        public IActionResult CreateAppointment([FromBody] Appointment appointment)
         {
             var result = _appointmentManager.CreateAppointment(appointment);
             return Ok(result);
@@ -51,6 +52,14 @@ namespace FitnessCenter.API.Controllers
         {
             var result = _appointmentManager.DeleteAppointment(appointmentID);
             return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("GetLastAppointmentDate")]
+        public IActionResult GetLastAppointmentDate()
+        {
+            var lastAppointmentDate = _appointmentManager.GetLastAppointmentDate();
+            return Ok(lastAppointmentDate);
         }
 
     }
