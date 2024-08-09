@@ -100,7 +100,11 @@ namespace FitnessCenter.Core
         {
             return userCrud.RetrieveAll<UserDetails>();
         }
-        
 
+        public List<UserDetails> GetUsersByRole(string roleName)
+        {
+            var result = userCrud.GetUsersByRole(roleName);
+            return result;
+        }
     }
 }

@@ -39,7 +39,7 @@ const getTodayDate = () => {
     let day = String(today.getDate()).padStart(2, '0');
     let month = String(today.getMonth() + 1).padStart(2, '0'); // Enero es 0
     let year = today.getFullYear();
-    return `${year}-${day}-${month}`;
+    return `${year}-${month}-${day}`;
 }
 
 const getTomorrowDate = () => {
@@ -48,7 +48,7 @@ const getTomorrowDate = () => {
     let day = String(today.getDate()).padStart(2, '0');
     let month = String(today.getMonth() + 1).padStart(2, '0'); // Enero es 0
     let year = today.getFullYear();
-    return `${year}-${day}-${month}`;
+    return `${year}-${month}-${day}`;
 }
 
 $(document).ready(() => {

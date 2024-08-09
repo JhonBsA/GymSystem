@@ -21,7 +21,7 @@ let table = $('#appointmentTable').DataTable({
                     <button class="btn btn-primary" onclick="editAppointment('${row.appointmentID}')">Editar</button>
                     </div>
                     <div class="actions-btn">
-                    <button class="btn btn-assign" onclick="cancelAppointment('${row.appointmentID}')">Cancelar</button>
+                    <button class="btn btn-assign" onclick="cancelAppointment('${row.appointmentID}')">Cancelar Cita</button>
                     </div>
                 `;
             }
@@ -79,7 +79,7 @@ const getTodayDate = () => {
     let day = String(today.getDate()).padStart(2, '0');
     let month = String(today.getMonth() + 1).padStart(2, '0'); // Enero es 0
     let year = today.getFullYear();
-    return `${year}-${day}-${month}`;
+    return `${year}-${month}-${day}`;
 }
 
 $(document).ready(() => {
@@ -98,7 +98,7 @@ $(document).ready(() => {
             if (lastAppointmentDate) {
                 // Extraer solo la fecha de lastAppointmentDate
                 let lastDate = new Date(lastAppointmentDate).toISOString().split('T')[0];
-
+                console.log(response);
                 // Luego, usar esa fecha para buscar citas en el rango de hoy hasta la última fecha
                 $.ajax({
                     url: apiUrl,

@@ -22,7 +22,7 @@ namespace FitnessCenter.API.Controllers
 
         [HttpPost]
         [Route("CreateAppointment")]
-        public IActionResult CreateAppoinment(Appointment appointment)
+        public IActionResult CreateAppointment([FromBody] Appointment appointment)
         {
             var result = _appointmentManager.CreateAppointment(appointment);
             return Ok(result);

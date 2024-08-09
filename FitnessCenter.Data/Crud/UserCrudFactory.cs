@@ -224,5 +224,19 @@ namespace FitnessCenter.Data.Crud
             return users;
         }
 
+        public List<UserDetails> GetUsersByRole(string roleName)
+        {
+            SqlOperation operation = mapper.GetUsersByRoleStatement(roleName);
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+            var users = new List<UserDetails>();
+
+            foreach (var row in result)
+            {
+                users.Add((UserDetails)mapper.BuildObject(row));
+            }
+
+            return users;
+        }
+
     }
 }

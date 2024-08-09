@@ -11,10 +11,7 @@
             SecondLastName: $('#SegundoApellido').val(),
             Phone: $('#Telefono').val(),
             Email: $('#CorreoElectronico').val(),
-<<<<<<< HEAD
-=======
-            RoleName: "Cliente"
->>>>>>> e6c2500f1e38c5ca7dacf9cb5dcf8ff477564d22
+            RoleName: "Cliente",
         };
 
         // Validar campos antes de enviar
