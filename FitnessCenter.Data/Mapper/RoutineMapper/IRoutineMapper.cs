@@ -1,6 +1,7 @@
 ﻿using FitnessCenter.DTO.RoutineDTO;
 using FitnessCenter.DTO.EquipmentDTO;
 using FitnessCenter.Data.Dao;
+using FitnessCenter.DTO.AppointmentDTO;
 
 namespace FitnessCenter.Data.Mapper.RoutineMapper
 {
@@ -18,5 +19,7 @@ namespace FitnessCenter.Data.Mapper.RoutineMapper
         SqlOperation GetClearEquipmentStatement(int routineID);
         T BuildObject<T>(Dictionary<string, object> row);
         List<T> BuildObjects<T>(List<Dictionary<string, object>> rows);
+
+       
     }
 }

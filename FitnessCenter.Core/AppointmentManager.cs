@@ -8,6 +8,7 @@ namespace FitnessCenter.Core
     public class AppointmentManager
     {
         readonly AppointmentCrudFactory appointmentCrud = new AppointmentCrudFactory();
+        
         public Dictionary<string, string> CreateAppointment(Appointment appointment)
         {
 

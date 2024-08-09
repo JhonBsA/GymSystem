@@ -38,6 +38,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 30px;
+    background-color: #34495E;
 }
 
     .form-container h2 {
@@ -67,5 +68,8 @@
 }
 
 .textoBlanco {
+    color: white;
+}
+.label {
     color: white;
 }

@@ -41,12 +41,17 @@
 
 #hero {
     position: relative;
-    height: 650px;
-    background: url('../../static/home2.jpg') no-repeat center 0% fixed;
-    background-size: cover;
+    height: 140vh; /* Ajusta la altura del contenedor */
+    background: url('../../static/home2.jpg') no-repeat center center;
+    background-size: 100% auto; /* Aumenta el tamaño del fondo para dar más espacio */
+    background-position: center top; /* Ajusta la posición de la imagen */
     text-align: center;
     color: white;
+   
 }
+
+
+
 
 .logo-container {
     position: absolute;
@@ -58,4 +63,36 @@
 .logo {
     max-width: 200px;
     opacity: 0.8;
+}
+.table {
+    background-color: #34495E; /* Fondo de la tabla */
+}
+
+    .table thead th {
+        background-color: #2C3E50; /* Fondo del encabezado de la tabla */
+        color: white; /* Color del texto del encabezado */
+    }
+
+    .table tbody tr {
+        background-color: #34495E; /* Fondo de las filas */
+    }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #2C3E50; /* Fondo de las filas pares */
+        }
+
+    .table th,
+    .table td {
+        text-align: center;
+        vertical-align: middle;
+        color: white; /* Color del texto */
+    }
+.table-container {
+    margin: 20px auto;
+    padding: 2rem;
+    background-color: #34495E;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    width: 80%;
+    max-width: 1200px;
 }

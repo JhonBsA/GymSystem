@@ -15,7 +15,7 @@ namespace FitnessCenter.Core
         }
 
 
-        public Dictionary<string, string> UpdateRoutine(Routine routine, 
+        public Dictionary<string, string> UpdateRoutine(Routine routine,
             List<RoutineExercise> exercises, List<RoutineEquipment> equipment)
         {
             throw new NotImplementedException();
@@ -30,17 +30,20 @@ namespace FitnessCenter.Core
         {
             return routineCrud.Retrieve<Routine>(routineID);
         }
-
+        /*
         public List<Routine> RetrieveAllRoutines()
         {
             return routineCrud.RetrieveAll<Routine>();
         }
-
+        */
         public List<RoutineWithID> RetrieveByClient(int userId)
         {
             return routineCrud.RetrieveByClient(userId);
         }
-        
+
+       
 
     }
 }
+
+
