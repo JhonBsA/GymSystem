@@ -42,7 +42,6 @@ namespace FitnessCenter.Web.Controllers
             return View(roleList);
         }
 
-
         [HttpGet]
         public IActionResult UpdateRole() 
         {

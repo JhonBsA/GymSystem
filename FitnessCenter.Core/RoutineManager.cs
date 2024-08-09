@@ -30,20 +30,15 @@ namespace FitnessCenter.Core
         {
             return routineCrud.Retrieve<Routine>(routineID);
         }
-        /*
+        
         public List<Routine> RetrieveAllRoutines()
         {
             return routineCrud.RetrieveAll<Routine>();
         }
-        */
-        public List<RoutineWithID> RetrieveByClient(int userId)
+        
+        public List<RoutineWithID> RetrieveByClient(int clientID)
         {
-            return routineCrud.RetrieveByClient(userId);
+            return routineCrud.RetrieveByClient(clientID);
         }
-
-       
-
     }
 }
-
-

@@ -42,6 +42,8 @@ namespace FitnessCenter.Data.Dao
         {
             Parameters.Add(new SqlParameter("@" + parameterName, paramValue));
         }
+
+        // Método para agregar un parámetro de tipo float
         public void AddFloatParam(string parameterName, float paramValue)
         {
             Parameters.Add(new SqlParameter("@" + parameterName, paramValue));
