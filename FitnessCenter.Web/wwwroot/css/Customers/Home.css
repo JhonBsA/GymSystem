@@ -8,7 +8,7 @@
 }
 
 .fondoNav {
-    background-color: #2e4257;
+    background-color: #2C3E50;
 }
 
 .profile-icon {
@@ -28,15 +28,15 @@
     content: '';
     display: block;
     width: 0;
-    height: 2px; /*Tamaño estándar de la barra nav*/
+    height: 2px; /* Tamaño estándar de la barra nav */
     background: #F1C40F;
     transition: width .3s;
     margin: 0 auto;
 }
 
-.nav-link:hover::after { /*Efecto de la línea de los btn*/
+.nav-link:hover::after { /* Efecto de la línea de los btn */
     width: 100%;
-    transition: width .3s; /*Velocidad de la raya al abrirse*/
+    transition: width .3s; /* Velocidad de la raya al abrirse */
 }
 
 #hero {
@@ -47,11 +47,7 @@
     background-position: center top; /* Ajusta la posición de la imagen */
     text-align: center;
     color: white;
-   
 }
-
-
-
 
 .logo-container {
     position: absolute;
@@ -64,8 +60,20 @@
     max-width: 200px;
     opacity: 0.8;
 }
+
+.container {
+    margin: 20px auto;
+    padding: 2rem;
+    background-color: #34495E;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    width: 80%;
+    max-width: 1200px;
+}
+
 .table {
     background-color: #34495E; /* Fondo de la tabla */
+    border: 1px solid #FFFFFF; /* Borde de la tabla */
 }
 
     .table thead th {
@@ -86,13 +94,37 @@
         text-align: center;
         vertical-align: middle;
         color: white; /* Color del texto */
+        border: 1px solid #FFFFFF; /* Borde de las celdas */
     }
-.table-container {
-    margin: 20px auto;
-    padding: 2rem;
-    background-color: #34495E;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
-    border-radius: 15px;
-    width: 80%;
-    max-width: 1200px;
+
+.mt-4 {
+    margin-top: 1.5rem !important;
+    background: #34495E;
 }
+
+.table.dataTable tbody tr {
+    background-color: #34495E;
+}
+/*
+.dataTables_wrapper .dataTables_filter {
+    display: none; /* Oculta el campo de búsqueda 
+}
+
+.dataTables_wrapper .dataTables_length {
+    display: none; /* Oculta el control de "Show entries" 
+}
+
+.dataTables_wrapper .dataTables_info {
+    display: none; /* Oculta la información de la tabla 
+}
+.dataTables_wrapper .dataTables_paginate {
+    display: none; /* Oculta los controles de paginación (anterior/siguiente) 
+}
+
+.dataTables_wrapper .dataTables_info {
+    display: none; /* Oculta la información de la tabla 
+}
+.mt-3 {
+    margin-top: 2rem !important;
+}
+*/

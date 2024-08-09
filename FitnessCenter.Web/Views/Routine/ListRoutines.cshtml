@@ -10,7 +10,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rutinas de Ejercicio</title>
-    <link rel="stylesheet" type="text/css" href="~/css/Customers/Home.css" />
     <link rel="stylesheet" type="text/css" href="~/css/Routine/ListRoutine.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
@@ -85,48 +84,43 @@
 
     <div class="container mt-4">
         <form id="trainingRegistrationForm" class="form-container p-3">
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="exerciseName">Nombre del Ejercicio</label>
-                    <input type="text" class="form-control" id="ExerciseName">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="exerciseType">Tipo de Ejercicio</label>
-                    <select class="form-control" id="ExerciseTypeName" required>
-                        <option value="" disabled selected>Selecciona un tipo</option>
-                        <option value="Fuerza">Fuerza</option>
-                        <option value="Tiempo">Tiempo</option>
-                        <option value="AMRAP">AMRAP</option>
-                    </select>
+            <div class="form-row mb-3">
+                <div class="form-group col-md-12">
+                    <label for="ExerciseName">Ejercicio</label>
+                    <input type="text" class="form-control" id="ExerciseName" placeholder="Introduce el nombre del ejercicio" style="width: 100%;">
                 </div>
             </div>
-            <div class="form-row">
+            <div class="form-row mb-3">
                 <div class="form-group col-md-4">
-                    <label for="sets">Sets</label>
-                    <input type="number" class="form-control" id="Sets">
+                    <label for="SetsCompleted">Sets</label>
+                    <input type="number" class="form-control" id="SetsCompleted" placeholder="Número de sets">
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="repetitions">Repeticiones</label>
-                    <input type="number" class="form-control" id="Repetitions">
+                    <label for="RepetitionsCompleted">Repeticiones</label>
+                    <input type="number" class="form-control" id="RepetitionsCompleted" placeholder="Número de repeticiones">
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="weight">Peso (KG)</label>
-                    <input type="number" class="form-control" id="Weight">
+                    <label for="WeightUsed">Peso (KG)</label>
+                    <input type="number" class="form-control" id="WeightUsed" placeholder="Peso utilizado (kg)">
                 </div>
             </div>
-            <div class="form-row">
+            <div class="form-row mb-3">
                 <div class="form-group col-md-6">
-                    <label for="duration">Duración (segundos)</label>
-                    <input type="number" class="form-control" id="Duration">
+                    <label for="DurationInSeconds">Duración (segundos)</label>
+                    <input type="number" class="form-control" id="DurationInSeconds" placeholder="Duración en segundos">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="trainingDate">Fecha del Entrenamiento</label>
-                    <input type="date" class="form-control" id="Date">
+                    <label for="DateLogged">Fecha del Entrenamiento</label>
+                    <input type="date" class="form-control" id="DateLogged">
                 </div>
             </div>
             <button type="submit" class="btn btn-primary btn-block mt-3">Registrar Entrenamiento</button>
         </form>
     </div>
+
+
+
+
 
 
     <!-- Scripts de Bootstrap y otros -->

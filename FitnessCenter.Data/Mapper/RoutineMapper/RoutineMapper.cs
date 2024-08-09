@@ -252,10 +252,11 @@ namespace FitnessCenter.Data.Mapper.RoutineMapper
 
             return lstResults;
         }
-        
 
-
-
+        public SqlOperation GetRetrieveAllStatement()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 

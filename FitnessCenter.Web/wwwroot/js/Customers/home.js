@@ -2,13 +2,12 @@
     let table = $('#trainingTable').DataTable({
         data: [],
         columns: [
-            { data: 'exerciseName' },
-            { data: 'exerciseTypeName' },
-            { data: 'sets' },
-            { data: 'repetitions' },
-            { data: 'weight' },
-            { data: 'duration' },
-            { data: 'date' }
+            { data: 'exerciseName'},
+            { data: 'dateLogged'},
+            { data: 'setsCompleted'},
+            { data: 'repetitionsCompleted'},
+            { data: 'weightUsed'},
+            { data: 'durationInSeconds'}
         ]
     });
 
@@ -17,25 +16,34 @@
     }
 
     const prepareTableData = (result) => {
-        result.map(training => {
-            training.exerciseName = capitalize(training.exerciseName);
-            training.exerciseTypeName = capitalize(training.exerciseTypeName);
-        });
-        table.clear().rows.add(result).draw();
+        // Ajusta los nombres de las propiedades del JSON para que coincidan con las columnas de la tabla
+        const formattedData = result.map(training => ({
+            exerciseName: capitalize(training.excerciseName),
+            dateLogged: new Date(training.dateLogged).toLocaleDateString('es-ES'), // Ajusta el formato de la fecha según tu necesidad
+            setsCompleted: training.setsCompleted,
+            repetitionsCompleted: training.repetitionsCompleted,
+            weightUsed: training.weightUsed,
+            durationInSeconds: training.durationInSeconds
+        }));
+
+        table.clear().rows.add(formattedData).draw();
     }
 
-    let apiUrl = API_URL_BASE + `/Routine/GetAllTraining`; // Ajusta esta URL a la correcta
+    let apiUrl = API_URL_BASE + '/TrainingLogs/UserTrainingLogs'; // Ajusta esta URL a la correcta
     $.ajax({
         url: apiUrl,
+        method: 'GET',
+        data: { userId: 3 },// Asegúrate de que el método sea el correcto
+        dataType: 'json' // Especifica el tipo de datos que esperas recibir
     })
         .done((result) => {
             prepareTableData(result);
         })
         .fail((error) => {
             Swal.fire({
-                title: "Mensaje",
-                text: "Hubo un error con la búsqueda: " + error,
-                icon: "error",
+                title: 'Mensaje',
+                text: 'Hubo un error con la búsqueda: ' + error.statusText,
+                icon: 'error'
             });
         });
 });

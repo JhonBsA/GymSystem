@@ -5,7 +5,7 @@
         console.log('Loading routine data...'); // Mensaje de inicio
         $.ajax({
             url: apiUrl,
-            data: { userId: 5 },
+            data: { userId: 3},
             method: 'GET',
             success: function (response) {
                 console.log('Response received:', response); // Verifica la estructura de la respuesta
@@ -70,50 +70,46 @@
     loadRoutineData();
 });
 $('#trainingRegistrationForm').submit(function (event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
+    event.preventDefault();
+   
+   
 
     // Obtener los datos del formulario
-    const trainingData = [{
-        ExerciseName: $('#ExerciseName').val(),
-        ExerciseTypeName: $("#ExerciseTypeName").val(),
-        Sets: $('#Sets').val(),
-        Repetitions: $('#Repetitions').val(),
-        Weight: $('#Weight').val(),
-        DurationInSeconds: $('#Duration').val(),
-        Date: $('#Date').val()
-    }];
+    const trainingData = {
+       
+        clientID: clientID, 
+        exerciseName: $('#ExerciseName').val().trim() || null,
+        dateLogged: new Date().toISOString(),
+        setsCompleted: $('#SetsCompleted').val() ? parseInt($('#SetsCompleted').val(), 10) : null,
+        repetitionsCompleted: $('#RepetitionsCompleted').val() ? parseInt($('#RepetitionsCompleted').val(), 10) : null,
+        weightUsed: $('#WeightUsed').val() ? parseFloat($('#WeightUsed').val()) : null,
+        durationInSeconds: $('#DurationInSeconds').val() ? parseInt($('#DurationInSeconds').val(), 10) : null
+    };
 
-    console.log('Training data to be sent:', trainingData); // Verifica los datos del formulario
+    console.log('Training data to be sent:', JSON.stringify(trainingData));
 
-    var apiUrl = API_URL_BASE + '/Routine/RegisterTraining';
-
-    // Enviar los datos al servidor mediante AJAX
     $.ajax({
-        url: apiUrl, // URL del endpoint para registrar el entrenamiento
+        url: '/api/TrainingLogs/AddTrainingLog', // URL de tu API para agregar el registro de entrenamiento
         type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify(trainingData), // Enviando una lista de objetos
+        data: JSON.stringify(trainingData),
         success: function () {
-            // Manejar la respuesta exitosa del servidor
             Swal.fire({
                 icon: 'success',
                 title: 'Entrenamiento registrado',
                 text: 'El entrenamiento ha sido registrado exitosamente.'
             });
-
-            // Limpiar el formulario después del registro exitoso
             $('#trainingRegistrationForm')[0].reset();
             console.log('Form reset after successful training registration.');
         },
         error: function (xhr, status, error) {
-            // Manejar los errores del servidor
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
                 text: 'Ocurrió un error al registrar el entrenamiento. Por favor, intenta nuevamente.'
             });
             console.error('Error registering training:', error);
-            alert('Error registering training: ' + error);
+            alert('Error registering training: ' + xhr.responseText);
         }
     });
 });
