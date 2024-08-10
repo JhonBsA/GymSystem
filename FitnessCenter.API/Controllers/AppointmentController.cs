@@ -41,7 +41,7 @@ namespace FitnessCenter.API.Controllers
         public IActionResult UpdateAppointment(int appointmentID, int clientID, int trainerID, 
             DateTime appointmentDate, int durationInMinutes, string notes)
         {
-            var result = _appointmentManager.UpdateAppointment(appointmentID, clientID, trainerID, 
+            var result = _appointmentManager.UpdateAppointment(appointmentID, clientID, trainerID,
                 appointmentDate, durationInMinutes, notes);
             return Ok(result);
         }
@@ -60,6 +60,14 @@ namespace FitnessCenter.API.Controllers
         {
             var lastAppointmentDate = _appointmentManager.GetLastAppointmentDate();
             return Ok(lastAppointmentDate);
+        }
+
+        [HttpGet]
+        [Route("GetAppointmentById")]
+        public IActionResult GetAppointmentById(int appointmentID)
+        {
+            var result = _appointmentManager.GetAppointmentById(appointmentID);
+            return Ok(result);
         }
 
     }

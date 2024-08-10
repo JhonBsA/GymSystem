@@ -32,7 +32,7 @@ let table = $('#appointmentTable').DataTable({
     }
 });
 function editAppointment(appointmentID) {
-    window.location.href = `/Appointment/Edit/${appointmentID}`;
+    window.location.href = `/Appointment/UpdateAppointment/${appointmentID}`;
 }
 
 function cancelAppointment(appointmentId) {

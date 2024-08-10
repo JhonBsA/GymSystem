@@ -48,5 +48,11 @@ namespace FitnessCenter.Core
         {
             return appointmentCrud.RetrieveLastAppointmentDate();
         }
+
+        public AppointmentBaseClass GetAppointmentById(int appointmentID)
+        {
+            var result = appointmentCrud.GetAppointmentById(appointmentID);
+            return result;
+        }
     }
 }
