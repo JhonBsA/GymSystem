@@ -1,5 +1,5 @@
 ﻿
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', function ()/*$(document).ready(function ()*/ {
     let apiUrlTrainers = API_URL_BASE + '/Account/GetTrainers';
     let apiUrl = API_URL_BASE + '/Appointment/UpdateAppointment';
 
@@ -50,29 +50,32 @@ $(document).ready(function () {
         console.error('No se encontró el ID de la cita en la URL');
     }
 
-    // Enviar Datos del Formulario
+    //Enviar Datos del Formulario
     $('#updateAppointmentForm').submit(function (event) {
         event.preventDefault();
 
         // Recoger los valores del formulario
-        clientID = $('#ClientID').val();
-        trainerID = $('#Entrenador').val();
-        appointmentDate = $('#FechaHora').val();
-        durationInMinutes = $('#DurationInMinutes').val();
-        notes = "Cita de Medición";
+        ClientID = $('#ClientID').val();
+        TrainerID = $('#Entrenador').val();
+        AppointmentDate = $('#FechaHora').val();
+        DurationInMinutes = $('#DurationInMinutes').val();
+        Notes = 'Cita de Medición';
+        ClientName = $('#Cliente option:selected').text();
+        TrainerName = $('#Entrenador option:selected').text();
 
         // objeto de datos para enviar
         var appointmentData = {
             appointmentID,
-            clientID,
-            trainerID,
-            appointmentDate: new Date(appointmentDate).toISOString(),
-            durationInMinutes,
-            notes
+            ClientID,
+            TrainerID,
+            AppointmentDate,
+            DurationInMinutes,
+            Notes,
+            ClientName,
+            TrainerName
         };
 
         // Enviar los datos al servidor
-        console.log("Datos de la cita en formato JSON:", JSON.stringify(appointmentData));
         console.log(appointmentData);
 
         $.ajax({
@@ -86,17 +89,16 @@ $(document).ready(function () {
                     title: 'Cita Actualizada',
                     text: response.Message,
                     confirmButtonText: 'OK'
-                }).then(() => {
-                    window.location.href = 'ListAppointments'; // Redirigir a la lista de citas
-                });
+                })
             },
             error: function (xhr, status, error) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
-                    text: 'Hubo un problema al crear la cita.',
+                    text: 'Hubo un problema al actualizar la cita.',
                     confirmButtonText: 'OK'
                 });
+                console.error('Error al actualizar la cita:', xhr.responseText);
             }
         });
     });
