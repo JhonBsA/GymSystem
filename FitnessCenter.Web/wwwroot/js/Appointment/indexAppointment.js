@@ -30,7 +30,6 @@ let table = $('#appointmentTable').DataTable({
 });
 
 function List() {
-    console.log("llegue")
     window.location.href = `ListAppointments`;
 }
 

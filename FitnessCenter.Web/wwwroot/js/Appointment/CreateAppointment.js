@@ -70,8 +70,6 @@
         };
 
         // Enviar los datos al servidor
-        console.log(appointmentData);
-
         $.ajax({
             url: apiUrl,
             method: 'POST',
@@ -84,7 +82,7 @@
                     text: response.Message,
                     confirmButtonText: 'OK'
                 }).then(() => {
-                    window.location.href = 'IndexAppointments'; // Redirigir a la lista de citas
+                    window.location.href = 'ListAppointments'; // Redirigir a la lista de citas
                 });
             },
             error: function (xhr, status, error) {

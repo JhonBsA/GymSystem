@@ -124,7 +124,18 @@ namespace FitnessCenter.Data.Mapper.AppointmentMapper
             };
             return operation;
         }
-        
+
+        public SqlOperation GetAppointmentById(int appointmentID)
+        {
+            var operation = new SqlOperation
+            {
+                ProcedureName = "GetAppointmentById"
+            };
+
+            operation.AddIntegerParam("AppointmentID", appointmentID);
+
+            return operation;
+        }
     }
 }
 

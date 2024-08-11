@@ -36,13 +36,21 @@ namespace FitnessCenter.API.Controllers
             return Ok(result);
         }
 
+        //[HttpPost]
+        //[Route("UpdateAppointment")]
+        //public IActionResult UpdateAppointment(int appointmentID, int clientID, int trainerID, 
+        //    DateTime appointmentDate, int durationInMinutes, string notes)
+        //{
+        //    var result = _appointmentManager.UpdateAppointment(appointmentID, clientID, trainerID,
+        //        appointmentDate, durationInMinutes, notes);
+        //    return Ok(result);
+        //}
+
         [HttpPost]
         [Route("UpdateAppointment")]
-        public IActionResult UpdateAppointment(int appointmentID, int clientID, int trainerID, 
-            DateTime appointmentDate, int durationInMinutes, string notes)
+        public IActionResult UpdateAppointment(Appointment appointment)
         {
-            var result = _appointmentManager.UpdateAppointment(appointmentID, clientID, trainerID, 
-                appointmentDate, durationInMinutes, notes);
+            var result = _appointmentManager.UpdateAppointment(appointment);
             return Ok(result);
         }
 
@@ -62,6 +70,14 @@ namespace FitnessCenter.API.Controllers
             return Ok(lastAppointmentDate);
         }
        
+
+        [HttpGet]
+        [Route("GetAppointmentById")]
+        public IActionResult GetAppointmentById(int appointmentID)
+        {
+            var result = _appointmentManager.GetAppointmentById(appointmentID);
+            return Ok(result);
+        }
 
     }
 }

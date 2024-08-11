@@ -100,7 +100,22 @@ namespace FitnessCenter.Data.Crud.AppointmentCRUD
 
             return DateTime.MinValue; // O cualquier valor por defecto
         }
-       
 
+        public AppointmentBaseClass GetAppointmentById(int appointmentID)
+        {
+            SqlOperation operation = mapper.GetAppointmentById(appointmentID);
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+
+            if (result.Count == 0)
+            {
+                throw new Exception("No response form stored procedure");
+            }
+
+            var firstRow = result[0];
+            var appointment = mapper.BuildObject(firstRow);
+
+            return appointment;
+
+        }
     }
 }
