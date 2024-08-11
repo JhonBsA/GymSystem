@@ -61,6 +61,7 @@ namespace FitnessCenter.API.Controllers
             var lastAppointmentDate = _appointmentManager.GetLastAppointmentDate();
             return Ok(lastAppointmentDate);
         }
+       
 
     }
 }

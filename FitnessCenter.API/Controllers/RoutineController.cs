@@ -47,7 +47,7 @@ namespace FitnessCenter.API.Controllers
 
         [HttpGet]
         [Route("RetrieveRoutineByClient")]
-        public IActionResult RetrieveRoutineByClient(int userId)
+        public IActionResult RetrieveRoutineByClient([FromQuery] int userId)
         {
             var result = _routineManager.RetrieveByClient(userId);
 
@@ -59,8 +59,9 @@ namespace FitnessCenter.API.Controllers
             return Ok(result);
         }
 
-       
-       
+
+
+
 
 
 

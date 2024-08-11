@@ -9,105 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Citas de Medición</title>
     <link rel="stylesheet" type="text/css" href="~/css/Customers/Home.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/Customers/Appointments.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href='https://unpkg.com/fullcalendar@5.10.2/main.min.css' rel='stylesheet' />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
     <style>
-        #calendar {
-            max-width: 1200px; /* Ajusta el tamaño general del calendario */
-            margin: 0 auto;
-        }
-
-        #event-details {
-            display: none;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #ffffff; /* Fondo blanco para el panel de detalles */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para destacar el panel */
-        }
-        /* Personalizar el color de los números de los días */
-        .fc-daygrid-day-number {
-            color: #000000; /* Color de los números de los días */
-        }
-        /* Personalizar el color de fondo de los días */
-        .fc-daygrid-day {
-            background-color: #f8f9fa; /* Color de fondo de los días */
-        }
-            /* Personalizar el color de los días laborables */
-            .fc-daygrid-day.fc-day-today {
-                background-color: #e0f7fa; /* Color de fondo del día actual */
-            }
-        /* Personalizar el estilo de los eventos */
-        .fc-event {
-            background-color: #5ee07c; /* Color de fondo del evento */
-            border: none; /* Sin borde */
-        }
-
-            .fc-event:hover {
-                background-color: #69d681; /* Color de fondo del evento al pasar el ratón */
-            }
-        /* Personalizar el color de los días seleccionados */
-        .fc-daygrid-day.fc-daygrid-day-selected {
-            background-color: #d1c4e9; /* Color de fondo del día seleccionado */
-        }
-        /* Ajustar el tamaño de las celdas del calendario */
-        .fc-daygrid-day-frame {
-            height: 10px; /* Ajusta la altura de las celdas */
-        }
-
-        .fc-daygrid-day-top {
-            display: flex;
-            justify-content: center; /* Centra los números de los días */
-        }
-
-        .fc-daygrid-day {
-            padding: 10px; /* Añade relleno a las celdas */
-        }
-
-        body {
-            background-color: #4a545f;
-        }
-        .tituloh2{
-           
-            position: absolute;
-            top: 58px;
-            color: white;
-            left: 1%;
-        }
-           .row{
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            margin-right: -15px;
-            margin-left: -15px;
-            margin-top: 100px;
-        }
-      
-        .fc .fc-toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: white;
-           
-        }
-
-        a {
-            color: #ffffff;
-            text-decoration: none;
-            background-color: transparent;
-        }
-
-        .row {
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            margin-right: -23px;
-            margin-left: -15px;
-            margin-top: 5px;
-        }
+        /* Puedes agregar aquí tus estilos adicionales */
     </style>
     <script src='https://unpkg.com/fullcalendar@5.10.2/main.min.js'></script>
     <script src='https://unpkg.com/fullcalendar@5.10.2/locales-all.min.js'></script>
@@ -150,97 +58,51 @@
             </ul>
         </div>
     </nav>
-    <h2 class="tituloh2">Agenda tu cita de medición</h2>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-8">
-                <div id="calendar"></div>
-            </div>
-            <div class="col-md-4">
-                <div id="event-details">
-                    <h5 id="event-date"></h5>
-                    <p id="event-time"></p>
-                    <p id="event-type"></p>
-                    <p id="availability-message"></p>
-                    <button id="confirm-appointment" class="btn btn-primary">Confirmar Cita</button>
-                    <button id="cancel-appointment" class="btn btn-secondary">Cancelar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <h2>Calendario</h2>
+
+    <div id="calendar"></div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var availableSlots = [
-                '2024-08-13T16:00:00',
-                '2024-08-13T17:00:00',
-                '2024-08-14T15:00:00'
-                // Añade aquí más horarios disponibles
-            ];
-
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                locale: 'es',
-                selectable: true,
-                dateClick: function (info) {
-                    var selectedDate = info.dateStr;
-                    var isAvailable = availableSlots.some(slot => slot.startsWith(selectedDate));
+                // Configuración y opciones de FullCalendar
+                // Puedes personalizar el calendario según tus necesidades
+                // Configuración básica
+                initialView: 'dayGridMonth', // Vista inicial (mes)
+                locale: 'es', // Idioma (español)
+                timeZone: 'local', // Zona horaria local
 
-                    if (isAvailable) {
-                        $('#event-date').text('Fecha: ' + selectedDate);
-                        $('#event-time').text('Hora: ' + selectedDate); // Ajusta según sea necesario
-                        $('#event-type').text('Cita para medición');
-                        $('#availability-message').text('');
-                        $('#confirm-appointment').show(); // Mostrar botón de confirmación
-                        $('#event-details').show();
-
-                        $('#confirm-appointment').off().on('click', function () {
-                            $.ajax({
-                                url: '/api/appointments', // Cambia esto al endpoint de tu servidor
-                                method: 'POST',
-                                data: {
-                                    date: selectedDate,
-                                    // Incluye otros datos si es necesario
-                                },
-                                success: function () {
-                                    calendar.addEvent({
-                                        title: 'Cita de medición confirmada',
-                                        start: selectedDate,
-                                        end: selectedDate // Ajusta según sea necesario
-                                    });
-                                    $('#event-details').hide();
-                                },
-                                error: function () {
-                                    alert('Error al confirmar la cita');
-                                }
-                            });
-                        });
-
-                        $('#cancel-appointment').off().on('click', function () {
-                            $('#event-details').hide();
-                        });
-                    } else {
-                        $('#event-date').text('Fecha: ' + selectedDate);
-                        $('#event-time').text('');
-                        $('#event-type').text('');
-                        $('#availability-message').text('No hay citas disponibles para esta fecha.');
-                        $('#confirm-appointment').hide(); // Ocultar botón de confirmación
-                        $('#event-details').show();
-                    }
+                // Personalización de encabezado
+                headerToolbar: {
+                    left: 'prev,next today', // Botones en la parte izquierda
+                    center: 'title', // Título en el centro
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth' // Botones en la parte derecha
                 },
-                events: [
-                    {
-                        title: 'Cita de medición con el entrenador',
-                        start: '2024-08-13T16:00:00',
-                        end: '2024-08-13T17:00:00'
-                    },
-                    {
-                        title: 'Cita 2',
-                        start: '2024-08-14T15:00:00',
-                        end: '2024-08-14T16:00:00'
-                    }
-                ]
+                events: @Html.Raw(ViewBag.Eventos),
+                // Opciones de visualización de eventos
+                eventContent: function (info) {
+                    // Crear un contenedor de evento
+                    var title = document.createElement('div');
+                    title.classList.add('fc-event-title');
+                    title.innerText = info.event.title;
+
+                    // Crear un contenedor de detalles
+                    var container = document.createElement('div');
+                    container.classList.add('fc-event-container');
+                    container.appendChild(title);
+
+                    return { domNodes: [container] };
+                },
+                // Cargar los eventos desde ViewBag.Eventos
+                eventColor: '#378006', // Color de fondo de los eventos
+                eventTextColor: '#ffffff', // Color de texto de los eventos
+                // Opciones de interacción
+                editable: true, // Permitir la edición de eventos (arrastrar y soltar)
+                selectable: true, // Permitir selección de celdas
+                selectHelper: true, // Mostrar una sombra mientras se selecciona
             });
             calendar.render();
         });

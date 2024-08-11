@@ -1,11 +1,11 @@
 ﻿$(document).ready(function () {
-    var apiUrl = API_URL_BASE + '/Routine/RetrieveRoutineByClient';
+    const apiUrl = API_URL_BASE + '/Routine/RetrieveRoutineByClient';
 
     function loadRoutineData() {
         console.log('Loading routine data...'); // Mensaje de inicio
         $.ajax({
             url: apiUrl,
-            data: { userId: 3},
+            data: { userId: 3 },
             method: 'GET',
             success: function (response) {
                 console.log('Response received:', response); // Verifica la estructura de la respuesta
@@ -60,56 +60,50 @@
             },
             error: function (err) {
                 console.error('Error fetching routine data:', err);
-                alert('Error fetching routine data: ' + err.responseText);
+                alert('Error fetching routine data: ' + (err.responseJSON ? err.responseJSON.message : err.statusText));
             }
         });
     }
 
+    loadRoutineData(); 
+
     
+    $('#trainingLogForm').on('submit', function (e) {
+        e.preventDefault();
+        let apiUrl = API_URL_BASE + '/TrainingLogs/AddTrainingLog';
+        const clientId = 3;
 
-    loadRoutineData();
-});
-$('#trainingRegistrationForm').submit(function (event) {
-    event.preventDefault();
-   
-   
+        const trainingLog = {
+            ClientID: clientId,
+            ExcerciseName: $('#exerciseName').val(),
+            DateLogged: new Date($('#dateLogged').val()).toISOString(),
+            SetsCompleted: $('#setsCompleted').val(),
+            RepetitionsCompleted: $('#repetitionsCompleted').val(),
+            WeightUsed: $('#weightUsed').val(),
+            DurationInSeconds: $('#durationInSeconds').val(),
+        };
 
-    // Obtener los datos del formulario
-    const trainingData = {
-       
-        clientID: clientID, 
-        exerciseName: $('#ExerciseName').val().trim() || null,
-        dateLogged: new Date().toISOString(),
-        setsCompleted: $('#SetsCompleted').val() ? parseInt($('#SetsCompleted').val(), 10) : null,
-        repetitionsCompleted: $('#RepetitionsCompleted').val() ? parseInt($('#RepetitionsCompleted').val(), 10) : null,
-        weightUsed: $('#WeightUsed').val() ? parseFloat($('#WeightUsed').val()) : null,
-        durationInSeconds: $('#DurationInSeconds').val() ? parseInt($('#DurationInSeconds').val(), 10) : null
-    };
+        $.ajax({
+            url: apiUrl,
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(trainingLog),
+            success: function (response) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: 'Training log created successfully.'
+                });
+            },
 
-    console.log('Training data to be sent:', JSON.stringify(trainingData));
+            error: function (jqXHR, textStatus, errorThrown) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'An error occurred: ' + (jqXHR.responseText || errorThrown)
+                });
+            }
 
-    $.ajax({
-        url: '/api/TrainingLogs/AddTrainingLog', // URL de tu API para agregar el registro de entrenamiento
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(trainingData),
-        success: function () {
-            Swal.fire({
-                icon: 'success',
-                title: 'Entrenamiento registrado',
-                text: 'El entrenamiento ha sido registrado exitosamente.'
-            });
-            $('#trainingRegistrationForm')[0].reset();
-            console.log('Form reset after successful training registration.');
-        },
-        error: function (xhr, status, error) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Ocurrió un error al registrar el entrenamiento. Por favor, intenta nuevamente.'
-            });
-            console.error('Error registering training:', error);
-            alert('Error registering training: ' + xhr.responseText);
-        }
+        });
     });
 });

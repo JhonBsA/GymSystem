@@ -49,5 +49,6 @@ namespace FitnessCenter.Core
         {
             return appointmentCrud.RetrieveLastAppointmentDate();
         }
+       
     }
 }

@@ -100,5 +100,7 @@ namespace FitnessCenter.Data.Crud.AppointmentCRUD
 
             return DateTime.MinValue; // O cualquier valor por defecto
         }
+       
+
     }
 }
