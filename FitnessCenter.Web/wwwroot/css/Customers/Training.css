@@ -31,6 +31,10 @@
     color: #F1C40F; /* Color de los enlaces */
 }
 
+.navbar .navbar-nav .nav-link {
+    font-size: 1rem;
+}
+
 .logo-container {
     position: absolute;
     top: 50%;

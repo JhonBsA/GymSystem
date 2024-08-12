@@ -30,7 +30,6 @@
 .navbar-custom .nav-link {
     color: #F1C40F; /* Color de los enlaces */
 }
-
 .logo-container {
     position: absolute;
     top: 50%;
@@ -41,6 +40,13 @@
 .logo {
     max-width: 200px;
     opacity: 0.8;
+}
+
+
+
+/* También puedes intentar con un selector más específico si es necesario */
+.navbar .navbar-nav .nav-link {
+    font-size: 1.1rem;
 }
 
 
