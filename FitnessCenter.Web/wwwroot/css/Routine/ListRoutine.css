@@ -153,5 +153,11 @@ label {
         color: white !important; /* Texto de los botones "Anterior" y "Siguiente" */
     }
 
-    
 
+label {/*Color del text de la table*/
+    color: white;
+}
+
+.fondo {
+    background-color: #4a545f;
+}

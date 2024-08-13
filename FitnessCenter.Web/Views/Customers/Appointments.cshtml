@@ -7,104 +7,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Citas de Medición</title>
+    <title>Citas de Medicion</title>
     <link rel="stylesheet" type="text/css" href="~/css/Customers/Home.css" />
     <link rel="stylesheet" type="text/css" href="~/css/Customers/Appointments.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- FullCalendar JS -->
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
-    <!-- Idioma español para FullCalendar -->
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales/es.js"></script>
+    
 </head>
-    <style>
-        /* Estilos para el contenedor del calendario y los detalles */
-        #calendar-container {
-            display: flex;
-            justify-content: flex-start; /* Alinea el calendario a la izquierda */
-            margin: 20px auto;
-            max-width: 1000px;
-            margin-top: 0px;
-        }
 
-        #calendar {
-            flex: 2;
-            max-width: 70%; /* Ajusta el ancho del calendario */
-            max-height: 800px; /* Ajusta la altura máxima del calendario */
-            margin-left: -80px;
-        }
-
-        #appointment-details {
-            flex: 1;
-            margin-left: 5px;
-            padding: 10px; /* Menos padding para un contenedor más compacto */
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-            max-height: 205px; /* Ajusta la altura máxima del contenedor de detalles */
-            overflow-y: auto; /* Permite desplazamiento vertical si el contenido es mayor */
-            display: none; /* Oculta el contenedor de detalles por defecto */
-            margin-top: 64px;
-        margin-right: -14px;
-        }
-
-        /* Estilos para los botones en el contenedor de detalles */
-        #appointment-details-buttons {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 10px;
-        }
-
-            #appointment-details-buttons button {
-                margin-left: 10px;
-            }
-
-        body {
-            font-family: Arial, sans-serif;
-        background-color: #4a545f;
-        }
-
-    .fc .fc-view-harness {
-        flex-grow: 1;
-        position: relative;
-        background-color:white;
-    }
-
-    .textoBlanco {
-        color: white;
-        position: absolute;
-        left: 43%;
-        top: 63px;
-    }
-    /* Personalizar el color de los números de los días */
-    .fc-daygrid-day-number {
-        color: #000000; /* Color de los números de los días */
-    }
-
-    .texto-rojo {
-        color: red;
-    }
-
-    .container {
-        margin: 20px auto;
-        padding: 2rem;
-        background-color: #34495E;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
-        border-radius: 15px;
-        width: 80%;
-        max-width: 1200px;
-    }
-    /* Estilo para el nombre del mes en el calendario */
-    .fc-toolbar-title {
-        color: white; /* Cambia el color del texto a blanco */
-        text-transform: capitalize; /* Asegura que la primera letra de cada palabra esté en mayúscula */
-    }
-</style>
-   
-
-<body>
+<body class="fondo">
     <nav class="navbar navbar-expand-lg navbar-custom fondoNav">
         <a class="navbar-brand" asp-controller="Customers" asp-action="Home">
             <img src="../Images/login-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -159,128 +71,14 @@
             <button id="book-appointment" class="btn btn-primary">Reservar</button>
             <button id="cancel-appointment" class="btn btn-secondary">Cancelar</button>
         </div>
-    </div>
+       </div>
     </div>
    
-        <script>
-        $(document).ready(function () {
-            const apiUrl = API_URL_BASE + '/Appointment/GetAppointmentById';
-
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                locale: 'es',
-                events: function (info, successCallback, failureCallback) {
-                    $.ajax({
-                        url: apiUrl,
-                        type: 'GET',
-                        data: {
-                            appointmentID: 1
-                        },
-                        success: function (response) {
-                            console.log('Respuesta del servidor:', response);
-
-                            var events = [];
-                            if (response && typeof response === 'object') {
-                                if (response.appointmentID) {
-                                    events.push({
-                                        title: "Cita",
-                                        start: new Date(response.appointmentDate).toISOString(), //convierte a formato iso
-                                        backgroundColor: '#28a745',
-                                        textColor: '#fff',
-                                        extendedProps: {
-                                            trainerName: response.trainerName,
-                                            clientName: response.clientName,
-                                            notes: response.notes,
-                                            appointmentDate: response.appointmentDate
-                                        }
-                                    });
-                                } else {
-                                    console.error('No se encontró appointmentID en la respuesta:', response);
-                                }
-                            } else {
-                                console.error('Se esperaba un objeto pero se recibió:', response);
-                            }
-                            console.log('Eventos para FullCalendar:', events);
-
-                            successCallback(events);
-                        },
-                        error: function (xhr, status, error) {
-                            console.error('Error al recuperar citas:', error);
-                            alert('Error retrieving appointments');
-                        }
-                    });
-                },
-                eventClick: function (info) {
-                    mostrarDetallesCita(info.event);
-                },
-                dateClick: function (info) {
-                    manejarClickEnFecha(info.dateStr);
-                },
-                editable: false,
-                droppable: false,
-                selectable: true,
-                eventContent: function (arg) {
-                    return {
-                        html: `<div class="fc-event-title" style="padding: 5px; border: 1px solid #ccc; border-radius: 3px; background-color: #28a745; color: #fff;">
-                                            Cita Medición
-                                </div>` };
-                }
-            });
-
-            calendar.render();
-
-            function mostrarDetallesCita(event) {
-                var appointmentDate = new Date(event.extendedProps.appointmentDate);
-                var options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
-                var formattedDate = appointmentDate.toLocaleString('es-ES', options);
-
-                $('#appointment-details').show();
-                $('#title').text('Cita de medición con el entrenador ' + event.extendedProps.trainerName);
-                $('#hora').text('El ' + formattedDate);
-
-                $('#book-appointment').show();
-                $('#cancel-appointment').show();
-            }
-
-            function mostrarMensajeNoDisponibilidad(dateStr) {
-                var options = { year: 'numeric', month: 'long', day: 'numeric' };
-                var date = new Date(dateStr + 'T12:00:00');
-                var formattedDate = date.toLocaleDateString('es-ES', options);
-                console.log(formattedDate);
-
-                $('#appointment-details').show();
-                $('#title').text('');
-                $('#hora').html('<span class="texto-rojo">No se han registrado horas de disponibilidad para ' + formattedDate + '</span>');
-
-
-                $('#book-appointment').hide();
-                $('#cancel-appointment').show();
-            }
-
-            function manejarClickEnFecha(dateStr) {
-                var eventsOnDate = calendar.getEvents().filter(event => {
-                    return event.startStr === dateStr;
-                });
-
-                if (eventsOnDate.length > 0) {
-                    mostrarDetallesCita(eventsOnDate[0]);
-                } else {
-                    mostrarMensajeNoDisponibilidad(dateStr);
-                }
-            }
-
-            $('#cancel-appointment').click(function () {
-                $('#appointment-details').hide();
-            });
-
-            $('#appointment-details').hide();
-        });
-        
-    </script>
-
-<!-- jQuery -->
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales/es.js"></script>
+    <script src="~/js/Customers/Appointment.js"></script>
     <script src="~/js/site.js"></script>
+
 </body>
 </html>

@@ -2,13 +2,13 @@
     const apiUrl = API_URL_BASE + '/Routine/RetrieveRoutineByClient';
 
     function loadRoutineData() {
-        console.log('Loading routine data...'); // Mensaje de inicio
+        console.log('probando conexion');
         $.ajax({
             url: apiUrl,
-            data: { userId: 3 },
+            data: { userId: 3 },//Preguntar, como obtengo el userid dinamicamente
             method: 'GET',
             success: function (response) {
-                console.log('Response received:', response); // Verifica la estructura de la respuesta
+                console.log('Response received:', response);
                 if (Array.isArray(response) && response.length > 0) {
                     let tableData = [];
 
@@ -17,7 +17,7 @@
                             routine.exerciseDetails.forEach(exercise => {
                                 tableData.push([
                                     exercise.exerciseName || 'N/A',
-                                    exercise.exerciseTypeName || 'N/A', // Agrega el nombre del tipo de ejercicio
+                                    exercise.exerciseTypeName || 'N/A',
                                     exercise.equipmentName || 'N/A',
                                     exercise.sets || 'N/A',
                                     exercise.repetitions || 'N/A',
@@ -31,14 +31,14 @@
                         }
                     });
 
-                    console.log('Table data:', tableData); // Verifica los datos que se van a cargar en la tabla
-
-                    if ($.fn.DataTable.isDataTable('#routineTable')) {
+                    console.log('Table data:', tableData);
+                    // docu de datatables
+                    if ($.fn.DataTable.isDataTable('#routineTable')) {//verifica que la tb este inicializada como una instance de datateblas
                         let table = $('#routineTable').DataTable();
-                        table.clear().rows.add(tableData).draw();
+                        table.clear().rows.add(tableData).draw();//Esto lo que hace es limpia los datos de la tb, agregar nuevas filas y actualiza la tb
                         console.log('DataTable updated with new data.');
                     } else {
-                        $('#routineTable').DataTable({
+                        $('#routineTable').DataTable({//si la tb no esta initialized tonces la inicializacion con tbd define las colums y sus title 
                             data: tableData,
                             columns: [
                                 { title: "Ejercicio" },
@@ -65,13 +65,14 @@
         });
     }
 
-    loadRoutineData(); 
+    loadRoutineData();
 
-    
+
     $('#trainingLogForm').on('submit', function (e) {
         e.preventDefault();
         let apiUrl = API_URL_BASE + '/TrainingLogs/AddTrainingLog';
-        const clientId = 3;
+
+        const clientId = 3;//preguntar, como hago para obtener el id del cliente dinamicamente?? /logi
 
         const trainingLog = {
             ClientID: clientId,
@@ -88,22 +89,28 @@
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(trainingLog),
-            success: function (response) {
+        })
+            .done((result) => {
                 Swal.fire({
-                    icon: 'success',
-                    title: 'Éxito',
-                    text: 'Training log created successfully.'
+                    title: "Registro de entrenamiento exitoso",
+                    icon: "success",
+                    confirmButtonText: "Aceptar",
                 });
-            },
+            })
+            .fail((jqXHR, textStatus, errorThrown) => {
+                let errorMessage = "Registro incorrecto. Intente nuevamente";
 
-            error: function (jqXHR, textStatus, errorThrown) {
+                if (jqXHR.responseJSON && jqXHR.responseJSON.Message) {
+                    errorMessage = jqXHR.responseJSON.Message;
+                }
+
                 Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'An error occurred: ' + (jqXHR.responseText || errorThrown)
+                    title: "Error",
+                    text: errorMessage,
+                    icon: "error",
+                    confirmButtonText: "Aceptar",
                 });
-            }
-
-        });
+            });
     });
+
 });

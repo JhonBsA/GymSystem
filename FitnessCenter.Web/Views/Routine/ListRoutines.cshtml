@@ -11,21 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rutinas de Ejercicio</title>
     <link rel="stylesheet" type="text/css" href="~/css/Routine/ListRoutine.css" />
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"></script><!--Link para pasar a español los names de la table-->
 </head>
-<style>
-   
-    label{
-        color: white;
-    }
-    body{
-        background-color: #4a545f;
-    }
-</style>
+
 <body class="fondo">
     <nav class="navbar navbar-expand-lg navbar-custom fondoNav">
         <a class="navbar-brand" asp-controller="Customers" asp-action="Home">
@@ -76,7 +66,7 @@
             <thead>
                 <tr>
                     <th>Ejercicio</th>
-                    <th>Tipo de Ejercicio</th> <!-- Nueva columna para el tipo de ejercicio -->
+                    <th>Tipo de Ejercicio</th> 
                     <th>Equipo</th>
                     <th>Sets</th>
                     <th>Repeticiones</th>
@@ -86,7 +76,7 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Aquí se insertarán los datos dinámicamente -->
+        
             </tbody>
         </table>
     </div>
@@ -136,36 +126,17 @@
                     <div id="responseMessage" class="mt-3"></div>
                 </form>
             </div>
-            <br />
-       
+           <br />
     </div>
 
-
-
-
-
-
-
-
-    <!-- Scripts de Bootstrap y otros -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/site.js"></script>
     <script src="~/js/Routine/listRoutine.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"></script>
 </body>
-<script>
-    $(document).ready(function () {
-        $('#routineTable').DataTable({
-            "language": {
-                "url": "https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"
-            }
-        });
-    });
-</script>
 
 </html>
 
