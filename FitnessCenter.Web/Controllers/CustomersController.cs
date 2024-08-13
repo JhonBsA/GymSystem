@@ -40,5 +40,17 @@ namespace FitnessCenter.Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult CreateCustomers()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult UpdateCustomers()
+        {
+            return View();
+        }
+
     }
 }

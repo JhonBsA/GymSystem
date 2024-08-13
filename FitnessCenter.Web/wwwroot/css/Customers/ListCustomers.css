@@ -1,1 +1,71 @@
-﻿
+﻿.customerContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn-custom {
+    background-color: #3498DB;
+    color: white;
+    width: 50%;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+    .btn-custom:hover {
+        background-color: #2980B9;
+    }
+
+.table-container {
+    position: relative;
+    top: 4vh;
+    margin: 5% auto;
+    padding: 3%;
+    background-color: #2C3E50;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    width: 100%;
+    max-width: 90%;
+}
+
+.main-content {
+    width: 80%;
+}
+
+.table {
+    background-color: #34495E;
+    /* Fondo de la tabla */
+}
+
+    .table th,
+    .table td {
+        text-align: center;
+        vertical-align: middle;
+        color: white;
+        /* Color del texto */
+        background-color: #34495E;
+        /* Fondo de las celdas */
+    }
+
+.actions-btn {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+    .actions-btn .btn {
+        padding: 5px 10px;
+        font-size: 0.875rem;
+    }
+
+.btn {
+    display: flex;
+    flex-direction: row;
+    padding: 0.6%;
+    width: 10%;
+    justify-content: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
