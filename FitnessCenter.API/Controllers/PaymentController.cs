@@ -33,6 +33,17 @@ namespace FitnessCenter.API.Controllers
             return Ok(result);
         }
 
+        [HttpGet("GetPaymentByUserId")]
+        public IActionResult GetPaymentByUserId(int UserId)
+        {
+            var result = _paymentManager.GetPaymentByUserId(UserId);
+            if (result == null || result.Count == 0)
+            {
+                return NotFound("No payment methods found for this user.");
+            }
+            return Ok(result);
+        }
+
         [HttpPost]
         [Route("AddUserPaymentMethod")]
         public IActionResult AddUserPaymentMethod(UserPaymentMethod paymentMethod)

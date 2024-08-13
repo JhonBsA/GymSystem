@@ -8,9 +8,10 @@ namespace FitnessCenter.Data.Crud.PayementCRUD
         protected SqlDao dao;
 
         public abstract Dictionary<string, string> Create(Payment entityDTO);
-        public abstract List<Payment> RetrieveAll();
-        public abstract Payment RetrieveById(int id);
+        public abstract List<Payment> RetrieveAll(int userId);
+
         public abstract Dictionary<string, string> Update(Payment entityDTO);
         public abstract Dictionary<string, string> Delete(int id);
+
     }
 }

@@ -12,6 +12,7 @@ namespace FitnessCenter.DTO.PaymentDTO
         public decimal Amount { get; set; }
         public DateTime PaymentDate { get; set; }
         public int PaymentMethodID { get; set; }
+        public string DisplayPaymentMethod { get; set; }
     }
 }
 

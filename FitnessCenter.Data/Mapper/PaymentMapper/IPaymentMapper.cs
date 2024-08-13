@@ -10,6 +10,7 @@ namespace FitnessCenter.Data.Mapper.PaymentMapper
         List<Payment> BuildPaymentObjects(List<Dictionary<string, object>> objectRows);
         UserPaymentMethod BuildUserPaymentMethodObject(Dictionary<string, object> objectRow);
         List<UserPaymentMethod> BuildUserPaymentMethodObjects(List<Dictionary<string, object>> objectRows);
+        List<Payment> BuildUserPaymentObjects(List<Dictionary<string, object>> objectRows);
         SqlOperation GetCreatePaymentStatement(Payment entityDTO);
         SqlOperation GetUpdatePaymentStatement(Payment entityDTO);
         SqlOperation GetDeletePaymentStatement(int paymentID);
@@ -18,7 +19,8 @@ namespace FitnessCenter.Data.Mapper.PaymentMapper
         SqlOperation GetUpdateUserPaymentMethodStatement(UserPaymentMethod entityDTO);
         SqlOperation GetDeleteUserPaymentMethodStatement(int paymentMethodID);
         SqlOperation GetRetrieveAllUserPaymentMethodsStatement(int UserID);
-
+        SqlOperation GetRetrievePaymentByUserIdStatement(int userId);
     }
+
 }
 
