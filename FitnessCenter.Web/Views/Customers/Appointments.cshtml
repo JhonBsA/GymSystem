@@ -245,7 +245,7 @@
 
             function mostrarMensajeNoDisponibilidad(dateStr) {
                 var options = { year: 'numeric', month: 'long', day: 'numeric' };
-                var date = new Date(dateStr);
+                var date = new Date(dateStr + 'T12:00:00');
                 var formattedDate = date.toLocaleDateString('es-ES', options);
 
                 $('#appointment-details').show();
