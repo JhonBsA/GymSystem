@@ -3,19 +3,6 @@ body {
     background-color: #4a545f;
 }
 
-.navbar-custom {
-    background-color: #2e4257;
-}
-
-    .navbar-brand,
-    .navbar-custom .nav-link {
-        color: #F1C40F;
-    }
-
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23F1C40F' stroke-width='2' d='M5 7h20M5 15h20M5 23h20'/%3e%3c/svg%3e");
-}
-
 .navbar-nav {
     margin-left: auto;
 }
@@ -29,14 +16,24 @@ body {
     content: '';
     display: block;
     width: 0;
-    height: 2px;
+    height: 2px; /*Tamaño estándar de la barra nav*/
     background: #F1C40F;
     transition: width .3s;
     margin: 0 auto;
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after { /*Efecto de la línea de los btn*/
     width: 100%;
+    transition: width .3s; /*Velocidad de la raya al abrirse*/
+}
+
+.fondoNav {
+    background-color: #2e4257;
+}
+
+.navbar-brand,
+.navbar-custom .nav-link {
+    color: #F1C40F; /* Color de los enlaces */
 }
 
 .centered-container {

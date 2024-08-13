@@ -12,6 +12,7 @@
     <title>Clases Grupales</title>
     <link rel="stylesheet" type="text/css" href="~/css/Customers/Home.css" />
     <link rel="stylesheet" type="text/css" href="~/css/Customers/Classes.css" />
+  
    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
@@ -19,7 +20,7 @@
 </head>
 <body class="fondo">
     <nav class="navbar navbar-expand-lg navbar-custom fondoNav">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" asp-controller="Customers" asp-action="Home">
             <img src="../Images/login-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,9 +46,15 @@
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Customers" asp-action="Progress">Progreso</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="profile-icon nav-link" asp-controller="Account" asp-action="Profile">
                         <i class="fas fa-user"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="LandingPage" asp-action="LandingPage">
+                        <i class="fas fa-sign-out-alt"></i> <!-- Icono de salir -->
                     </a>
                 </li>
             </ul>
@@ -93,3 +100,4 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+

@@ -1,13 +1,14 @@
 ﻿$(document).ready(function () {
-    var apiUrl = API_URL_BASE + '/Routine/RetrieveRoutineByClient';
+    const apiUrl = API_URL_BASE + '/Routine/RetrieveRoutineByClient';
 
     function loadRoutineData() {
+        console.log('Loading routine data...'); // Mensaje de inicio
         $.ajax({
             url: apiUrl,
-            data: { userId: 5 },
+            data: { userId: 3 },
             method: 'GET',
             success: function (response) {
-                console.log(response); // Verifica la estructura de la respuesta
+                console.log('Response received:', response); // Verifica la estructura de la respuesta
                 if (Array.isArray(response) && response.length > 0) {
                     let tableData = [];
 
@@ -30,9 +31,12 @@
                         }
                     });
 
+                    console.log('Table data:', tableData); // Verifica los datos que se van a cargar en la tabla
+
                     if ($.fn.DataTable.isDataTable('#routineTable')) {
                         let table = $('#routineTable').DataTable();
                         table.clear().rows.add(tableData).draw();
+                        console.log('DataTable updated with new data.');
                     } else {
                         $('#routineTable').DataTable({
                             data: tableData,
@@ -47,40 +51,59 @@
                                 { title: "Día" }
                             ]
                         });
+                        console.log('DataTable initialized with new data.');
                     }
                 } else {
                     console.log("No se encontraron rutinas para el usuario.");
+                    alert("No se encontraron rutinas para el usuario.");
                 }
             },
             error: function (err) {
                 console.error('Error fetching routine data:', err);
+                alert('Error fetching routine data: ' + (err.responseJSON ? err.responseJSON.message : err.statusText));
             }
         });
     }
 
-    $('#saveButton').on('click', function () {
-        var routineData = $('#routineTable').DataTable().rows().data().toArray();
-        var apiUrl = API_URL_BASE + '/Routine/SaveRoutine';
+    loadRoutineData(); 
 
-        // Imprimir los datos que se van a enviar
-        console.log('Datos a enviar:', routineData);
+    
+    $('#trainingLogForm').on('submit', function (e) {
+        e.preventDefault();
+        let apiUrl = API_URL_BASE + '/TrainingLogs/AddTrainingLog';
+        const clientId = 3;
+
+        const trainingLog = {
+            ClientID: clientId,
+            ExcerciseName: $('#exerciseName').val(),
+            DateLogged: new Date($('#dateLogged').val()).toISOString(),
+            SetsCompleted: $('#setsCompleted').val(),
+            RepetitionsCompleted: $('#repetitionsCompleted').val(),
+            WeightUsed: $('#weightUsed').val(),
+            DurationInSeconds: $('#durationInSeconds').val(),
+        };
 
         $.ajax({
             url: apiUrl,
-            method: 'POST',
+            type: 'POST',
             contentType: 'application/json',
-            data: JSON.stringify(routineData),
+            data: JSON.stringify(trainingLog),
             success: function (response) {
-                Swal.fire('Guardado', 'La rutina ha sido guardada exitosamente.', 'success');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: 'Training log created successfully.'
+                });
             },
-            error: function (err) {
-                console.error('Error saving routine data:', err);
-                Swal.fire('Error', 'Hubo un error al guardar la rutina.', 'error');
+
+            error: function (jqXHR, textStatus, errorThrown) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'An error occurred: ' + (jqXHR.responseText || errorThrown)
+                });
             }
+
         });
     });
-
-
-
-    loadRoutineData();
 });

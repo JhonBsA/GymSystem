@@ -96,16 +96,6 @@ namespace FitnessCenter.Data.Mapper.RoutineMapper
             return operation;
         }
 
-        public SqlOperation GetRetrieveAllStatement()
-        {
-            var operation = new SqlOperation
-            {
-                ProcedureName = "RetrieveAllRoutines"
-            };
-
-            return operation;
-        }
-
         public SqlOperation GetRetrieveByClientStatement(int clientID)
         {
             var operation = new SqlOperation
@@ -262,10 +252,18 @@ namespace FitnessCenter.Data.Mapper.RoutineMapper
 
             return lstResults;
         }
-       
 
-
+        public SqlOperation GetRetrieveAllStatement()
+        {
+            throw new NotImplementedException();
+        }
     }
 
+
+
+
+
 }
+
+
 

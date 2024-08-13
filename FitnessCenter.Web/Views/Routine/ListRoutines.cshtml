@@ -10,17 +10,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rutinas de Ejercicio</title>
-    <link rel="stylesheet" type="text/css" href="~/css/Customers/Home.css" />
     <link rel="stylesheet" type="text/css" href="~/css/Routine/ListRoutine.css" />
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <script src="~/js/Routine/listRoutine.js" defer></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"></script><!--Link para pasar a español los names de la table-->
 </head>
-
+<style>
+   
+    label{
+        color: white;
+    }
+    body{
+        background-color: #4a545f;
+    }
+</style>
 <body class="fondo">
     <nav class="navbar navbar-expand-lg navbar-custom fondoNav">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" asp-controller="Customers" asp-action="Home">
             <img src="../Images/login-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,9 +54,15 @@
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Customers" asp-action="Progress">Progreso</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="profile-icon nav-link" asp-controller="Account" asp-action="Profile">
                         <i class="fas fa-user"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="LandingPage" asp-action="LandingPage">
+                        <i class="fas fa-sign-out-alt"></i> <!-- Icono de salir -->
                     </a>
                 </li>
             </ul>
@@ -67,7 +81,7 @@
                     <th>Sets</th>
                     <th>Repeticiones</th>
                     <th>Peso</th>
-                    <th>Duración (s)</th>
+                    <th>Duración (segundos)</th>
                     <th>Día</th>
                 </tr>
             </thead>
@@ -75,9 +89,63 @@
                 <!-- Aquí se insertarán los datos dinámicamente -->
             </tbody>
         </table>
-        <button id="saveButton" class="btn btn-primary">Guardar Rutinas</button>
-
     </div>
+
+    <h2 class="text-center text-white mt-4">Registro de Entrenamientos</h2>
+
+    <div class="container mt-4" style="max-width: 600px;">
+      
+            <div class="card-body" style="background-color: #34495E;">
+                <form id="trainingLogForm">
+                    <div class="form-group">
+                        <label for="exerciseName" style="color: white;">Nombre del Ejercicio</label>
+                        <input type="text" class="form-control" id="exerciseName">
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="setsCompleted" style="color: white;">Series</label>
+                                <input type="number" class="form-control" id="setsCompleted">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="repetitionsCompleted" style="color: white;">Repeticiones</label>
+                                <input type="number" class="form-control" id="repetitionsCompleted">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="weightUsed" style="color: white;">Peso (kg)</label>
+                                <input type="number" step="0.01" class="form-control" id="weightUsed">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="durationInSeconds" style="color: white;">Duración (segundos)</label>
+                                <input type="number" class="form-control" id="durationInSeconds">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="dateLogged" style="color: white;">Fecha</label>
+                                <input type="datetime-local" class="form-control" id="dateLogged">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block mt-3">Registrar</button>
+                    <div id="responseMessage" class="mt-3"></div>
+                </form>
+            </div>
+            <br />
+       
+    </div>
+
+
+
+
+
+
+
 
     <!-- Scripts de Bootstrap y otros -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -85,7 +153,19 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/site.js"></script>
+    <script src="~/js/Routine/listRoutine.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
+<script>
+    $(document).ready(function () {
+        $('#routineTable').DataTable({
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"
+            }
+        });
+    });
+</script>
 
 </html>
+
 

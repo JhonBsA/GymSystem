@@ -8,11 +8,10 @@ namespace FitnessCenter.Data.Dao
     {
         private static SqlDao instance = new SqlDao();
 
-        private string _server = "localhost"; // Usa doble barra invertida
+        private string _server = "DIEGO\\SQLEXPRESS"; // Usa doble barra invertida
         private string _database = "BioSport";
         private string _userId = "sa";
-        private string _password = "Makober33*";
-
+        private string _password = "diego123"; // O puedes usar "Makober33*" según corresponda
         private string _trustServerCertificate = "True";
 
         private string _connString => $"Server={_server};Database={_database};User ID={_userId};Password={_password};TrustServerCertificate={_trustServerCertificate};";
@@ -26,22 +25,23 @@ namespace FitnessCenter.Data.Dao
 
         public List<Dictionary<string, object>> ExecuteStoredProcedure(SqlOperation operation)
         {
-            //hacer la conexion
+            // Hacer la conexión
             string connectionString = _connString;
             SqlConnection conn = new SqlConnection(connectionString);
 
-            //Armar el query
+            // Armar el query
             SqlCommand command = new SqlCommand();
             command.Connection = conn;
             command.CommandText = operation.ProcedureName;
             command.CommandType = CommandType.StoredProcedure;
 
-            //Agregar los parametros
+            // Agregar los parámetros
             foreach (var p in operation.Parameters)
             {
                 command.Parameters.Add(p);
             }
-            //abrir conexion
+
+            // Abrir conexión
             conn.Open();
 
             using (SqlDataReader reader = command.ExecuteReader())
@@ -58,8 +58,6 @@ namespace FitnessCenter.Data.Dao
                 }
                 return result;
             }
-            //Ejecutar el comando
-            //command.ExecuteNonQuery();
         }
 
         public List<Dictionary<string, object>> ExecuteStoredProcedureWithResult(SqlOperation operation)

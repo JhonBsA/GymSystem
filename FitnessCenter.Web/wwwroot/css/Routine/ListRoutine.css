@@ -1,3 +1,66 @@
+.navbar-nav {
+    margin-left: auto;
+}
+
+.nav-item {
+    position: relative;
+    margin-left: 10px;
+}
+
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px; /*Tamaño estándar de la barra nav*/
+    background: #F1C40F;
+    transition: width .3s;
+    margin: 0 auto;
+}
+
+.nav-link:hover::after { /*Efecto de la línea de los btn*/
+    width: 100%;
+    transition: width .3s; /*Velocidad de la raya al abrirse*/
+}
+
+.fondoNav {
+    background-color: #2e4257;
+}
+
+.navbar-brand,
+.navbar-custom .nav-link {
+    color: #F1C40F; /* Color de los enlaces */
+}
+
+
+
+.navbar .navbar-nav .nav-link {
+    font-size: 1.1rem;
+}
+
+
+
+#hero {
+    position: relative;
+    height: 140vh; /* Ajusta la altura del contenedor */
+    background: url('../../static/home2.jpg') no-repeat center center;
+    background-size: 100% auto; /* Aumenta el tamaño del fondo para dar más espacio */
+    background-position: center top; /* Ajusta la posición de la imagen */
+    text-align: center;
+    color: white;
+}
+
+.logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.logo {
+    max-width: 200px;
+    opacity: 0.8;
+}
+
 .table-container {
     margin: 20px auto;
     padding: 2rem;
@@ -12,60 +75,83 @@
     background-color: #34495E; /* Fondo de la tabla */
 }
 
-    .table thead th {
-        background-color: #2C3E50; /* Fondo del encabezado de la tabla */
-        color: white; /* Color del texto del encabezado */
-    }
+.table thead th {
+    background-color: #2C3E50; /* Fondo del encabezado de la tabla */
+    color: white; /* Color del texto del encabezado */
+}
 
-    .table tbody tr {
-        background-color: #34495E; /* Fondo de las filas */
-    }
+.table tbody tr {
+    background-color: #34495E; /* Fondo de las filas */
+}
 
-        .table tbody tr:nth-child(even) {
-            background-color: #2C3E50; /* Fondo de las filas pares */
-        }
+.table tbody tr:nth-child(even) {
+    background-color: #2C3E50; /* Fondo de las filas pares */
+}
 
-    .table th,
-    .table td {
-        text-align: center;
-        vertical-align: middle;
-        color: white; /* Color del texto */
-    }
+.table th,
+.table td {
+    text-align: center;
+    vertical-align: middle;
+}
 
 .form-container {
-    margin: 30px auto;
-    max-width: 600px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 30px;
+    border: 2px solid #2C3E50; /* Ajustar el color del borde para que coincida con la tabla */
+    border-radius: 10px;
+    background-color: #34495E;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7); /* Sombra suave */
 }
 
-    .form-container h2 {
-        margin-bottom: 20px;
-        font-size: 1.5rem;
-    }
-
-.form-control:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
-}
-
-.btn-primary {
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    font-size: 1rem;
-}
-
-    .btn-primary:hover {
-        background-color: #0056b3;
-    }
-
+.form-group input,
 .form-group label {
-    font-weight: bold;
+    color: white; /* Cambiar el color del texto y los bordes */
 }
 
-.textoBlanco {
-    color: white;
+label {
+    color: #F1C40F; /* Cambiar el color de las etiquetas */
 }
+
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    border: 2px solid #2C3E50;
+    border-radius: 10px;
+    background-color: #34495E;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+}
+.table td {
+    color: white; /* Cambiar el color del texto de las celdas a blanco */
+}
+/* Color blanco para el texto que muestra la información de los registros */
+.dataTables_info {
+    color: white !important; /* Asegúrate de usar !important si es necesario */
+}
+
+/* Color blanco para los botones de paginación */
+.dataTables_paginate .paginate_button {
+    color: white !important; /* Asegúrate de usar !important si es necesario */
+    border: 1px solid white; /* Color del borde de los botones */
+}
+
+/* Color de fondo de los botones de paginación */
+.dataTables_paginate .paginate_button {
+    background-color: white; /* Fondo oscuro para los botones */
+}
+
+    /* Color blanco para el botón activo */
+    .dataTables_paginate .paginate_button.current {
+        color: #333 !important; /* Texto del botón activo */
+        background-color: white !important; /* Fondo blanco para el botón activo */
+        border: 1px solid white !important; /* Borde blanco para el botón activo */
+    }
+
+    /* Color blanco para los botones "Anterior" y "Siguiente" */
+    .dataTables_paginate .paginate_button.previous,
+    .dataTables_paginate .paginate_button.next {
+        color: white !important; /* Texto de los botones "Anterior" y "Siguiente" */
+    }
+
+    
+

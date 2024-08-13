@@ -12,6 +12,7 @@
             Phone: $('#Telefono').val(),
             Email: $('#CorreoElectronico').val(),
             RoleName: "Cliente",
+
         };
 
         // Validar campos antes de enviar
