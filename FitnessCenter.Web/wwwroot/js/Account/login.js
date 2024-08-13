@@ -10,11 +10,6 @@ const loginUser = (e) => {
 
     const apiUrl = API_URL_BASE + "/Account/Login";
 
-    //const email = $("#email").val().trim();
-    //const password = $("#password").val().trim();
-
-    //const apiUrl = API_URL_BASE + `/Account/Login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
-
     $.ajax({
         url: apiUrl,
         method: "POST",
@@ -23,15 +18,15 @@ const loginUser = (e) => {
         dataType: "json",
     })
         .done((result) => {
-            console.log(result);
             Swal.fire({
-                title: "Logeo exitoso",
+                title: "Inicio de sesión exitoso",
                 icon: "success",
                 confirmButtonText: "Aceptar",
+            }).then(() => {
+                window.location.href = redirectToHome;
             });
         })
         .fail((jqXHR, textStatus, errorThrown) => {
-            console.error("Error en la solicitud:", textStatus, errorThrown);
             let errorMessage = "Correo electrónico o contraseña incorrecto. Por favor, intente nuevamente.";
 
             if (jqXHR.responseJSON && jqXHR.responseJSON.Message) {
@@ -57,7 +52,7 @@ $(document).ready(function () {
         if (email === '' || password === '') {
             Swal.fire({
                 icon: 'error',
-                title: 'Oops...',
+                title: 'Atención...',
                 text: 'Todos los campos son obligatorios!',
             });
             return;

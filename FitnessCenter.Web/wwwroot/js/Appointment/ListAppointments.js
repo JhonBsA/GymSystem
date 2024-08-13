@@ -37,8 +37,6 @@ function editAppointment(appointmentID) {
 
 function cancelAppointment(appointmentId) {
 
-    console.log('Deleting appointment with ID:', appointmentId);
-
     Swal.fire({
         title: '¿Estás seguro?',
         text: "¡No podrás revertir esto!",

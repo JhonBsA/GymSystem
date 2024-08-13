@@ -69,15 +69,12 @@ body {
     .btn-primary:hover,
     .btn-primary:focus {
         background-color: #d35400 !important;
-        border-color: none !important;
         color: white !important;
-        border: 3px solid #E67E22 !important;
-        transition: border 0.15s !important;
+        border: none !important;
     }
 
     .btn-primary:focus {
         outline: none !important;
-        box-shadow: none !important;
     }
 
 .form-group {
