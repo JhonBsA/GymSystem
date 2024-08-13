@@ -10,21 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Progreso del cliente</title>
     <link rel="stylesheet" type="text/css" href="~/css/Customers/Home.css" />
-    
     <link rel="stylesheet" type="text/css" href="~/css/Customers/Progress.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<style>
-    
-
-   
-    .textBlanco {
-        color: white;
-    }
-</style>
 <body class="fondo">
     <nav class="navbar navbar-expand-lg navbar-custom fondoNav">
         <a class="navbar-brand" asp-controller="Customers" asp-action="Home">
@@ -67,13 +58,11 @@
             </ul>
         </div>
     </nav>
-    <div class="container mt-5">
-        <h2 class="text-center textBlanco">Evolución del Peso</h2>
-        <div class="card">
-            <div class="card-body">
-                <canvas id="progressChart"></canvas>
-            </div>
-        </div>
+    <h2 class="textoBlanco">Progreso</h2>
+    <div class="container">
+       
+        <canvas id="measurementChart" width="400" height="200" style="background-color: white;"></canvas>
+
     </div>
 
     <!-- jQuery y Bootstrap JS -->
@@ -84,65 +73,72 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <script>
         $(document).ready(function () {
-            // Datos de ejemplo
-            const data = [
-                { date: '2024-01-01', weight: 40 },
-                { date: '2024-02-01', weight: 50 },
-                { date: '2024-03-01', weight: 57 },
-                { date: '2024-04-01', weight: 65 },
-                { date: '2024-05-01', weight: 66 }
-            ];
+            const apiUrl = API_URL_BASE + '/Measurement/GetAll';
+            console.log('Fetching data from:', apiUrl);
 
-            // Mapear los datos para los ejes x e y
-            const labels = data.map(item => item.date);
-            const weights = data.map(item => item.weight);
+            $.ajax({
+                url: apiUrl,
+                method: 'GET',
+                success: function (data) {
+                    console.log('Data fetched successfully:', data);
 
-            // Seleccionar el elemento canvas y crear el gráfico
-            const ctx = document.getElementById('progressChart').getContext('2d');
-            const progressChart = new Chart(ctx, {
-                type: 'line', // Tipo de gráfico
+                    const weights = data.map(m => m.weight);
+                    const bodyFatPercentages = data.map(m => m.bodyFatPercentage);
+                    const measuredAtDates = data.map(m => new Date(m.measuredAt).toLocaleDateString());
+
+                    console.log('Weights:', weights);
+                    console.log('Body Fat Percentages:', bodyFatPercentages);
+                    console.log('Measured Dates:', measuredAtDates);
+
+                    // Llamar a la función para renderizar el gráfico
+                    renderMeasurementChart(weights, bodyFatPercentages, measuredAtDates);
+                },
+                error: function (err) {
+                    console.error('Error fetching measurements:', err);
+                }
+            });
+        });
+
+        function renderMeasurementChart(weights, bodyFatPercentages, dates) {
+            const ctx = document.getElementById('measurementChart').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'line',
                 data: {
-                    labels: labels,
+                    labels: dates, // Las fechas de las mediciones
                     datasets: [{
                         label: 'Peso (kg)',
-                        data: weights,
+                        data: weights, // Los pesos correspondientes
                         borderColor: 'rgba(75, 192, 192, 1)',
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         borderWidth: 2,
-                        tension: 0.3
+                        fill: false
+                    }, {
+                        label: 'Porcentaje de Grasa Corporal (%)',
+                        data: bodyFatPercentages, // Porcentajes de grasa corporal
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        borderWidth: 2,
+                        fill: false
                     }]
                 },
                 options: {
-                    responsive: true,
-                    plugins: {
-                        datalabels: {
-                            anchor: 'end',
-                            align: 'top',
-                            color: 'black',
-                            formatter: function (value) {
-                                return value + ' kg'; // Formato de la etiqueta (valor + unidad)
-                            }
-                        }
-                    },
                     scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Valor'
+                            }
+                        },
                         x: {
                             title: {
                                 display: true,
                                 text: 'Fecha'
                             }
-                        },
-                        y: {
-                            title: {
-                                display: true,
-                                text: 'Peso (kg)'
-                            },
-                            beginAtZero: false
                         }
                     }
-                },
-                plugins: [ChartDataLabels] // Agregar el plugin al gráfico
+                }
             });
-        });
+        }
     </script>
 </body>
+<script src="~/js/site.js"></script>
 </html>
