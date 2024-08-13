@@ -19,7 +19,7 @@ namespace FitnessCenter.Data.Mapper.MeasurementMapper
             var measurement = new Measurement
             {
                 MeasurementID = Convert.ToInt32(objectRow["MeasurementID"]),
-                Email = objectRow["Email"] as string, // Converting ClientID to Email
+                Email = objectRow["Email"] as string,
                 TrainerID = Convert.ToInt32(objectRow["TrainerID"]),
                 Weight = Convert.ToDecimal(objectRow["Weight"]),
                 Height = Convert.ToDecimal(objectRow["Height"]),
