@@ -96,8 +96,7 @@ body {
 
     .form-control:focus,
     .form-control:hover {
-        border: 3px solid #E67E22 !important;
-        transition: border 0.15s !important;
+        border: 1px solid #E67E22 !important;
     }
 
     .url {
