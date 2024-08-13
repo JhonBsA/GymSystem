@@ -247,6 +247,7 @@
                 var options = { year: 'numeric', month: 'long', day: 'numeric' };
                 var date = new Date(dateStr);
                 var formattedDate = date.toLocaleDateString('es-ES', options);
+                console.log(formattedDate);
 
                 $('#appointment-details').show();
                 $('#title').text('');
@@ -275,7 +276,7 @@
 
             $('#appointment-details').hide();
         });
-       
+        
     </script>
 
 <!-- jQuery -->
