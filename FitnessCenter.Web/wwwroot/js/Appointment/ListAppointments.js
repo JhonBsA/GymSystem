@@ -1,5 +1,8 @@
 ﻿
 let table = $('#appointmentTable').DataTable({
+    "language": {
+        "url": "https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"
+    },
     data: [], // Inicialmente la tabla no tiene datos
     columns: [
         { data: 'ClientName' },
