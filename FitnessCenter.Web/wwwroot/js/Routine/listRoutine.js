@@ -5,7 +5,7 @@
         console.log('probando conexion');
         $.ajax({
             url: apiUrl,
-            data: { userId: 3 },//Preguntar, como obtengo el userid dinamicamente
+            data: { userId:3 },//Preguntar, como obtengo el userid dinamicamente
             method: 'GET',
             success: function (response) {
                 console.log('Response received:', response);

@@ -110,4 +110,46 @@
     });
 
     $('#appointment-details').hide();
+
+
+    $('#reserva').click(function () {
+
+        const reservarCita = {
+
+            trainerName: $('#title').text().replace('Cita de medición con el entrenador ', ''),
+            clientName: $('#appointment-details').data('clientName'),
+            appointmentDate: $('#hora').text().replace('El ', '')
+        };
+
+        const apiUrl = API_URL_BASE + '/Appointment/CreateAppointment';
+
+        $.ajax({
+            url: apiUrl,
+            type: 'POST',
+            data: JSON.stringify(reservarCita),
+            contentType: 'application/json;charset=utf-8',
+            dataType: 'json',
+            success: function (response) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Cita reservada',
+                    text: 'Cita reservada con éxito',
+                    confirmButtonText: 'Aceptar',
+                    text: response.Message,
+                }).then(() => {
+                    calendar.refetchEvents(); 
+                });
+            },
+            error: function (xhr, status, error) {
+                console.error('Error al reservar la cita:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Error al reservar la cita',
+                    confirmButtonText: 'Aceptar',
+                    
+                });
+            }
+        });
+    });
 });
