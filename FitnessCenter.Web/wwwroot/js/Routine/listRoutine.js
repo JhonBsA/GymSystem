@@ -70,9 +70,12 @@
 
     $('#trainingLogForm').on('submit', function (e) {
         e.preventDefault();
-        let apiUrl = API_URL_BASE + '/TrainingLogs/AddTrainingLog';
+        let apiUrl = API_URL_BASE + '/TrainingLogs/AddTrainingLog?ClientId';
 
         const clientId = 3;//preguntar, como hago para obtener el id del cliente dinamicamente?? /logi
+
+        //https://localhost:7252/api/Account/GetUserByUserID?UserID=10
+        //let apiUrlId = API_URL_BASE + '/Account/GetUserByID?UserID=' + UserID;
 
         const trainingLog = {
             ClientID: clientId,

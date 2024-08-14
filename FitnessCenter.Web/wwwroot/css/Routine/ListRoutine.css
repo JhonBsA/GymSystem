@@ -103,9 +103,7 @@
 
 
 
-label {
-    color: #F1C40F; /* Cambiar el color de las etiquetas */
-}
+
 
 
 .card-body {
@@ -134,15 +132,15 @@ label {
 
 /* Color de fondo de los botones de paginación */
 .dataTables_paginate .paginate_button {
-    background-color: white; /* Fondo oscuro para los botones */
+    color: white; /* Fondo oscuro para los botones */
 }
 
-    /* Color blanco para el botón activo */
-    .dataTables_paginate .paginate_button.current {
-        color: #333 !important; /* Texto del botón activo */
-        background-color: white !important; /* Fondo blanco para el botón activo */
-        border: 1px solid white !important; /* Borde blanco para el botón activo */
-    }
+/* Color blanco para el botón activo */
+.dataTables_paginate .paginate_button.current {
+    color: #333 !important; /* Texto del botón activo */
+    background-color: white !important; /* Fondo blanco para el botón activo */
+    border: 1px solid white !important; /* Borde blanco para el botón activo */
+}
 
     /* Color blanco para los botones "Anterior" y "Siguiente" */
     .dataTables_paginate .paginate_button.previous,
@@ -151,7 +149,7 @@ label {
     }
 
 
-label {/*Color del text de la table*/
+.dataTables_length label, label {
     color: white;
 }
 
@@ -186,3 +184,10 @@ label {/*Color del text de la table*/
 .form-group label {
     color: black; /* Cambiar el color del texto y los bordes */
 }
+/* Color blanco para el texto que muestra la información de los registros */
+.dataTables_info,
+.dataTables_length label,
+.dataTables_filter label {
+    color: white !important; /* Asegúrate de usar !important si es necesario */
+}
+

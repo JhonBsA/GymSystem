@@ -1,5 +1,8 @@
 ﻿$(document).ready(() => {
     let table = $('#trainingTable').DataTable({
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"
+        },
         data: [],
         columns: [
             { data: 'exerciseName'},
@@ -28,8 +31,10 @@
 
         table.clear().rows.add(formattedData).draw();
     }
+    //https://localhost:7252/api/Account/GetUserByUserID?UserID=10
+    //let apiUrlId = API_URL_BASE + '/Account/GetUserByID?UserID=' + UserID;
 
-    let apiUrl = API_URL_BASE + '/TrainingLogs/UserTrainingLogs'; 
+    let apiUrl = API_URL_BASE + '/TrainingLogs/UserTrainingLogs?'; 
     $.ajax({
         url: apiUrl,
         method: 'GET',
@@ -47,3 +52,4 @@
             });
         });
 });
+
