@@ -115,6 +115,27 @@ namespace FitnessCenter.Data.Mapper.AppointmentMapper
             operation.AddDateTimeParam("EndDate", endDate);
             return operation;
         }
+
+        public SqlOperation GetRetrieveLastAppointmentDateStatement()
+        {
+            var operation = new SqlOperation
+            {
+                ProcedureName = "GetLastAppointmentDate"
+            };
+            return operation;
+        }
+
+        public SqlOperation GetAppointmentById(int appointmentID)
+        {
+            var operation = new SqlOperation
+            {
+                ProcedureName = "GetAppointmentById"
+            };
+
+            operation.AddIntegerParam("AppointmentID", appointmentID);
+
+            return operation;
+        }
     }
 }
 

@@ -12,6 +12,7 @@
     <title>Mi perfil</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
      <link rel="stylesheet" type="text/css" href="~/css/Account/Profile.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/Customers/Home.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
@@ -22,9 +23,9 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-custom">
+    <nav class="navbar navbar-expand-lg navbar-custom fondoNav">
         <a class="navbar-brand" asp-controller="Customers" asp-action="Home">
-            <img src="~/Images/login-logo.png" alt="Logo del Sistema" height="40">
+            <img src="../Images/login-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -35,23 +36,29 @@
                     <a class="nav-link" asp-controller="Customers" asp-action="Home">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Rutinas</a>
+                    <a class="nav-link" asp-controller="Routine" asp-action="ListRoutines">Rutinas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Citas de medición</a>
+                    <a class="nav-link" asp-controller="Customers" asp-action="Appointments">Citas de medición</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Clases</a>
+                    <a class="nav-link" asp-controller="Customers" asp-action="Classes">Clases</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Entrenamientos</a>
+                    <a class="nav-link" asp-controller="Customers" asp-action="Trainings">Entrenamientos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Progreso</a>
+                    <a class="nav-link" asp-controller="Customers" asp-action="Progress">Progreso</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="profile-icon nav-link" href="#">
+                    <a class="profile-icon nav-link" asp-controller="Account" asp-action="Profile">
                         <i class="fas fa-user"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="LandingPage" asp-action="LandingPage">
+                        <i class="fas fa-sign-out-alt"></i> <!-- Icono de salir -->
                     </a>
                 </li>
             </ul>

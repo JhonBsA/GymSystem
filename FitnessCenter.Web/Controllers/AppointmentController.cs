@@ -5,11 +5,6 @@ namespace FitnessCenter.Web.Controllers
 {
     public class AppointmentController : Controller
     {
-        [HttpGet]
-        public IActionResult IndexAppointments()
-        {
-            return View();
-        }
 
         [HttpGet]
         public IActionResult ListAppointments()

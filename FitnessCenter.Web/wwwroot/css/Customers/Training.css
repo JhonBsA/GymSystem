@@ -1,0 +1,96 @@
+.navbar-nav {
+    margin-left: auto;
+}
+
+.nav-item {
+    position: relative;
+    margin-left: 10px;
+}
+
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px; /*Tamaño estándar de la barra nav*/
+    background: #F1C40F;
+    transition: width .3s;
+    margin: 0 auto;
+}
+
+.nav-link:hover::after { /*Efecto de la línea de los btn*/
+    width: 100%;
+    transition: width .3s; /*Velocidad de la raya al abrirse*/
+}
+
+.fondoNav {
+    background-color: #2e4257;
+}
+
+.navbar-brand,
+.navbar-custom .nav-link {
+    color: #F1C40F; /* Color de los enlaces */
+}
+
+.navbar .navbar-nav .nav-link {
+    font-size: 1rem;
+}
+
+.logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.logo {
+    max-width: 200px;
+    opacity: 0.8;
+}
+
+
+
+
+
+
+
+
+
+
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.textoBlanco {
+    color: white;
+}
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    flex-grow: 1;
+}
+
+.titulo {
+    text-align: center;
+    color: white;
+}
+.fondoCards {
+    background-color: #34495E;
+}
+.fondoBotones {
+    background-color: #E67E22 !important;
+}

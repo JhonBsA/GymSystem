@@ -1,0 +1,50 @@
+﻿.titulo {
+    background-color: #2C3E50;
+    margin: -10px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    width: 100%;
+    background: #fff;
+    padding: 4vh;
+    border-radius: 15px;
+    background-color: #2C3E50;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+    margin-top: 3%;
+}
+
+.inputContainer {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+
+.idAppointment {
+    display: flex;
+    justify-items: flex-start;
+    margin-top: 30px;
+    margin-left: -185px;
+}
+
+
+.buttons {
+    display: flex;
+    gap: 20%;
+    margin-top: 50px;
+}
+
+.btn {
+    align-content: center;
+    padding: 10px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    width: 50%;
+}

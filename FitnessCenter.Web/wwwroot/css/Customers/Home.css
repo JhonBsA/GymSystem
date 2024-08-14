@@ -1,18 +1,5 @@
-.navbar-brand,
-.navbar-custom .nav-link {
-    color: #F1C40F; /* Color de los enlaces */
-}
-
 .fondo {
     background-color: #4a545f;
-}
-
-.fondoNav {
-    background-color: #2e4257;
-}
-
-.profile-icon {
-    color: #000; /* Cambiar el color a negro */
 }
 
 .navbar-nav {
@@ -39,11 +26,31 @@
     transition: width .3s; /*Velocidad de la raya al abrirse*/
 }
 
+.fondoNav {
+    background-color: #2e4257;
+}
+
+.navbar-brand,
+.navbar-custom .nav-link {
+    color: #F1C40F; /* Color de los enlaces */
+}
+
+/* Otros estilos */
+
+/* Estilo para los enlaces del menú de navegación */
+.navbar .navbar-nav .nav-link {
+    font-size: 1rem;
+}
+
+
+
+
 #hero {
     position: relative;
-    height: 650px;
-    background: url('../../static/home2.jpg') no-repeat center 0% fixed;
-    background-size: cover;
+    height: 140vh; /* Ajusta la altura del contenedor */
+    background: url('../../static/home2.jpg') no-repeat center center;
+    background-size: 100% auto; /* Aumenta el tamaño del fondo para dar más espacio */
+    background-position: center top; /* Ajusta la posición de la imagen */
     text-align: center;
     color: white;
 }
@@ -58,4 +65,57 @@
 .logo {
     max-width: 200px;
     opacity: 0.8;
+}
+
+.container {
+    margin: 20px auto;
+    padding: 2rem;
+    background-color: #34495E;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    width: 80%;
+    max-width: 1200px;
+}
+
+.table {
+    background-color: #34495E; /* Fondo de la tabla */
+    border: 1px solid #FFFFFF; /* Borde de la tabla */
+}
+
+    .table thead th {
+        background-color: #2C3E50; /* Fondo del encabezado de la tabla */
+        color: white; /* Color del texto del encabezado */
+    }
+
+    .table tbody tr {
+        background-color: #34495E; /* Fondo de las filas */
+    }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #2C3E50; /* Fondo de las filas pares */
+        }
+
+    .table th,
+    .table td {
+        text-align: center;
+        vertical-align: middle;
+        color: white; /* Color del texto */
+        border: 1px solid #FFFFFF; /* Borde de las celdas */
+    }
+
+.mt-4 {
+    margin-top: 1.5rem !important;
+    background: #34495E;
+}
+
+.table.dataTable tbody tr {
+    background-color: #34495E;
+}
+
+/* Estilos comentados para ocultar controles de DataTables */
+
+
+
+.mt-3 {
+    margin-top: 2rem !important;
 }

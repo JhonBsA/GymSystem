@@ -4,8 +4,8 @@
     {
         public int AppointmentID { get; set; }
         public string ClientID{ get; set; }
-        public DateTime AppointmentDate { get; set; }
         public string TrainerID { get; set; }
+        public DateTime AppointmentDate { get; set; }
         public string DurationInMinutes { get; set; }
         public string Notes { get; set; }
     }

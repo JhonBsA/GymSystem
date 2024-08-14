@@ -96,16 +96,6 @@ namespace FitnessCenter.Data.Mapper.RoutineMapper
             return operation;
         }
 
-        public SqlOperation GetRetrieveAllStatement()
-        {
-            var operation = new SqlOperation
-            {
-                ProcedureName = "RetrieveAllRoutines"
-            };
-
-            return operation;
-        }
-
         public SqlOperation GetRetrieveByClientStatement(int clientID)
         {
             var operation = new SqlOperation
@@ -174,16 +164,27 @@ namespace FitnessCenter.Data.Mapper.RoutineMapper
             return operation;
         }
 
+
         public T BuildObject<T>(Dictionary<string, object> row)
         {
+            object GetValueOrDefault(string key, object defaultValue)
+            {
+                if (row.ContainsKey(key))
+                {
+                    var value = row[key];
+                    return value == DBNull.Value ? defaultValue : value;
+                }
+                return defaultValue;
+            }
+
             if (typeof(T) == typeof(RoutineWithID))
             {
                 var routineWithID = new RoutineWithID
                 {
-                    RoutineID = row.ContainsKey("RoutineID") ? Convert.ToInt32(row["RoutineID"]) : 0,
-                    ClientID = row.ContainsKey("ClientID") ? Convert.ToInt32(row["ClientID"]) : 0,
-                    TrainerID = row.ContainsKey("TrainerID") ? Convert.ToInt32(row["TrainerID"]) : 0,
-                    CreatedAt = row.ContainsKey("CreatedAt") ? Convert.ToDateTime(row["CreatedAt"]) : DateTime.MinValue,
+                    RoutineID = Convert.ToInt32(GetValueOrDefault("RoutineID", 0)),
+                    ClientID = Convert.ToInt32(GetValueOrDefault("ClientID", 0)),
+                    TrainerID = Convert.ToInt32(GetValueOrDefault("TrainerID", 0)),
+                    CreatedAt = Convert.ToDateTime(GetValueOrDefault("CreatedAt", DateTime.MinValue)),
                     ExerciseDetails = new List<FitnessCenter.DTO.RoutineDTO.RoutineExerciseDetail>()
                 };
 
@@ -193,23 +194,26 @@ namespace FitnessCenter.Data.Mapper.RoutineMapper
             {
                 var exerciseDetail = new FitnessCenter.DTO.RoutineDTO.RoutineExerciseDetail
                 {
-                    ExerciseID = row.ContainsKey("ExerciseID") ? Convert.ToInt32(row["ExerciseID"]) : 0,
-                    EquipmentID = row.ContainsKey("EquipmentID") ? Convert.ToInt32(row["EquipmentID"]) : 0,
-                    Sets = row.ContainsKey("Sets") ? Convert.ToInt32(row["Sets"]) : (int?)null,
-                    Repetitions = row.ContainsKey("Repetitions") ? Convert.ToInt32(row["Repetitions"]) : (int?)null,
-                    Weight = row.ContainsKey("Weight") ? Convert.ToDecimal(row["Weight"]) : (decimal?)null,
-                    DurationInSeconds = row.ContainsKey("DurationInSeconds") ? Convert.ToInt32(row["DurationInSeconds"]) : (int?)null,
-                    AmrapTimeLimitInSeconds = row.ContainsKey("AmrapTimeLimitInSeconds") ? Convert.ToInt32(row["AmrapTimeLimitInSeconds"]) : (int?)null,
-                    AmrapRepetitions = row.ContainsKey("AmrapRepetitions") ? Convert.ToInt32(row["AmrapRepetitions"]) : (int?)null,
-                    Dia = row.ContainsKey("Dia") ? Convert.ToInt32(row["Dia"]) : (int?)null
+                    ExerciseID = Convert.ToInt32(GetValueOrDefault("ExerciseID", 0)),
+                    ExerciseName = GetValueOrDefault("ExerciseName", string.Empty).ToString(),
+                    EquipmentID = Convert.ToInt32(GetValueOrDefault("EquipmentID", 0)),
+                    EquipmentName = GetValueOrDefault("EquipmentName", string.Empty).ToString(),
+                    ExerciseTypeName = GetValueOrDefault("ExerciseTypeName", string.Empty).ToString(),
+                    Sets = GetValueOrDefault("Sets", (int?)null) as int?,
+                    Repetitions = GetValueOrDefault("Repetitions", (int?)null) as int?,
+                    Weight = GetValueOrDefault("Weight", (decimal?)null) as decimal?,
+                    DurationInSeconds = GetValueOrDefault("DurationInSeconds", (int?)null) as int?,
+                    AmrapTimeLimitInSeconds = GetValueOrDefault("AmrapTimeLimitInSeconds", (int?)null) as int?,
+                    AmrapRepetitions = GetValueOrDefault("AmrapRepetitions", (int?)null) as int?,
+                    Dia = GetValueOrDefault("Dia", (int?)null) as int?
                 };
 
                 return (T)(object)exerciseDetail;
             }
 
-            
             return default(T);
         }
+
 
         public List<T> BuildObjects<T>(List<Dictionary<string, object>> rows)
         {
@@ -248,7 +252,18 @@ namespace FitnessCenter.Data.Mapper.RoutineMapper
 
             return lstResults;
         }
+
+        public SqlOperation GetRetrieveAllStatement()
+        {
+            throw new NotImplementedException();
+        }
     }
 
+
+
+
+
 }
+
+
 

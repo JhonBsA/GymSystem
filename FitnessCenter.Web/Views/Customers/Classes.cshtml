@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewData["Title"] = "Classes";
+    Layout = null; // No usar el layout predeterminado
+}
+   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clases Grupales</title>
+    <link rel="stylesheet" type="text/css" href="~/css/Customers/Home.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/Customers/Classes.css" />
+  
+   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+   
+</head>
+<body class="fondo">
+    <nav class="navbar navbar-expand-lg navbar-custom fondoNav">
+        <a class="navbar-brand" asp-controller="Customers" asp-action="Home">
+            <img src="../Images/login-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Customers" asp-action="Home">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Routine" asp-action="ListRoutines">Rutinas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Customers" asp-action="Appointments">Citas de medición</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Customers" asp-action="Classes">Clases</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Customers" asp-action="Trainings">Entrenamientos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Customers" asp-action="Progress">Progreso</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="profile-icon nav-link" asp-controller="Account" asp-action="Profile">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="LandingPage" asp-action="LandingPage">
+                        <i class="fas fa-sign-out-alt"></i> <!-- Icono de salir -->
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5 ">
+        <h1 class="mb-5 titulo">Clases Grupales</h1>
+        <div class="row ">
+            <div class="col-md-4 ">
+                <div class="card ">
+                    <img src="../static/Spinning.jpg" class="card-img-top" alt="Spinning">
+                    <div class="card-body ">
+                        <h5 class="card-title">Spinning</h5>
+                        <p class="card-text">Únete a nuestra clase de spinning para un entrenamiento cardiovascular intenso.</p>
+                        <a href="#" class="btn fondoBotones">Reservar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="../static/zumbaa.jpg" class="card-img-top" alt="Zumba">
+                    <div class="card-body">
+                        <h5 class="card-title">Zumba</h5>
+                        <p class="card-text">Baila y quema calorías con nuestra energética clase de Zumba.</p>
+                        <a href="#" class="btn fondoBotones">Reservar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="../static/Aerobicos.webp" class="card-img-top" alt="Aeróbicos">
+                    <div class="card-body">
+                        <h5 class="card-title">Aeróbicos</h5>
+                        <p class="card-text">Mejora tu resistencia y fuerza con nuestra clase de aeróbicos.</p>
+                        <a href="#" class="btn fondoBotones">Reservar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

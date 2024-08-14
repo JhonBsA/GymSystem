@@ -143,8 +143,28 @@ namespace FitnessCenter.API.Controllers
 
             return Ok(firstUser); // Devuelve el primer usuario como JSON
         }
-        
-        
+
+        [HttpGet]
+        [Route("RetrieveUsersByRole")]
+        public IActionResult RetrieveUsersByRole([FromQuery] string roleName)
+        {
+            var result = _userManager.GetUsersByRole(roleName);
+            return Ok(result);
+        }
+
+        [HttpGet("GetCustomers")]
+        public IActionResult GetCustomers()
+        {
+            var customers = _userManager.GetUsersByRole("Cliente");
+            return Ok(customers);
+        }
+
+        [HttpGet("GetTrainers")]
+        public IActionResult GetTrainers()
+        {
+            var trainers = _userManager.GetUsersByRole("Entrenador");
+            return Ok(trainers);
+        }
 
     }
 }

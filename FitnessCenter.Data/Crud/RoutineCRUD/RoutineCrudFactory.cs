@@ -90,14 +90,9 @@ namespace FitnessCenter.Data.Dao
             }
             return mapper.BuildObject<T>(result[0]);
         }
-
-        public List<T> RetrieveAll<T>()
-        {
-            SqlOperation operation = mapper.GetRetrieveAllStatement();
-            var result = dao.ExecuteStoredProcedureWithResult(operation);
-            return mapper.BuildObjects<T>(result);
-        }
-
+        
+       
+        
         public List<RoutineWithID> RetrieveByClient(int clientID)
         {
             SqlOperation operation = mapper.GetRetrieveByClientStatement(clientID);
@@ -129,5 +124,12 @@ namespace FitnessCenter.Data.Dao
             SqlOperation operation = mapper.GetClearEquipmentStatement(routineID);
             dao.ExecuteStoredProcedure(operation);
         }
+       
+
+
+       
+
     }
 }
+
+

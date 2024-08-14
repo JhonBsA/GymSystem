@@ -4,6 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 using FitnessCenter.DTO.RoutineDTO;
 using FitnessCenter.Core;
 using Microsoft.AspNetCore.Http.HttpResults;
+using FitnessCenter.DTO;
+
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace FitnessCenter.API.Controllers
 {
@@ -40,9 +44,10 @@ namespace FitnessCenter.API.Controllers
             return Ok(result);
         }
 
+
         [HttpGet]
         [Route("RetrieveRoutineByClient")]
-        public IActionResult RetrieveRoutineByClient(int userId)
+        public IActionResult RetrieveRoutineByClient([FromQuery] int userId)
         {
             var result = _routineManager.RetrieveByClient(userId);
 
@@ -54,6 +59,17 @@ namespace FitnessCenter.API.Controllers
             return Ok(result);
         }
 
+
+
+
+
+
+
+
+
+
+
     }
 }
+
 

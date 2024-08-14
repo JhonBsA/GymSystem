@@ -1,4 +1,7 @@
 
+
+
+
 body {
     background-color: #4a545f;
     display: flex;
@@ -14,6 +17,7 @@ body {
     background: #fff;
     padding: 20px;
     border-radius: 8px;
+    margin-top: 200px;
 }
 
 .custom-color {
@@ -66,4 +70,38 @@ body {
 .form-control {
     height: 37px; /* Incrementar la altura del input */
     font-size: 1.1rem; /* Ajustar el tamaño de la fuente para que se vea proporcional */
+}
+
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.nav-item {
+    position: relative;
+    margin-left: 10px;
+}
+
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #F1C40F;
+    transition: width .3s;
+    margin: 0 auto;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    transition: width .3s;
+}
+
+.fondoNav {
+    background-color: #2e4257;
+}
+
+.navbar-brand,
+.navbar-custom .nav-link {
+    color: #F1C40F;
 }

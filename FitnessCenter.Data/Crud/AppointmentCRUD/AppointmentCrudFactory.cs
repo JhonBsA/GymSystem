@@ -86,5 +86,36 @@ namespace FitnessCenter.Data.Crud.AppointmentCRUD
             var result = dao.ExecuteStoredProcedureWithResult(operation);
             return mapper.BuildObjects(result);
         }
+
+        public DateTime RetrieveLastAppointmentDate()
+        {
+            SqlOperation operation = mapper.GetRetrieveLastAppointmentDateStatement();
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+
+            if (result.Count > 0)
+            {
+                var row = result[0];
+                return Convert.ToDateTime(row["LastAppointmentDate"]);
+            }
+
+            return DateTime.MinValue; // O cualquier valor por defecto
+        }
+
+        public AppointmentBaseClass GetAppointmentById(int appointmentID)
+        {
+            SqlOperation operation = mapper.GetAppointmentById(appointmentID);
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+
+            if (result.Count == 0)
+            {
+                throw new Exception("No response form stored procedure");
+            }
+
+            var firstRow = result[0];
+            var appointment = mapper.BuildObject(firstRow);
+
+            return appointment;
+
+        }
     }
 }

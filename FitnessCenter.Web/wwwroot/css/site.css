@@ -69,15 +69,12 @@ body {
     .btn-primary:hover,
     .btn-primary:focus {
         background-color: #d35400 !important;
-        border-color: none !important;
         color: white !important;
-        border: 3px solid #E67E22 !important;
-        transition: border 0.15s !important;
+        border: none !important;
     }
 
     .btn-primary:focus {
         outline: none !important;
-        box-shadow: none !important;
     }
 
 .form-group {
@@ -99,8 +96,7 @@ body {
 
     .form-control:focus,
     .form-control:hover {
-        border: 3px solid #E67E22 !important;
-        transition: border 0.15s !important;
+        border: 1px solid #E67E22 !important;
     }
 
     .url {
@@ -116,4 +112,39 @@ body {
 .url:active {
     color: white;
     text-decoration: none;
+}
+
+/*nav estilos*/
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.nav-item {
+    position: relative;
+    margin-left: 10px;
+}
+
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px; /*Tamaño estándar de la barra nav*/
+    background: #F1C40F;
+    transition: width .3s;
+    margin: 0 auto;
+}
+
+.nav-link:hover::after { /*Efecto de la línea de los btn*/
+    width: 100%;
+    transition: width .3s; /*Velocidad de la raya al abrirse*/
+}
+
+.fondoNav {
+    background-color: #2e4257;
+}
+
+.navbar-brand,
+.navbar-custom .nav-link {
+    color: #F1C40F; /* Color de los enlaces */
 }
