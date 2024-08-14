@@ -99,7 +99,7 @@
     .table td {
         text-align: center;
         vertical-align: middle;
-        color: white; /* Color del texto */
+        color: white;
         border: 1px solid #FFFFFF; /* Borde de las celdas */
     }
 
@@ -111,9 +111,6 @@
 .table.dataTable tbody tr {
     background-color: #34495E;
 }
-
-/* Estilos comentados para ocultar controles de DataTables */
-
 
 
 .mt-3 {

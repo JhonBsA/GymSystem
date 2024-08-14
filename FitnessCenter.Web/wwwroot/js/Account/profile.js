@@ -1,5 +1,5 @@
 const getUser = () => {
-    let apiUrl = API_URL_BASE + '/Account/GetAllUsers'; // Asegúrate de que esta URL sea correcta
+    let apiUrl = API_URL_BASE + '/Account/GetAllUsers'; 
 
     $.ajax({
         url: apiUrl,
@@ -25,7 +25,7 @@ const getUser = () => {
         });
 };
 
-// Llama a la función para obtener los datos al cargar la página o en un evento específico
+
 $(document).ready(() => {
     getUser();
 });

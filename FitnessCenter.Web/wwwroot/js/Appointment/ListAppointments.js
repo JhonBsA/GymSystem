@@ -148,3 +148,9 @@ function viewDetails(appointmentId) {
     // Implementar lógica para ver detalles de la cita
     console.log('Ver detalles de la cita:', appointmentId);
 }
+
+//Urls que ocupo
+
+//https://localhost:7252/api/Account/GetUserByUserID?UserID=10
+//let apiUrlId = API_URL_BASE + '/Account/GetUserByID?UserID=' + UserID;
+

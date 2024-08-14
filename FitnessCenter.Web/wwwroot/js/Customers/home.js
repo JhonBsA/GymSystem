@@ -16,10 +16,10 @@
     }
 
     const prepareTableData = (result) => {
-        // Ajusta los nombres de las propiedades del JSON para que coincidan con las columnas de la tabla
+        
         const formattedData = result.map(training => ({
             exerciseName: capitalize(training.excerciseName),
-            dateLogged: new Date(training.dateLogged).toLocaleDateString('es-ES'), // Ajusta el formato de la fecha según tu necesidad
+            dateLogged: new Date(training.dateLogged).toLocaleDateString('es-ES'), //pendiente revisar esto
             setsCompleted: training.setsCompleted,
             repetitionsCompleted: training.repetitionsCompleted,
             weightUsed: training.weightUsed,
@@ -29,12 +29,12 @@
         table.clear().rows.add(formattedData).draw();
     }
 
-    let apiUrl = API_URL_BASE + '/TrainingLogs/UserTrainingLogs'; // Ajusta esta URL a la correcta
+    let apiUrl = API_URL_BASE + '/TrainingLogs/UserTrainingLogs'; 
     $.ajax({
         url: apiUrl,
         method: 'GET',
-        data: { userId: 3 },// Asegúrate de que el método sea el correcto
-        dataType: 'json' // Especifica el tipo de datos que esperas recibir
+        data: { userId: 3 }, //Preguntar como se obtiene el userid dinamicamente 
+        dataType: 'json' 
     })
         .done((result) => {
             prepareTableData(result);
