@@ -1,0 +1,23 @@
+﻿.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5%;
+    color: white;
+}
+
+.btn {
+    width: 10%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+.titulo {
+    color: white;
+    margin-top: 5%;
+}

@@ -77,6 +77,14 @@ body {
         outline: none !important;
     }
 
+.btn-assign{
+    color: white;
+}
+
+    .btn-assign:hover {
+        color: #E67E22;
+    }
+
 .form-group {
     margin-bottom: 50px;
     text-align: center;
@@ -148,3 +156,40 @@ body {
 .navbar-custom .nav-link {
     color: #F1C40F; /* Color de los enlaces */
 }
+
+/*tablas estilos*/
+
+.table td {
+    color: white;
+}
+/* Color blanco para el texto que muestra la información de los registros */
+.dataTables_info,
+.dataTables_length label,
+.dataTables_length select,
+.dataTables_filter label,
+.dataTables_filter input,
+.dataTables_paginate a{
+    color: white !important; /* Asegúrate de usar !important si es necesario */
+}
+
+.dataTables_length option {
+    color: black !important;
+}
+/* Color blanco para los botones de paginación */
+.dataTables_paginate .paginate_button {
+    color: white !important; /* Asegúrate de usar !important si es necesario */
+    border: 1px solid white; /* Color del borde de los botones */
+}
+
+    /* Color blanco para el botón activo */
+    .dataTables_paginate .paginate_button.current {
+        color: #000000 !important; /* Texto del botón activo */
+        background-color: white !important; /* Fondo blanco para el botón activo */
+        border: 1px solid white !important; /* Borde blanco para el botón activo */
+    }
+
+    /* Color blanco para los botones "Anterior" y "Siguiente" */
+    .dataTables_paginate .paginate_button.previous,
+    .dataTables_paginate .paginate_button.next {
+        color: white !important; /* Texto de los botones "Anterior" y "Siguiente" */
+    }
