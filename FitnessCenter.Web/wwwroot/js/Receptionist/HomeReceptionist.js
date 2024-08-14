@@ -68,8 +68,8 @@ $(document).ready(() => {
         })
         .fail((error) => {
             Swal.fire({
-                title: "Mensaje",
-                text: "There was an error with the search: " + error.statusText,
+                title: "¡Atención!",
+                text: "Hay un problema al cargar los datos",
                 icon: "error",
             });
         });

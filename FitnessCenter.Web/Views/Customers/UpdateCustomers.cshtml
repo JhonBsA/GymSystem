@@ -1,5 +1,7 @@
-﻿@{
-    ViewData["Title"] = "Lista de Citas";
+﻿@model FitnessCenter.Web.Models.Appointment.AppointmentViewModel;
+
+@{
+    ViewData["Title"] = "Editar Clientes";
     Layout = null; // No usar el layout predeterminado
 }
 
@@ -10,9 +12,8 @@
     <meta charset="UTF-8">
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/Appointment/ListAppointments.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="~/css/Customers/UpdateCustomers.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 
@@ -56,36 +57,53 @@
         </div>
     </nav>
 
-    <div class="container mt-4 table-container">
-        <div class="appointmentContainer">
-            <div class="main-content">
-                <h2 class="text-center text-white">Detalles de Citas</h2>
-                <table id="appointmentTable" class="table table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Cliente</th>
-                            <th>Entrenador</th>
-                            <th>Fecha y Hora</th>
-                            <!-- <th>Estado</th> -->
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Aquí se llenarán los datos dinámicamente -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="buttons">
-            <button onclick="window.location.href='@Url.Action("CreateAppointment", "Appointment")'"  class="btn btn-primary">Crear Cita</button>
+    <div class="container mt-4">
+        <div class="form-container">
+            <form id="createCustomerForm" class="form-group">
+                <div class="titulo">
+                    <h2>Editar Cliente</h2>
+                </div>
+                <div class="idCustomer">
+                    <p id="customerID">ID: </p>
+                </div>
+                <input type="hidden" id="customerID" name="customerID" />
+                <div class="inputContainer">
+                    <div class="inputgroup">
+                        <div class="form-group">
+                            <label for="Nombre">Nombre Completo</label>
+                            <input class="form-control" id="Nombre" name="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="Telefono">Teléfono</label>
+                            <input class="form-control" id="Telefono" name="Telefono">
+                        </div>
+                    </div>
+                    <div class="inputgroup">
+                        <div class="form-group">
+                            <label for="Identificacion">Cédula</label>
+                            <input class="form-control" id="Identificacion" name="Identificacion">
+                        </div>
+                        <div class="form-group">
+                            <label for="Email">Correo Electrónico</label>
+                            <input class="form-control" id="Email" name="Email">
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a href="@Url.Action("HomeReceptionist", "Receptionist")" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
         </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/js/Appointment/ListAppointments.js"></script>
+    <script src="~/js/Customers/UpdateCustomers.js"></script>
     <script src="~/js/site.js"></script>
+
 </body>
 
 </html>
