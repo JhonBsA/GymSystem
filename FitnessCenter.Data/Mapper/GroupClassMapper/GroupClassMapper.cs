@@ -93,5 +93,17 @@ namespace FitnessCenter.Data.Mapper.GroupClassMapper
         {
             throw new NotImplementedException();
         }
+
+        public SqlOperation GetRetrieveGroupClassByIdStatement(int classID)
+        {
+            var operation = new SqlOperation
+            {
+                ProcedureName = "GetGroupClassById"
+            };
+
+            operation.AddIntegerParam("ClassID", classID);
+            return operation;
+        }
+
     }
 }

@@ -36,5 +36,12 @@ namespace FitnessCenter.Core
             var result = _groupClassCrudFactory.Update(groupClass);
             return result;
         }
+
+        public GroupClass GetGroupClassById(int classID)
+        {
+            var result = _groupClassCrudFactory.RetrieveById(classID);
+            return result;
+        }
+
     }
 }

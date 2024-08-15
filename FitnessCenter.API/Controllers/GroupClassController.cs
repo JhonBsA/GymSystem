@@ -55,11 +55,19 @@ namespace FitnessCenter.API.Controllers
         public IActionResult UpdateGroupClass(GroupClass groupClass)
         {
             var result = _groupClassManager.UpdateGroupClass(groupClass);
-            if (result.ContainsKey("Message"))
+            return Ok(result);
+        }
+
+        [HttpGet("GetById")]
+        public IActionResult GetGroupClassById(int classID)
+        {
+            var result = _groupClassManager.GetGroupClassById(classID);
+            if (result == null)
             {
-                return BadRequest(result["Message"]);
+                return NotFound("Group class not found");
             }
             return Ok(result);
         }
+
     }
 }

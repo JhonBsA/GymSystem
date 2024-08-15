@@ -84,6 +84,17 @@ namespace FitnessCenter.Data.Crud.GroupClassCRUD
             return response;
         }
 
+        public GroupClass RetrieveById(int classID)
+        {
+            SqlOperation operation = mapper.GetRetrieveGroupClassByIdStatement(classID);
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+            if (result.Count == 0)
+            {
+                throw new Exception("No response from stored procedure.");
+            }
+            var groupClass = mapper.BuildObject(result[0]);
+            return groupClass;
+        }
 
     }
 }
