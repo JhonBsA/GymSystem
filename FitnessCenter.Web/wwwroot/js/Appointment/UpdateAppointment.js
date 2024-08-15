@@ -1,5 +1,5 @@
 ﻿
-document.addEventListener('DOMContentLoaded', function ()/*$(document).ready(function ()*/ {
+document.addEventListener('DOMContentLoaded', function () {
     let apiUrlTrainers = API_URL_BASE + '/Account/GetTrainers';
     let apiUrl = API_URL_BASE + '/Appointment/UpdateAppointment';
 

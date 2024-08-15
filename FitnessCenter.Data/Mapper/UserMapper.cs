@@ -61,7 +61,7 @@ namespace FitnessCenter.Data.Mapper
 
             UserDetails user = (UserDetails)entityDTO;
 
-            //operation.AddIntegerParam("UserID", user.UserID ?? 0);
+            operation.AddIntegerParam("UserID", user.UserID);
             operation.AddIntegerParam("CedulaP", user.Cedula);
             operation.AddVarcharParam("NombreP", user.Nombre);
             operation.AddVarcharParam("FirstLastNameP", user.FirstLastName);

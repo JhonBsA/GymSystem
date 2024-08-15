@@ -33,7 +33,7 @@ let table = $('#ReceptionistTable').DataTable({
 });
 
 function List() {
-    window.location.href = `ListAppointments`;
+    window.location.href = `../Appointment/ListAppointments`;
 }
 
 const getTodayDate = () => {
