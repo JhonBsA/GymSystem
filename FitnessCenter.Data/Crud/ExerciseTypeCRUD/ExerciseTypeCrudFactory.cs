@@ -1,21 +1,22 @@
 ﻿using FitnessCenter.Data.Dao;
-using FitnessCenter.Data.Mapper.EquipmentMapper;
-using FitnessCenter.DTO.EquipmentDTO;
+using FitnessCenter.Data.Mapper.ExerciseTypeMapper;
+using FitnessCenter.DTO.ExerciseTypeDTO;
 
-namespace FitnessCenter.Data.Crud.EquipmentCRUD
+
+namespace FitnessCenter.Data.Crud.ExerciseTypeCRUD
 {
-    public class EquipmentCrudFactory
+    public class ExerciseTypeCrudFactory
     {
-        private readonly EquipmentMapper _mapper;
+        private readonly ExerciseTypeMapper _mapper;
         private readonly SqlDao dao;
 
-        public EquipmentCrudFactory()
+        public ExerciseTypeCrudFactory()
         {
-            _mapper = new EquipmentMapper();
+            _mapper = new ExerciseTypeMapper();
             dao = SqlDao.GetInstance();
         }
 
-        public Dictionary<string, string> Create(Equipment entityDTO)
+        public Dictionary<string, string> Create(ExerciseType entityDTO)
         {
             var operation = _mapper.GetCreateStatement(entityDTO);
             var result = dao.ExecuteStoredProcedureWithResult(operation);
@@ -32,7 +33,7 @@ namespace FitnessCenter.Data.Crud.EquipmentCRUD
             return response;
         }
 
-        public Dictionary<string, string> Update(Equipment entityDTO)
+        public Dictionary<string, string> Update(ExerciseType entityDTO)
         {
             var operation = _mapper.GetUpdateStatement(entityDTO);
             var result = dao.ExecuteStoredProcedureWithResult(operation);
@@ -49,9 +50,9 @@ namespace FitnessCenter.Data.Crud.EquipmentCRUD
             return response;
         }
 
-        public Dictionary<string, string> Delete(int equipmentID)
+        public Dictionary<string, string> Delete(int exerciseTypeID)
         {
-            SqlOperation operation = _mapper.GetDeleteStatement(equipmentID);
+            var operation = _mapper.GetDeleteStatement(exerciseTypeID);
             var result = dao.ExecuteStoredProcedureWithResult(operation);
             if (result.Count == 0)
             {
@@ -66,7 +67,7 @@ namespace FitnessCenter.Data.Crud.EquipmentCRUD
             return response;
         }
 
-        public List<Equipment> RetrieveAll()
+        public List<ExerciseType> RetrieveAll()
         {
             SqlOperation operation = _mapper.GetRetrieveAllStatement();
             var result = dao.ExecuteStoredProcedureWithResult(operation);
@@ -74,8 +75,10 @@ namespace FitnessCenter.Data.Crud.EquipmentCRUD
             {
                 throw new Exception("No response from stored procedure.");
             }
-            var equipment = _mapper.BuildObjects(result);
-            return equipment;
+
+            var exerciseType = _mapper.BuildObjects(result);
+
+            return exerciseType;
         }
     }
 }
