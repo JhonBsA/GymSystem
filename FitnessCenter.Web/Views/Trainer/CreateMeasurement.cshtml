@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewData["Title"] = "Registrar Rutina";
+    ViewData["Title"] = "Crear Cita de Medición";
     Layout = null; // No usar el layout predeterminado
 }
 
@@ -12,7 +12,7 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/site.css">
-    <link rel="stylesheet" href="~/css/Routine/CreateRoutine.css">
+    <link rel="stylesheet" href="~/css/Trainer/CreateMeasurement.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 
@@ -55,17 +55,15 @@
 
     <div class="container mt-4">
         <div class="form-container">
-            <form id="createRoutineForm" class="form-group">
+            <form id="createMeasurementForm" class="form-group">
                 <div class="titulo">
-                    <h2>Asignación de rutinas</h2>
+                    <h2>Crear Cita de Medición</h2>
                 </div>
                 <div class="inputContainer">
-                    <div class="inputgroup1">
+                    <div class="inputgroupTop">
                         <div class="form-group">
-                            <label for="Cliente">Cliente</label>
-                            <select class="form-control" id="Cliente" name="ClienteId">
-                                <!-- Opciones de cliente -->
-                            </select>
+                            <label for="Email">Correo Electrónico</label>
+                            <input type="text" class="form-control" id="Email" name="Email">
                         </div>
                         <div class="form-group">
                             <label for="Entrenador">Entrenador</label>
@@ -74,50 +72,26 @@
                             </select>
                         </div>
                     </div>
-                    <div class="inputgroup2">
-                        <label for="Ejercicio">Ejercicio</label>
-                        <input class="form-control" id="Ejercicio" name="Ejercicio">
-                    </div>
-                    <div class="inputgroup3">
+                    <div class="inputgroupDown">
                         <div class="form-group">
-                            <label for="TipoEjercicio">Tipo de ejercicio</label>
-                            <input class="form-control" id="TipoEjercicio" name="TipoEjercicio">
+                            <label for="weight">Peso</label>
+                            <input type="number" class="form-control" id="weight" name="weight">
                         </div>
                         <div class="form-group">
-                            <label for="Equipo">Equipo</label>
-                            <input class="form-control" id="Equipo" name="Equipo">
+                            <label for="height">Altura</label>
+                            <input type="number" class="form-control" id="height" name="height">
                         </div>
                         <div class="form-group">
-                            <label for="Sets">Sets</label>
-                            <input class="form-control" id="Sets" name="Sets">
-                        </div>
-                    </div>
-                    <div class="inputgroup4">
-                        <div class="form-group">
-                            <label for="Repeticiones">Repeticiones</label>
-                            <input class="form-control" id="Repeticiones" name="Repeticiones">
+                            <label for="bodyFatPercentage">Porcentaje de Grasa Corporal</label>
+                            <input type="number" class="form-control" id="bodyFatPercentage" name="bodyFatPercentage">
                         </div>
                         <div class="form-group">
-                            <label for="Peso">Peso</label>
-                            <input class="form-control" id="Peso" name="Peso">
+                            <label for="age">Edad</label>
+                            <input type="number" class="form-control" id="age" name="age">
                         </div>
                         <div class="form-group">
-                            <label for="Duracion">Duración</label>
-                            <input class="form-control" id="Duracion (Segundos)" name="Duracion">
-                        </div>
-                    </div>
-                    <div class="inputgroup5">
-                        <div class="form-group">
-                            <label for="dia">Día</label>
-                            <select class="form-control" id="dia" name="dia">
-                                <option value="1">Lunes</option>
-                                <option value="2">Martes</option>
-                                <option value="3">Miércoles</option>
-                                <option value="4">Jueves</option>
-                                <option value="5">Viernes</option>
-                                <option value="6">Sábado</option>
-                                <option value="7">Domingo</option>
-                            </select>
+                            <label for="gender">Género</label>
+                            <input type="tel" class="form-control" id="gender" name="gender">
                         </div>
                     </div>
                 </div>
@@ -133,7 +107,7 @@
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/js/Routine/CreateRoutine.js"></script>
+    <script src="~/js/Trainer/CreateMeasurement.js"></script>
     <script src="~/js/site.js"></script>
 
 </body>

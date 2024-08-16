@@ -19,26 +19,24 @@
                     console.log('Respuesta del servidor:', response);
 
                     var events = [];
-                    if (response && typeof response === 'object') {
-                        if (response.appointmentID) {
+                    if (Array.isArray(response)) {
+                        response.forEach(function (appointment) {
                             events.push({
                                 title: "Cita",
-                                start: new Date(response.appointmentDate).toISOString(), //convierte a formato iso
+                                start: new Date(appointment.appointmentDate).toISOString(), //convierte a formato iso
                                 backgroundColor: '#28a745',
                                 textColor: '#fff',
                                 extendedProps: {
-                                    trainerName: response.trainerName,
-                                    clientName: response.clientName,
-                                    notes: response.notes,
-                                    appointmentDate: response.appointmentDate,
-                                    appointmentID: response.appointmentID
+                                    trainerName: appointment.trainerName,
+                                    clientName: appointment.clientName,
+                                    notes: appointment.notes,
+                                    appointmentDate: appointment.appointmentDate,
+                                    appointmentID: appointment.appointmentID
                                 }
                             });
-                        } else {
-                            console.error('No se encontró appointmentID en la respuesta:', response);
-                        }
+                        });
                     } else {
-                        console.error('Se esperaba un objeto pero se recibió:', response);
+                        console.error('Se esperaba un array pero se recibió:', response);
                     }
                     console.log('Eventos para FullCalendar:', events);
 

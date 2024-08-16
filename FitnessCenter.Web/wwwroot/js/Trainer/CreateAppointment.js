@@ -57,7 +57,7 @@
         AppointmentDate = $('#FechaHora').val();
         DurationInMinutes = $('#DurationInMinutes').val();
         CreatedAt = new Date();
-        Notes = 'Cita de Medicion';
+        Notes = 'Cita de Entrenamiento Personal';
         ClientName = $('#Cliente option:selected').text();
         TrainerName = $('#Entrenador option:selected').text();
         CalendarID = "0";
@@ -88,7 +88,7 @@
                     text: 'Cita creada correctamente.',
                     confirmButtonText: 'Aceptar'
                 }).then(() => {
-                    window.location.href = 'ListAppointments'; // Redirigir a la lista de citas
+                    window.location.href = 'Home'; // Redirigir al home
                 });
             },
             error: function (xhr, status, error) {

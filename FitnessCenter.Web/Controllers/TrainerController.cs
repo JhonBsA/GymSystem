@@ -22,6 +22,18 @@ namespace FitnessCenter.Web.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult CreateAppointment()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult CreateMeasurement()
+        {
+            return View();
+        }
         [HttpGet]
         public IActionResult Home()
         {

@@ -178,42 +178,22 @@ namespace FitnessCenter.Data.Crud.AppointmentCRUD
 
         }
         */
-        public AppointmentBaseClass GetAppointmentsByUserId(int userID)
+        public List<Appointment> GetAppointmentsByUserId(int userID)
         {
             try
             {
-                // Obtén la operación SQL para el procedimiento almacenado
                 SqlOperation operation = mapper.GetAppointmentsByUserId(userID);
-
-                // Ejecuta el procedimiento almacenado y obtén el resultado
                 var result = dao.ExecuteStoredProcedureWithResult(operation);
-
-                // Verifica si el resultado está vacío
-                if (result.Count == 0)
-                {
-                    // Si no hay citas para el usuario especificado, se retorna null
-                    Console.WriteLine("No appointments found for the given user ID.");
-                    return null;
-                }
-
-                // Mapea el primer registro del resultado a un objeto AppointmentBaseClass
-                var firstRow = result[0];
-                var appointment = mapper.BuildObject(firstRow);
-
-                return appointment;
+                return mapper.BuildObjects(result);
             }
             catch (SqlException sqlEx)
             {
-                // Maneja excepciones específicas de SQL, como problemas con el procedimiento almacenado
                 Console.Error.WriteLine($"SQL Error: {sqlEx.Message}");
-                // Devolvemos null en caso de error
                 return null;
             }
             catch (Exception ex)
             {
-                // Maneja excepciones generales
                 Console.Error.WriteLine($"Error: {ex.Message}");
-                // Devolvemos null en caso de error
                 return null;
             }
         }
