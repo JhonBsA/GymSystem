@@ -1,72 +1,74 @@
 ﻿using FitnessCenter.Data.Dao;
 using FitnessCenter.DTO.EquipmentDTO;
-using System;
-using System.Collections.Generic;
 
 namespace FitnessCenter.Data.Mapper.EquipmentMapper
 {
     public class EquipmentMapper : IEquipmentMapper
     {
-        public EquipmentBaseClass BuildObject(Dictionary<string, object> objectRow)
+        public Equipment BuildObject(Dictionary<string, object> objectRow)
         {
-            var equipment = new Equipment
+            if (objectRow == null || objectRow.Count == 0)
             {
-                EquipmentID = (int)objectRow["EquipmentID"],
-                Name = objectRow["Name"].ToString(),
-                Type = objectRow["Type"].ToString(),
+                throw new ArgumentException("objectRow is null or empty");
+            }
+            var equipment = new Equipment()
+            {
+                EquipmentID = Convert.ToInt32(objectRow["EquipmentID"]),
+                Name = objectRow["Name"] as string,
+                Type = objectRow["Type"] as string,
             };
             return equipment;
         }
 
-        public List<EquipmentBaseClass> BuildObjects(List<Dictionary<string, object>> objectRows)
+        public List<Equipment> BuildObjects(List<Dictionary<string, object>> objectRows)
         {
-            var equipments = new List<EquipmentBaseClass>();
-            foreach (var row in objectRows)
+            if (objectRows == null || objectRows.Count == 0)
             {
-                equipments.Add(BuildObject(row));
+                throw new ArgumentException("objectRows is null or empty");
+            }
+
+            var equipments = new List<Equipment>();
+            foreach (var objectRow in objectRows)
+            {
+                var equipment = BuildObject(objectRow);
+                equipments.Add(equipment);
             }
             return equipments;
         }
 
-        public SqlOperation GetCreateStatement(EquipmentBaseClass entityDTO)
+        public SqlOperation GetCreateStatement(Equipment entityDTO)
         {
             var operation = new SqlOperation
             {
                 ProcedureName = "CreateEquipment"
             };
 
-            var equipment = (Equipment)entityDTO;
-
-            operation.AddVarcharParam("Name", equipment.Name);
-            operation.AddVarcharParam("Type", equipment.Type);
+            operation.AddVarcharParam("Name", entityDTO.Name);
+            operation.AddVarcharParam("Type", entityDTO.Type);
             return operation;
         }
 
-        public SqlOperation GetUpdateStatement(EquipmentBaseClass entityDTO)
+        public SqlOperation GetUpdateStatement(Equipment entityDTO)
         {
             var operation = new SqlOperation
             {
                 ProcedureName = "UpdateEquipment"
             };
 
-            var equipment = (Equipment)entityDTO;
-
-            operation.AddIntegerParam("EquipmentID", equipment.EquipmentID);
-            operation.AddVarcharParam("Name", equipment.Name);
-            operation.AddVarcharParam("Type", equipment.Type);
+            operation.AddIntegerParam("EquipmentID", entityDTO.EquipmentID);
+            operation.AddVarcharParam("Name", entityDTO.Name);
+            operation.AddVarcharParam("Type", entityDTO.Type);
             return operation;
         }
 
-        public SqlOperation GetDeleteStatement(EquipmentBaseClass entityDTO)
+        public SqlOperation GetDeleteStatement(int equipmentID)
         {
             var operation = new SqlOperation
             {
                 ProcedureName = "DeleteEquipment"
             };
 
-            var equipment = (Equipment)entityDTO;
-
-            operation.AddIntegerParam("EquipmentID", equipment.EquipmentID);
+            operation.AddIntegerParam("EquipmentID", equipmentID);
             return operation;
         }
 
@@ -74,7 +76,7 @@ namespace FitnessCenter.Data.Mapper.EquipmentMapper
         {
             var operation = new SqlOperation
             {
-                ProcedureName = "RetrieveAllEquipment"
+                ProcedureName = "GetAllEquipment"
             };
             return operation;
         }
