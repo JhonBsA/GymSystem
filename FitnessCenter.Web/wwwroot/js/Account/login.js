@@ -18,6 +18,11 @@ const loginUser = (e) => {
         dataType: "json",
     })
         .done((result) => {
+            localStorage.setItem('RoleID', result.RoleID);
+            localStorage.setItem('UserID', result.UserID);
+            
+            console.log(result);
+
             Swal.fire({
                 title: "Inicio de sesión exitoso",
                 icon: "success",

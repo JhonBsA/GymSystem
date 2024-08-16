@@ -1,5 +1,10 @@
 ﻿$(document).ready(function () {
-    const apiUrl = API_URL_BASE + '/Measurement/GetAll';
+
+    const userId = localStorage.getItem('UserID');
+    console.log(localStorage.getItem('UserID'));
+
+    const apiUrl = API_URL_BASE + '/Measurement/GetByUser?userId=' + userId;
+
     console.log('Fetching data from:', apiUrl);
 
     $.ajax({

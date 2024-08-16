@@ -1,6 +1,7 @@
 ﻿using FitnessCenter.Data.Dao;
 using FitnessCenter.DTO.MeasurementDTO;
 using FitnessCenter.Data.Mapper.MeasurementMapper;
+using Microsoft.Data.SqlClient;
 
 
 namespace FitnessCenter.Data.Crud.MeasurementCRUD
@@ -34,6 +35,7 @@ namespace FitnessCenter.Data.Crud.MeasurementCRUD
             return response;
         }
 
+        /*original
         public override List<Measurement> RetrieveAll(int userId)
         {
             SqlOperation operation = mapper.GetRetrieveMeasurementByUserIdStatement(userId);
@@ -44,6 +46,46 @@ namespace FitnessCenter.Data.Crud.MeasurementCRUD
             }
             var measurements = mapper.BuildMeasurementObjects(result);
             return measurements;
+        }
+        */
+        //prueba
+        public override List<Measurement> RetrieveAll(int userId)
+        {
+            try
+            {
+                // Obtén la operación SQL para el procedimiento almacenado
+                SqlOperation operation = mapper.GetRetrieveMeasurementByUserIdStatement(userId);
+
+                // Ejecuta el procedimiento almacenado y obtén el resultado
+                var result = dao.ExecuteStoredProcedureWithResult(operation);
+
+                // Verifica si el resultado está vacío
+                if (result.Count == 0)
+                {
+                    // Si no hay datos, puedes devolver una lista vacía
+                    // en lugar de lanzar una excepción.
+                    Console.WriteLine("No measurements found for the specified user.");
+                    return new List<Measurement>();
+                }
+
+                // Mapea el resultado a objetos Measurement
+                var measurements = mapper.BuildMeasurementObjects(result);
+                return measurements;
+            }
+            catch (SqlException sqlEx)
+            {
+                // Maneja excepciones específicas de SQL, como problemas con el procedimiento almacenado
+                Console.Error.WriteLine($"SQL Error: {sqlEx.Message}");
+                // Dependiendo del contexto, podrías querer devolver una lista vacía aquí también
+                return new List<Measurement>();
+            }
+            catch (Exception ex)
+            {
+                // Maneja excepciones generales
+                Console.Error.WriteLine($"Error: {ex.Message}");
+                // Devolvemos una lista vacía en caso de error
+                return new List<Measurement>();
+            }
         }
 
         public override List<Measurement> RetrieveAll()

@@ -1,16 +1,28 @@
 ﻿$(document).ready(() => {
+    let userId = localStorage.getItem('UserID'); // Obtener el UserID desde localStorage // revisar esto
+    console.log(localStorage.getItem('UserID'));
+
+    if (!userId) {
+        Swal.fire({
+            title: 'Error',
+            text: 'No se encontró el ID de usuario. Por favor, inicia sesión de nuevo.',
+            icon: 'error'
+        });
+        return;
+    }
+
     let table = $('#trainingTable').DataTable({
         "language": {
             "url": "https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"
         },
         data: [],
         columns: [
-            { data: 'exerciseName'},
-            { data: 'dateLogged'},
-            { data: 'setsCompleted'},
-            { data: 'repetitionsCompleted'},
-            { data: 'weightUsed'},
-            { data: 'durationInSeconds'}
+            { data: 'exerciseName' },
+            { data: 'dateLogged' },
+            { data: 'setsCompleted' },
+            { data: 'repetitionsCompleted' },
+            { data: 'weightUsed' },
+            { data: 'durationInSeconds' }
         ]
     });
 
@@ -19,10 +31,9 @@
     }
 
     const prepareTableData = (result) => {
-        
         const formattedData = result.map(training => ({
             exerciseName: capitalize(training.excerciseName),
-            dateLogged: new Date(training.dateLogged).toLocaleDateString('es-ES'), //pendiente revisar esto
+            dateLogged: new Date(training.dateLogged).toLocaleDateString('es-ES'),
             setsCompleted: training.setsCompleted,
             repetitionsCompleted: training.repetitionsCompleted,
             weightUsed: training.weightUsed,
@@ -31,25 +42,23 @@
 
         table.clear().rows.add(formattedData).draw();
     }
-    //https://localhost:7252/api/Account/GetUserByUserID?UserID=10
-    //let apiUrlId = API_URL_BASE + '/Account/GetUserByID?UserID=' + UserID;
 
-    let apiUrl = API_URL_BASE + '/TrainingLogs/UserTrainingLogs?'; 
+    let apiUrl = API_URL_BASE + '/TrainingLogs/UserTrainingLogs?userId=' + userId;
+    console.log(apiUrl); 
     $.ajax({
         url: apiUrl,
         method: 'GET',
-        data: { userId: 3 }, //Preguntar como se obtiene el userid dinamicamente 
-        dataType: 'json' 
+        data: { userId: userId }, 
+        dataType: 'json'
     })
         .done((result) => {
+            console.log(result);
             prepareTableData(result);
         })
         .fail((error) => {
-            Swal.fire({
-                title: 'Mensaje',
-                text: 'Hubo un error con la búsqueda: ' + error.statusText,
-                icon: 'error'
-            });
+            console.error('Hubo un error con la búsqueda:', error.statusText);
         });
-});
 
+    
+    
+});

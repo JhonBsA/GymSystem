@@ -1,5 +1,10 @@
 ﻿$(document).ready(function () {
-    const apiUrl = API_URL_BASE + '/Appointment/GetAppointmentById';
+
+    const userId = localStorage.getItem('UserID');
+    console.log('UserID:', userId);
+
+   
+    const apiUrl = API_URL_BASE + '/Appointment/GetAppointmentsByUserId?userID=' + userId;
 
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -9,9 +14,7 @@
             $.ajax({
                 url: apiUrl,
                 type: 'GET',
-                data: {
-                    appointmentID: 9
-                },
+               
                 success: function (response) {
                     console.log('Respuesta del servidor:', response);
 
@@ -27,7 +30,8 @@
                                     trainerName: response.trainerName,
                                     clientName: response.clientName,
                                     notes: response.notes,
-                                    appointmentDate: response.appointmentDate
+                                    appointmentDate: response.appointmentDate,
+                                    appointmentID: response.appointmentID
                                 }
                             });
                         } else {

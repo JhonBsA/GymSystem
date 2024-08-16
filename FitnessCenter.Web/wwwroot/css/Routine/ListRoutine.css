@@ -184,10 +184,13 @@
 .form-group label {
     color: black; /* Cambiar el color del texto y los bordes */
 }
-/* Color blanco para el texto que muestra la información de los registros */
+
+
 .dataTables_info,
 .dataTables_length label,
-.dataTables_filter label {
+.dataTables_length select,
+.dataTables_filter label,
+.dataTables_filter input,
+.dataTables_paginate a {
     color: white !important; /* Asegúrate de usar !important si es necesario */
 }
-

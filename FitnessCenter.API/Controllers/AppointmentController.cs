@@ -69,13 +69,20 @@ namespace FitnessCenter.API.Controllers
             var lastAppointmentDate = _appointmentManager.GetLastAppointmentDate();
             return Ok(lastAppointmentDate);
         }
-       
 
         [HttpGet]
         [Route("GetAppointmentById")]
         public IActionResult GetAppointmentById(int appointmentID)
         {
             var result = _appointmentManager.GetAppointmentById(appointmentID);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("GetAppointmentsByUserId")]
+        public IActionResult GetAppointmentsByUserId(int userID)
+        {
+            var result = _appointmentManager.GetAppointmentsByUserId(userID);
             return Ok(result);
         }
 

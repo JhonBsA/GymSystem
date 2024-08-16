@@ -38,5 +38,16 @@ namespace FitnessCenter.API.Controllers
             }
             return Ok(result);
         }
+        [HttpGet("GetByUser")]
+        public IActionResult GetMeasurementByUserId([FromQuery] int userId)
+        {
+            var result = _measurementManager.GetMeasurementByUserId(userId);
+            if (result == null || result.Count == 0)
+            {
+                return NotFound("No measurements found for the specified user.");
+            }
+            return Ok(result);
+        }
+
     }
 }

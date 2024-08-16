@@ -106,7 +106,15 @@ namespace FitnessCenter.Data.Mapper.MeasurementMapper
 
         public SqlOperation GetRetrieveMeasurementByUserIdStatement(int userId)
         {
-            throw new NotImplementedException();
+            var operation = new SqlOperation
+            {
+                ProcedureName = "GetRetrieveMeasurementByUserId"
+            };
+
+            operation.AddIntegerParam("UserID", userId);
+
+            return operation;
         }
+
     }
 }
