@@ -3,8 +3,6 @@ $(document).ready(function () {
     const userId = localStorage.getItem('UserID');
     console.log('UserID:', userId);
 
-
-    
     const apiUrl = API_URL_BASE + '/Appointment/GetAppointmentsByUserId?userID=' + userId;
 
     var calendarEl = document.getElementById('calendar');
