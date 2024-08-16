@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Home";
+    Layout = null; // No usar el layout predeterminado
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="~/css/Customers/Home.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .main-content {
+        min-height: 100vh; /* Asegura que la sección cubra al menos la altura de la ventana */
+        background: url('https://images.unsplash.com/photo-1520731689107-3088f3c01d67') no-repeat center center fixed; /* Imagen de fondo */
+        background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
+        padding-top: 20px; /* Ajusta si necesitas un pequeño espacio entre el nav y el contenido */
+    }
+</style>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom fondoNav">
+        <a class="navbar-brand" asp-controller="Customers" asp-action="Home">
+            <img src="../Images/login-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Customers" asp-action="Home">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Routine" asp-action="Asignar Rutina">Asignar Rutina</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Customers" asp-action="Entrenamiento Personal">Entrenamiento Personal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Customers" asp-action="Classes">Cita de medicion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="profile-icon nav-link" asp-controller="Account" asp-action="Profile">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a id="logoutButton" class="nav-link">
+                        <i class="fas fa-sign-out-alt"></i> <!-- Icono de salir -->
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <div class="container">
+            <h1>Bienvenido a la página de inicio</h1>
+            <p>Este es tu contenido principal.</p>
+            <!-- Más contenido aquí -->
+        </div>
+    </div>
+
+    
+    <script src="~/js/Trainer/CreateGroupClasses.js"></script>
+    <script src="~/js/site.js"></script>
+</body>
+
+</html>
