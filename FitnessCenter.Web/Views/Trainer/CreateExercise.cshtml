@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "CreateExercise";
     Layout = null; // No usar el layout predeterminado
 }
 
@@ -12,31 +12,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/site.css">
     <link rel="stylesheet" href="~/css/Customers/Home.css">
+    <link rel="stylesheet" href="~/css/Trainer/CreateExercise.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 
-<style>
-   
-    body {
-        margin: 0;
-        padding: 0;
-    }
 
-    .main-content {
-        min-height: 87vh; /* Asegura que la sección cubra al menos la altura de la ventana */
-        background: url('/static/homeTrainer.jpg') no-repeat center 10% fixed; /* Imagen de fondo */
-        background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
-        background-position: center; /* Centra la imagen */
-        padding-top: 20px; /* Ajusta si necesitas un pequeño espacio entre el nav y el contenido */
-    }
-
-   
-        .main-content h1 {
-            font-size: 3rem; /* Tamaño del título */
-            font-weight: bold; /* Negrita */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Sombra para mejorar la legibilidad */
-        }
-</style>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom fondoNav">
@@ -56,7 +36,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Trainer" asp-action="CreateAppointment">Entrenamiento personal</a>
-                </li>         
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Trainer" asp-action="CreateMeasurement">Cita de medición</a>
                 </li>
@@ -85,17 +65,11 @@
     </nav>
 
 
-    <div class="main-content">
-       
-    </div>
+   <h1>crear ejercicio</h1>
 
     
-    <script src="~/js/Trainer/CreateGroupClasses.js"></script>
+    <script src="~/js/Trainer/CreateExercise.js"></script>
     <script src="~/js/site.js"></script>
 </body>
 
 </html>
-
-
-                   
-                   

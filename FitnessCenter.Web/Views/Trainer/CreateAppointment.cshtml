@@ -32,13 +32,22 @@
                     <a class="nav-link" asp-controller="Trainer" asp-action="Home">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Routine" asp-action="CreateRoutine">Asignar Rutina</a>
+                    <a class="nav-link" asp-controller="Routine" asp-action="CreateRoutine">Asignar rutina</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Trainer" asp-action="CreateAppointment">Entrenamiento Personal</a>
+                    <a class="nav-link" asp-controller="Trainer" asp-action="CreateAppointment">Entrenamiento personal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Trainer" asp-action="CreateMeasurement">Cita de Medición</a>
+                    <a class="nav-link" asp-controller="Trainer" asp-action="CreateMeasurement">Cita de medición</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Trainer" asp-action="CreateExercise">Crear ejercicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Trainer" asp-action="CreateExerciseType">Crear tipo de ejercicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Trainer" asp-action="CreateEquipment">Crear equipo</a>
                 </li>
                 <li class="nav-item">
                     <a class="profile-icon nav-link" asp-controller="Account" asp-action="Profile">
@@ -46,7 +55,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="LandingPage" asp-action="LandingPage">
+                    <a id="logoutButton" class="nav-link">
                         <i class="fas fa-sign-out-alt"></i> <!-- Icono de salir -->
                     </a>
                 </li>

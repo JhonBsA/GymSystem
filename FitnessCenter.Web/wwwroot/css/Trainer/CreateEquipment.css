@@ -1,0 +1,21 @@
+﻿.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ocupa toda la altura de la ventana */
+
+}
+
+.form-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 500px; /* Ajusta el tamaño máximo del formulario */
+    background-color: #34495E;
+}
+.text-center {
+    text-align: center !important;
+    color: WHITE;
+}
