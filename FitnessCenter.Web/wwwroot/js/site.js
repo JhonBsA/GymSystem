@@ -15,3 +15,8 @@ $(document).ready(function () {
         }
     });
 });
+
+$('#logoutButton').click(function () {
+    localStorage.removeItem('UserID'); // Eliminar el UserID del localStorage
+    window.location.href = '/LandingPage'; // Redirigir a la página de inicio
+});

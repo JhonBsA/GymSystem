@@ -1,11 +1,12 @@
 ﻿$(document).ready(function () {
-    const apiUrl = API_URL_BASE + '/Routine/RetrieveRoutineByClient';
+
+    const userId = localStorage.getItem('UserID');
 
     function loadRoutineData() {
-        console.log('probando conexion');
+        const apiUrl = API_URL_BASE + '/Routine/RetrieveRoutineByClient?userId=' + userId;
+
         $.ajax({
             url: apiUrl,
-            data: { userId:3 },//Preguntar, como obtengo el userid dinamicamente
             method: 'GET',
             success: function (response) {
                 console.log('Response received:', response);
@@ -32,13 +33,12 @@
                     });
 
                     console.log('Table data:', tableData);
-                    // docu de datatables
-                    if ($.fn.DataTable.isDataTable('#routineTable')) {//verifica que la tb este inicializada como una instance de datateblas
+                    if ($.fn.DataTable.isDataTable('#routineTable')) {
                         let table = $('#routineTable').DataTable();
-                        table.clear().rows.add(tableData).draw();//Esto lo que hace es limpia los datos de la tb, agregar nuevas filas y actualiza la tb
+                        table.clear().rows.add(tableData).draw();
                         console.log('DataTable updated with new data.');
                     } else {
-                        $('#routineTable').DataTable({//si la tb no esta initialized tonces la inicializacion con tbd define las colums y sus title 
+                        $('#routineTable').DataTable({
                             data: tableData,
                             columns: [
                                 { title: "Ejercicio" },
@@ -55,27 +55,26 @@
                     }
                 } else {
                     console.log("No se encontraron rutinas para el usuario.");
-                    alert("No se encontraron rutinas para el usuario.");
+                  
                 }
             },
             error: function (err) {
                 console.error('Error fetching routine data:', err);
-                alert('Error fetching routine data: ' + (err.responseJSON ? err.responseJSON.message : err.statusText));
+               
             }
         });
     }
 
+    
     loadRoutineData();
 
-
+   
     $('#trainingLogForm').on('submit', function (e) {
         e.preventDefault();
-        let apiUrl = API_URL_BASE + '/TrainingLogs/AddTrainingLog';
-
-        const clientId = 3;//preguntar, como hago para obtener el id del cliente dinamicamente?? /logi
+        const apiUrl = API_URL_BASE + '/TrainingLogs/AddTrainingLog?userId=' + userId;
 
         const trainingLog = {
-            ClientID: clientId,
+            ClientID: userId, 
             ExcerciseName: $('#exerciseName').val(),
             DateLogged: new Date($('#dateLogged').val()).toISOString(),
             SetsCompleted: $('#setsCompleted').val(),
@@ -112,5 +111,4 @@
                 });
             });
     });
-
 });

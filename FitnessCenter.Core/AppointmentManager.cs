@@ -61,5 +61,10 @@ namespace FitnessCenter.Core
             var result = appointmentCrud.GetAppointmentById(appointmentID);
             return result;
         }
+        public AppointmentBaseClass GetAppointmentsByUserId(int userID)
+        {
+            var result = appointmentCrud.GetAppointmentsByUserId(userID);
+            return result;
+        }
     }
 }

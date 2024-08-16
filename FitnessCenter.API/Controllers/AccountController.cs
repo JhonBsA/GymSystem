@@ -116,7 +116,7 @@ namespace FitnessCenter.API.Controllers
             var result = _userManager.DeleteUser(user);
             return Ok(result);
         }
-
+       
         [HttpGet]
         [Route("GetAllUsers")]
         public IActionResult GetAllUsers()

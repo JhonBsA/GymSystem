@@ -1,7 +1,5 @@
 
 
-
-
 body {
     background-color: #4a545f;
     display: flex;
@@ -12,12 +10,14 @@ body {
 }
 
 .form-container {
-    max-width: 600px;
-    width: 100%;
+    max-width: 587px;
+    width: 67%;
     background: #fff;
     padding: 20px;
     border-radius: 8px;
-    margin-top: 200px;
+    margin: 0px;
+    position: relative;
+    top: 25px;
 }
 
 .custom-color {
@@ -36,6 +36,7 @@ body {
 .texto {
     color: white;
 }
+
 .btn-primary {
     width: 25%;
     padding: 10px;
@@ -60,18 +61,12 @@ body {
         box-shadow: none !important;
     }
 
-    /* Ajuste del padding y margen de los inputs */
 .form-control {
-    padding: 15px; /* Incrementar el padding interno */
-    margin-bottom: 30px; /* Incrementar el espacio inferior entre inputs */
+    padding: 15px;
+    margin-bottom: 30px;
+    height: 37px;
+    font-size: 1.1rem;
 }
-
-/* Ajuste del ancho y altura de los inputs */
-.form-control {
-    height: 37px; /* Incrementar la altura del input */
-    font-size: 1.1rem; /* Ajustar el tamaño de la fuente para que se vea proporcional */
-}
-
 
 .navbar-nav {
     margin-left: auto;
@@ -103,5 +98,15 @@ body {
 
 .navbar-brand,
 .navbar-custom .nav-link {
+    color: #F1C40F;
+}
+.fixed-top {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+.navbar-dark .navbar-nav .nav-link {
     color: #F1C40F;
 }
