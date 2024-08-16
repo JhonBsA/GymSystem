@@ -66,6 +66,7 @@ function cancelGrouClass(classId) {
                         'success'
                     ).then(() => {
                         // Recargar la tabla después de eliminar la cita
+                        location.reload();
                         table.row($(`button[onclick="cancelAppointment('${appointmentID}')"]`).parents('tr')).remove().draw();
                     });
                 },

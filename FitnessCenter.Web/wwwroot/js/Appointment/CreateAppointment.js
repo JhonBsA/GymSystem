@@ -3,6 +3,11 @@
     let apiUrlTrainers = API_URL_BASE + '/Account/GetTrainers';
     let apiUrl = API_URL_BASE + '/Appointment/CreateAppointment';
 
+    // Filtrar usuarios que no comienzan con "del."
+    function filterUsers(users) {
+        return users.filter(user => !user.nombre.toLowerCase().startsWith('del.'));
+    }
+
     // Cargar clientes
     $.ajax({
         url: apiUrlCustomers,
@@ -10,7 +15,8 @@
         success: function (data) {
             var clienteSelect = $('#Cliente');
             clienteSelect.empty(); // Limpiar el select actual
-            data.forEach(function (customer) {
+            var filteredCustomers = filterUsers(data);
+            filteredCustomers.forEach(function (customer) {
                 clienteSelect.append(new Option(
                     `${customer.nombre} ${customer.firstLastName} ${customer.secondLastName}`,
                     customer.userID
@@ -18,7 +24,7 @@
             });
         },
         error: function (xhr, status, error) {
-            console.error('Error al cargar clientes:', error);
+            console.error('Error al cargar clientes');
         }
     });
 
@@ -37,7 +43,7 @@
             });
         },
         error: function (xhr, stats, error) {
-            console.error('Error al cargar entrenadores:', error);
+            console.error('Error al cargar entrenadores.');
         }
     });
 
@@ -79,8 +85,8 @@
                 Swal.fire({
                     icon: 'success',
                     title: 'Cita creada',
-                    text: response.Message,
-                    confirmButtonText: 'OK'
+                    text: 'Cita creada correctamente.',
+                    confirmButtonText: 'Aceptar'
                 }).then(() => {
                     window.location.href = 'ListAppointments'; // Redirigir a la lista de citas
                 });
@@ -90,7 +96,7 @@
                     icon: 'error',
                     title: 'Error',
                     text: 'Hubo un problema al crear la cita.',
-                    confirmButtonText: 'OK'
+                    confirmButtonText: 'Aceptar'
                 });
             }
         });
