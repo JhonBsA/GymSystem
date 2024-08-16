@@ -1,5 +1,5 @@
 ﻿
-document.addEventListener('DOMContentLoaded', function ()/*$(document).ready(function ()*/ {
+document.addEventListener('DOMContentLoaded', function () {
     let apiUrlTrainers = API_URL_BASE + '/Account/GetTrainers';
     let apiUrl = API_URL_BASE + '/Appointment/UpdateAppointment';
 
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function ()/*$(document).ready(fun
             });
         },
         error: function (xhr, stats, error) {
-            console.error('Error al cargar entrenadores:', error);
+            console.error('Error al cargar entrenadores');
         }
     });
 
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function ()/*$(document).ready(fun
                 $('#DurationInMinutes').val(data.durationInMinutes);
             },
             error: function (error) {
-                console.error('Error al obtener los detalles de la cita:', error);
+                console.error('Error al obtener los detalles de la cita');
             }
         });
     } else {
@@ -87,18 +87,20 @@ document.addEventListener('DOMContentLoaded', function ()/*$(document).ready(fun
                 Swal.fire({
                     icon: 'success',
                     title: 'Cita Actualizada',
-                    text: response.Message,
-                    confirmButtonText: 'OK'
-                })
+                    text: 'La cita fue actualizada correctamente.',
+                    confirmButtonText: 'Aceptar'
+                }).then(() => {
+                    window.location.href = '../ListAppointments'; // Redirigir a la lista de citas
+                });
             },
             error: function (xhr, status, error) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
                     text: 'Hubo un problema al actualizar la cita.',
-                    confirmButtonText: 'OK'
+                    confirmButtonText: 'Aceptar'
                 });
-                console.error('Error al actualizar la cita:', xhr.responseText);
+                console.error('Error al actualizar la cita.');
             }
         });
     });
