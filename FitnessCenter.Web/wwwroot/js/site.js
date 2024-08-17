@@ -28,6 +28,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Define las rutas permitidas por rol
     const routesByRole = {
+        '0':
+            [
+                //Login
+                "/Account/Login",
+                "/Account/ForgotPassword",
+                "/Account/PasswordReset",
+                "/Account/Verify",
+                "/Account/Register",
+                "/"
+            ],
         '1':
             [
                 //Home
@@ -47,7 +57,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 "/Account/Profile",
                 "/Account/ForgotPassword",
                 "/Account/PasswordReset",
-                "/Account/Verify"
+                "/Account/Verify",
+                "/Account/Register",
+                "/"
             ],
         '2':
             [
@@ -76,7 +88,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 "/Receptionist/Profile",
                 "/Account/ForgotPassword",
                 "/Account/PasswordReset",
-                "/Account/Verify"
+                "/Account/Verify",
+                "/Account/Register",
+                "/"
             ],
         '3':
             [
@@ -98,7 +112,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 "/Trainer/Profile",
                 "/Account/ForgotPassword",
                 "/Account/PasswordReset",
-                "/Account/Verify"
+                "/Account/Verify",
+                "/Account/Register",
+                "/"
             ],
         '4':
             [
