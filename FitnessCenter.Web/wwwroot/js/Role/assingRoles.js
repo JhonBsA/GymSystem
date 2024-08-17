@@ -1,67 +1,92 @@
-﻿console.log("probando conexión");
+﻿document.addEventListener('DOMContentLoaded', function () {
+    let apiUrlUsers = API_URL_BASE + '/Account/GetCustomers'; // URL para obtener usuarios
+    let apiUrlRoles = API_URL_BASE + '/Role/RetrievaAllRoles'; // URL para obtener roles
+    let apiUrl = API_URL_BASE + '/Role/SetUserRole'; // URL para asignar roles
 
-let table = $('#userTable').DataTable({
-    data: [], 
-    columns: [
-        { data: 'cedula' },
-        { data: 'nombre' },
-        { data: 'firstLastName' },
-        { data: 'secondLastName' },
-        { data: 'phone' },
-        { data: 'email' },
-        { data: 'roleName' },
-        {
-            data: null,
-            render: function (data, type, row) {
-                return `
-                       <div class="actions-btn">
-                       <button class="btn btn-assign" onclick="assignRole('${row.cedula}')">Asignar</button>
-                       <button class="btn btn-cancel" onclick="cancelAssignment('${row.cedula}')">Cancelar</button>
-                        </div>
-                     `;
-            }
-        }
-    ],
-    createdRow: function (row, data, dataIndex) {
-        $(row).find('td').css('background-color', '#34495E'); //color de la celdas
+    // Filtrar usuarios que no comienzan con "del."
+    function filterUsers(users) {
+        return users.filter(user => !user.nombre.toLowerCase().startsWith('del.'));
     }
-});
 
-const prepareTableData = (result) => {
-    result.map(user => {
-        user.nombre = user.nombre ? user.nombre.charAt(0).toUpperCase() + user.nombre.slice(1) : '';
-        user.firstLastName = user.firstLastName ? user.firstLastName.charAt(0).toUpperCase() + user.firstLastName.slice(1) : '';
-        user.secondLastName = user.secondLastName ? user.secondLastName.charAt(0).toUpperCase() + user.secondLastName.slice(1) : '';
-        user.phone = user.phone || '';
-        user.email = user.email || '';
-        user.roleName = user.roleName ? user.roleName.charAt(0).toUpperCase() + user.roleName.slice(1) : '';
-    });
-    table.clear().rows.add(result).draw(); // Limpia la tabla y agrega las filas con los datos preparados
-}
-
-$(document).ready(() => {
-    let apiUrl = API_URL_BASE + '/Account/GetAllUsers'; 
+    // Cargar usuarios
     $.ajax({
-        url: apiUrl,
-    })
-        .done((result) => {
-            prepareTableData(result); // Si la solicitud es exitosa, prepara los datos y actualiza la tabla
-        })
-        .fail((error) => {
-            Swal.fire({
-                title: "Mensaje",
-                text: "There was an error with the search: " + error.statusText,
-                icon: "error",
+        url: apiUrlUsers,
+        method: 'GET',
+        success: function (data) {
+            var usuarioSelect = $('#Usuario');
+            usuarioSelect.empty(); // Limpiar el select actual
+            var filteredCustomers = filterUsers(data);
+            filteredCustomers.forEach(function (user) {
+                usuarioSelect.append(new Option(
+                    `${user.nombre} ${user.firstLastName} ${user.secondLastName}`,
+                    user.userID
+                ));
             });
+        },
+        error: function (xhr, status, error) {
+            console.error('Error al cargar usuarios');
+        }
+    });
+
+    // Cargar roles
+    $.ajax({
+        url: apiUrlRoles,
+        method: 'GET',
+        success: function (data) {
+            var rolSelect = $('#Rol');
+            rolSelect.empty(); // Limpiar el select actual
+            data.forEach(function (role) {
+                rolSelect.append(new Option(
+                    `${role.name}`,
+                    role.name
+                ));
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error('Error al cargar roles');
+        }
+    });
+
+    // Enviar Datos del Formulario
+    $('#assignRoleForm').submit(function (event) {
+        event.preventDefault();
+
+        // Recoger los valores del formulario
+        let userID = parseInt($('#Usuario').val());
+        let roleName = $('#Rol').val();
+
+        // Objeto de datos para enviar
+        let roleAssignmentData = {
+            userID,
+            roleName
+        };
+
+        console.log(roleAssignmentData)
+
+        // Enviar los datos al servidor
+        $.ajax({
+            url: apiUrl,
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(roleAssignmentData),
+            success: function (response) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Rol asignado',
+                    text: 'Rol asignado correctamente.',
+                    confirmButtonText: 'Aceptar'
+                }).then(() => {
+                    window.location.href = "/Admin/Home";
+                });
+            },
+            error: function (xhr, status, error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un problema al asignar el rol.',
+                    confirmButtonText: 'Aceptar'
+                });
+            }
         });
+    });
 });
-
-function assignRole(userId) {
-    // Implementar lógica para asignar rol
-    console.log('Asignar rol al usuario:', userId);
-}
-
-function cancelAssignment(userId) {
-    // Implementar lógica para cancelar asignación
-    console.log('Cancelar asignación del usuario:', userId);
-}

@@ -1,57 +1,42 @@
-﻿.btn-assign {
-    background-color: #E67E22;
-    /* Naranja */
-    color: white;
-}
-
-.btn-cancel {
-    background-color: #1ABC9C;
-    /* Turquesa */
-    color: white;
-}
-
-.btn-assign:hover {
-    background-color: #d35400;
-    /* Naranja más oscuro */
-}
-
-.btn-cancel:hover {
-    background-color: #16a085;
-    /* Turquesa más oscuro */
-}
-
-.table-container {
-    margin: 20px auto;
-    padding: 2rem;
+﻿.titulo {
     background-color: #2C3E50;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
-    border-radius: 15px;
-    width: 80%;
-    max-width: 1200px;
-   
+    margin: -10px;
 }
 
-.table {
-    background-color: #34495E;
- 
-}
-
-    .table th,
-    .table td {
-        text-align: center;
-        vertical-align: middle;
-        color: white;
-        background-color: #34495E;
-       
-    }
-
-.actions-btn {
+.container {
     display: flex;
     justify-content: center;
-    gap: 10px;
 }
 
-    .actions-btn .btn {
-        padding: 5px 10px;
-        font-size: 0.875rem;
-    }
+.form-container {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    width: 100%;
+    background: #fff;
+    padding: 2%;
+    border-radius: 15px;
+    background-color: #2C3E50;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+    margin-top: 4%;
+}
+
+.inputContainer {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 15%;
+}
+
+.buttons {
+    display: flex;
+    gap: 20%;
+    margin-top: 50px;
+}
+
+.btn {
+    align-content: center;
+    padding: 10px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    width: 50%;
+}

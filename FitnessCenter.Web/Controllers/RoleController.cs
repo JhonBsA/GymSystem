@@ -1,5 +1,4 @@
 ﻿using FitnessCenter.Web.Models.Role;
-using FitnessCenter.Web.Models.User;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

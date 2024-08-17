@@ -68,13 +68,9 @@ namespace FitnessCenter.API.Controllers
 
         [HttpPost]
         [Route("SetUserRole")]
-        public IActionResult SetUserRole(int userID, string roleName)
+        public IActionResult SetUserRole([FromBody] SetRole request)
         {
-            var result = _roleManager.SetUserRole(userID, roleName);
-            if (result.ContainsKey("MESSAGE"))
-            {
-                return BadRequest(result["MESSAGE"]);
-            }
+            var result = _roleManager.SetUserRole(request.userID, request.roleName);
             return Ok(result);
         }
 

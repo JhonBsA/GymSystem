@@ -7,7 +7,7 @@ namespace FitnessCenter.Core
 {
     public class RoleManager
     {
-        private readonly RoleCrudFactory _roleCrudFactory;
+        readonly RoleCrudFactory _roleCrudFactory;
         public RoleManager()
         {
             _roleCrudFactory = new RoleCrudFactory();

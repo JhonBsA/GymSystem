@@ -1,5 +1,114 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Página de Inicio - Administrador";
+    Layout = null;
 }
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Admin/Home.css">
+    <link rel="stylesheet" href="~/css/site.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-custom fondoNav">                                        
+        <a class="navbar-brand" href="@Url.Action("Home", "Admin")">
+            <img src="~/Images/login-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Admin" asp-action="Home">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Admin" asp-action="ListAppointments">Citas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Admin" asp-action="ListGroupClasses">Clases Grupales</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Admin" asp-action="ListCustomers">Control de Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Role" asp-action="AssignRole">Asignar Roles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="profile-icon nav-link" asp-controller="Admin" asp-action="Profile">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a id="logoutButton" class="nav-link">
+                        <i class="fas fa-sign-out-alt"></i> <!-- Icono de salir -->
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+
+        <div class="titulo">
+            <h2 class="text-center mb-4">Página de Inicio - Administrador</h2>
+        </div>
+        
+        <div class="row">
+            <!-- Primera fila de tarjetas -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Citas</h5>
+                        <p class="card-text">Gestiona las citas</p>
+                        <a href="@Url.Action("ListAppointments", "Admin")" class="btn btn-primary">Ir a Citas</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Clases Grupales</h5>
+                        <p class="card-text">Administra las clases grupales ofrecidas.</p>
+                        <a href="@Url.Action("ListGroupClasses", "Admin")" class="btn btn-primary">Ir a Clases Grupales</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Control de Clientes</h5>
+                        <p class="card-text">Accede y gestiona la información de los clientes.</p>
+                        <a href="@Url.Action("ListCustomers", "Admin")" class="btn btn-primary">Ir a Control de Clientes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Tarjeta inferior -->
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Roles</h5>
+                        <p class="card-text">Asigna los Roles.</p>
+                        <a href="@Url.Action("AssignRole", "Role")" class="btn btn-primary">Ir a Roles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/site.js"></script>
+</body>
+</html>
