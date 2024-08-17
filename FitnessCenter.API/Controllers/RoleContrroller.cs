@@ -66,6 +66,19 @@ namespace FitnessCenter.API.Controllers
             return Ok(result);
         }
 
+        [HttpPost]
+        [Route("SetUserRole")]
+        public IActionResult SetUserRole(int userID, string roleName)
+        {
+            var result = _roleManager.SetUserRole(userID, roleName);
+            if (result.ContainsKey("MESSAGE"))
+            {
+                return BadRequest(result["MESSAGE"]);
+            }
+            return Ok(result);
+        }
+
+
     }
 }
 

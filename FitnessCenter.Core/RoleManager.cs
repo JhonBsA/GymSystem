@@ -31,6 +31,13 @@ namespace FitnessCenter.Core
             return result;
         }
 
+        public Dictionary<string, string> SetUserRole(int userID, string roleName)
+        {
+            var result = _roleCrudFactory.SetUserRole(userID, roleName);
+            return result;
+        }
+
+
     }
 
 }

@@ -60,5 +60,19 @@ namespace FitnessCenter.Data.Mapper.RoleMapper
             };
             return operation;
         }
+
+        public SqlOperation GetSetUserRoleStatement(int userID, string roleName)
+        {
+            var operation = new SqlOperation
+            {
+                ProcedureName = "SetUserRole"
+            };
+
+            operation.AddIntegerParam("UserID", userID);
+            operation.AddVarcharParam("RoleName", roleName);
+
+            return operation;
+        }
+
     }
 }

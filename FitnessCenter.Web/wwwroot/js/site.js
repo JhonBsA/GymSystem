@@ -107,37 +107,37 @@ document.addEventListener('DOMContentLoaded', function () {
             
     };
 
-    function disableLink(link) {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-            Swal.fire({
-                icon: 'error',
-                title: 'Acceso Denegado',
-                text: 'No tienes acceso a esta vista.',
-                confirmButtonText: 'Entendido'
-            });
-        });
-    }
+    //function disableLink(link) {
+    //    link.addEventListener('click', function (event) {
+    //        event.preventDefault();
+    //        Swal.fire({
+    //            icon: 'error',
+    //            title: 'Acceso Denegado',
+    //            text: 'No tienes acceso a esta vista.',
+    //            confirmButtonText: 'Entendido'
+    //        });
+    //    });
+    //}
 
-    // Verifica si la ruta actual está permitida
-    const allowedRoutes = routesByRole[roleID] || [];
-    if (!allowedRoutes.includes(currentPath)) {
-        // Si la ruta no está permitida, redirigir o mostrar un mensaje
-        Swal.fire({
-            icon: 'error',
-            title: 'Acceso Denegado',
-            text: 'No tienes acceso a esta vista.',
-            confirmButtonText: 'Entendido'
-        }).then(() => {
-            window.location.href = allowedRoutes[0] || '/'; // Redirige a la primera ruta permitida o a la página de inicio
-        });
-    } else {
-        // Deshabilitar los enlaces a vistas no permitidas
-        document.querySelectorAll('a').forEach(link => {
-            const href = link.getAttribute('href');
-            if (!allowedRoutes.includes(newURL(href, window.location.origin).pathname)) {
-                disableLink(link);
-            }
-        });
-    }
+    //// Verifica si la ruta actual está permitida
+    //const allowedRoutes = routesByRole[roleID] || [];
+    //if (!allowedRoutes.includes(currentPath)) {
+    //    // Si la ruta no está permitida, redirigir o mostrar un mensaje
+    //    Swal.fire({
+    //        icon: 'error',
+    //        title: 'Acceso Denegado',
+    //        text: 'No tienes acceso a esta vista.',
+    //        confirmButtonText: 'Entendido'
+    //    }).then(() => {
+    //        window.location.href = allowedRoutes[0] || '/'; // Redirige a la primera ruta permitida o a la página de inicio
+    //    });
+    //} else {
+    //    // Deshabilitar los enlaces a vistas no permitidas
+    //    document.querySelectorAll('a').forEach(link => {
+    //        const href = link.getAttribute('href');
+    //        if (!allowedRoutes.includes(newURL(href, window.location.origin).pathname)) {
+    //            disableLink(link);
+    //        }
+    //    });
+    //}
 });
