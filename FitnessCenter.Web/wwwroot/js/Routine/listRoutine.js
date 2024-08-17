@@ -74,7 +74,7 @@
         const apiUrl = API_URL_BASE + '/TrainingLogs/AddTrainingLog?userId=' + userId;
 
         const trainingLog = {
-            ClientID: userId, 
+            ClientID: userId,
             ExcerciseName: $('#exerciseName').val(),
             DateLogged: new Date($('#dateLogged').val()).toISOString(),
             SetsCompleted: $('#setsCompleted').val(),

@@ -33,10 +33,7 @@ namespace FitnessCenter.API.Controllers
         public IActionResult AddTrainingLog(TrainingLogs trainingLog)
         {
             var result = _trainingLogsManager.CreateTrainingLogs(trainingLog);
-            if (result.ContainsKey("Message"))
-            {
-                return BadRequest(result["Message"]);
-            }
+           
             return Ok(result);
         }
     }

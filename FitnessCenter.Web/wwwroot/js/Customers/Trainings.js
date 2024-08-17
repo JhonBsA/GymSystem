@@ -1,9 +1,7 @@
 ﻿$(document).ready(function () {
-
     const userId = localStorage.getItem('UserID');
     console.log('UserID:', userId);
 
-   
     const apiUrl = API_URL_BASE + '/Appointment/GetAppointmentsByUserId?userID=' + userId;
 
     var calendarEl = document.getElementById('calendar');
@@ -14,26 +12,27 @@
             $.ajax({
                 url: apiUrl,
                 type: 'GET',
-               
                 success: function (response) {
                     console.log('Respuesta del servidor:', response);
 
                     var events = [];
                     if (Array.isArray(response)) {
                         response.forEach(function (appointment) {
-                            events.push({
-                                title: "Cita",
-                                start: new Date(appointment.appointmentDate).toISOString(), //convierte a formato iso
-                                backgroundColor: '#28a745',
-                                textColor: '#fff',
-                                extendedProps: {
-                                    trainerName: appointment.trainerName,
-                                    clientName: appointment.clientName,
-                                    notes: appointment.notes,
-                                    appointmentDate: appointment.appointmentDate,
-                                    appointmentID: appointment.appointmentID
-                                }
-                            });
+                            if (appointment.notes === 'Cita de Entrenamiento Personal') { // Filtra por 'Cita de Entrenamiento Personal'
+                                events.push({
+                                    title: "Cita Personal",
+                                    start: new Date(appointment.appointmentDate).toISOString(), // Convierte a formato ISO
+                                    backgroundColor: '#007bff',
+                                    textColor: '#fff',
+                                    extendedProps: {
+                                        trainerName: appointment.trainerName,
+                                        clientName: appointment.clientName,
+                                        notes: appointment.notes,
+                                        appointmentDate: appointment.appointmentDate,
+                                        appointmentID: appointment.appointmentID
+                                    }
+                                });
+                            }
                         });
                     } else {
                         console.error('Se esperaba un array pero se recibió:', response);
@@ -59,9 +58,10 @@
         selectable: true,
         eventContent: function (arg) {
             return {
-                html: `<div class="fc-event-title" style="padding: 5px; border: 1px solid #ccc; border-radius: 3px; background-color: #28a745; color: #fff;">
-                                                    Cita Personal
-                                        </div>` };
+                html: `<div class="fc-event-title" style="padding: 5px; border: 1px solid #ccc; border-radius: 3px; background-color: #007bff; color: #fff;">
+                        Cita Personal
+                    </div>`
+            };
         }
     });
 
@@ -89,7 +89,6 @@
         $('#title').text('');
         $('#hora').html('<span class="texto-rojo">No se han registrado horas de disponibilidad para ' + formattedDate + '</span>');
 
-
         $('#book-appointment').hide();
         $('#cancel-appointment').show();
     }
@@ -111,4 +110,42 @@
     });
 
     $('#appointment-details').hide();
+
+    $('#reserva').click(function () {
+        const reservarCita = {
+            trainerName: $('#title').text().replace('Cita de entrenamiento personal con el entrenador ', ''),
+            clientName: $('#appointment-details').data('clientName'),
+            appointmentDate: $('#hora').text().replace('El ', '')
+        };
+
+        const apiUrl = API_URL_BASE + '/Appointment/CreateAppointment';
+
+        $.ajax({
+            url: apiUrl,
+            type: 'POST',
+            data: JSON.stringify(reservarCita),
+            contentType: 'application/json;charset=utf-8',
+            dataType: 'json',
+            success: function (response) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Cita reservada',
+                    text: 'Cita reservada con éxito',
+                    confirmButtonText: 'Aceptar',
+                    text: response.Message,
+                }).then(() => {
+                    calendar.refetchEvents();
+                });
+            },
+            error: function (xhr, status, error) {
+                console.error('Error al reservar la cita:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Error al reservar la cita',
+                    confirmButtonText: 'Aceptar',
+                });
+            }
+        });
+    });
 });
