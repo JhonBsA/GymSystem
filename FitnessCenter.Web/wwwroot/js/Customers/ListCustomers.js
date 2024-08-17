@@ -80,7 +80,7 @@ $(document).ready(() => {
         type: 'GET'
     })
         .done((result) => {
-            prepareTableData(result); // Si la solicitud es exitosa, prepara los datos y actualiza la tabla
+            prepareTableData(result); 
         })
         .fail((error) => {
             Swal.fire({
@@ -92,7 +92,7 @@ $(document).ready(() => {
 });
 
 const prepareTableData = (data) => {
-    // Filtra los datos para excluir usuarios con nombre 'del.'
+    
     const filteredData = data.filter(customer => !customer.nombre.startsWith('del.'));
 
     const preparedData = filteredData.map(customer => {

@@ -52,7 +52,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="LandingPage" asp-action="LandingPage">
+                    <a id="logoutButton" class="nav-link">
                         <i class="fas fa-sign-out-alt"></i> <!-- Icono de salir -->
                     </a>
                 </li>
@@ -90,7 +90,7 @@
                 <form id="trainingLogForm">
                     <div class="form-group">
                         <label for="exerciseName" style="color: white;">Nombre del Ejercicio</label>
-                        <input type="text" class="form-control" id="exerciseName">
+                    <input type="text" class="form-control" id="exerciseName" required>
                     </div>
 
                     <div class="form-group">
@@ -118,7 +118,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="dateLogged" style="color: white;">Fecha</label>
-                                <input type="datetime-local" class="form-control" id="dateLogged">
+                            <input type="datetime-local" class="form-control" id="dateLogged" required>
                             </div>
                         </div>
                     </div>

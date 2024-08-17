@@ -42,13 +42,9 @@ const verifyOTP = (e) => {
             Swal.fire({
                 title: "Contraseña actualizada con éxito",
                 icon: "success",
-                background: "#c0d898",
-                customClass: {
-                    popup: 'custom-popup',
-                    title: 'custom-title',
-                    icon: 'custom-title',
-                    confirmButton: 'custom-button'
-                }
+                 text: '',
+                confirmButtonText: 'Aceptar'
+               
             });
         }).fail((response) => {
             console.log(response.responseText);
@@ -57,7 +53,7 @@ const verifyOTP = (e) => {
                 text: "Se ha presentado un fallo",
                 icon: "error",
                 confirmButtonText: "Aceptar",
-                background: "#f8d7da"
+               
             });
         });
 }
