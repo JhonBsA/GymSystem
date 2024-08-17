@@ -40,8 +40,8 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom fondoNav">
-        <a class="navbar-brand" asp-controller="Customers" asp-action="Home">
-            <img src="../Images/login-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <a class="navbar-brand" href="@Url.Action("Home", "Trainer")">
+            <img src="~/Images/login-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -56,7 +56,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Trainer" asp-action="CreateAppointment">Entrenamiento personal</a>
-                </li>         
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Trainer" asp-action="CreateMeasurement">Cita de medición</a>
                 </li>
@@ -70,16 +70,15 @@
                     <a class="nav-link" asp-controller="Trainer" asp-action="CreateEquipment">Crear equipo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="profile-icon nav-link" asp-controller="Account" asp-action="Profile">
+                    <a class="profile-icon nav-link" asp-controller="Trainer" asp-action="Profile">
                         <i class="fas fa-user"></i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a id="logoutButton" class="nav-link">
-                        <i class="fas fa-sign-out-alt"></i> <!-- Icono de salir -->
+                        <i class="fas fa-sign-out-alt"></i>
                     </a>
                 </li>
-
             </ul>
         </div>
     </nav>
@@ -89,8 +88,10 @@
        
     </div>
 
-    
-    <script src="~/js/Trainer/CreateGroupClasses.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/site.js"></script>
 </body>
 

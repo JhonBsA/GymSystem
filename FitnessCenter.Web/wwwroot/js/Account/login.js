@@ -20,8 +20,26 @@ const loginUser = (e) => {
         .done((result) => {
             localStorage.setItem('RoleID', result.RoleID);
             localStorage.setItem('UserID', result.UserID);
-            
-            console.log(result);
+
+            let redirectToHome = '';
+
+            switch (result.RoleID) {
+                case '1': // Cliente
+                    redirectToHome = customerHomeUrl;
+                    break;
+                case '2': // Recepcionista
+                    redirectToHome = receptionistHomeUrl;
+                    break;
+                case '3': // Entrenador
+                    redirectToHome = trainerHomeUrl;
+                    break;
+                case '4': // Administrador
+                    redirectToHome = adminHomeUrl;
+                    break;
+                default:
+                    redirectToHome = loginUrl; // Redirigir a la página de login si no se reconoce el RoleID
+                    break;
+            }
 
             Swal.fire({
                 title: "Inicio de sesión exitoso",

@@ -1,26 +1,24 @@
 ﻿@{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Profile";
     Layout = null; // No usar el layout predeterminado
 }
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi perfil</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/site.css">
-    <link rel="stylesheet" href="~/css/Customers/Home.css">
-    <link rel="stylesheet" href="~/css/Trainer/CreateExerciseType.css">
+    <link rel="stylesheet" type="text/css" href="~/css/Account/Profile.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/Customers/Home.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 
-
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom fondoNav">
-        <a class="navbar-brand" asp-controller="Customers" asp-action="Home">
+        <a class="navbar-brand" asp-controller="Trainer" asp-action="Home">
             <img src="../Images/login-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +48,7 @@
                     <a class="nav-link" asp-controller="Trainer" asp-action="CreateEquipment">Crear equipo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="profile-icon nav-link" asp-controller="Trainer" asp-action="Profile">
+                    <a class="profile-icon nav-link" asp-controller="Account" asp-action="Profile">
                         <i class="fas fa-user"></i>
                     </a>
                 </li>
@@ -64,27 +62,30 @@
         </div>
     </nav>
 
-    <div class="form-container">
-        <div class="form-box">
-            <h1 class="text-center">Crear Tipo de Ejercicio</h1>
-            <form id="form">
-                <div class="form-group">
-                   
-                    <label for="typeName">Nombre del Tipo</label>
-                    <input type="text" class="form-control" id="typeName" name="TypeName" placeholder="Ingrese el nombre del tipo" required>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">Guardar</button>
-            </form>
+    <div class="titulo">
+        <h3>Mi perfil</h3>
+    </div>
+
+    <div class="centered-container">
+        <div class="price__card">
+            <div class="price__card__content">
+                <h4 id="nombre"></h4>
+                <p id="cedula"></p>
+                <p id="telefono"></p>
+                <p id="correo"></p>
+            </div>
+            <a class="btn price__btn" asp-controller="Account" asp-action="ForgotPassword">Cambiar contraseña</a>
         </div>
+       
     </div>
 
 
-
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/js/Trainer/CreateExerciseType.js"></script>
+    <script src="~/js/Account/profile.js"></script>
     <script src="~/js/site.js"></script>
-</body>
 
+</body>
 </html>
