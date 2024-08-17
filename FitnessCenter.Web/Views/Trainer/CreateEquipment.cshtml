@@ -19,7 +19,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom fondoNav">
-        <a class="navbar-brand" asp-controller="Customers" asp-action="Home">
+        <a class="navbar-brand" asp-controller="Trainer" asp-action="Home">
             <img src="../Images/login-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,7 +55,7 @@
                 </li>
                 <li class="nav-item">
                     <a id="logoutButton" class="nav-link">
-                        <i class="fas fa-sign-out-alt"></i> <!-- Icono de salir -->
+                        <i class="fas fa-sign-out-alt"></i>
                     </a>
                 </li>
 
@@ -64,22 +64,23 @@
     </nav>
 
 
-    <div class="form-container ">
-        <div class="form-box ">
+    <div class="form-container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="form-box w-100" style="max-width: 500px;">
             <h1 class="text-center textBlanco">Crear Equipo</h1>
             <form id="Form">
-                <div class="form-group">
-                    <label for="name">Nombre</label>
-                    <input type="text" class="form-control" id="name" name="Name" placeholder="Ingrese el nombre" required>
+                <div class="form-group text-center">
+                    <label for="name" class="d-block">Nombre</label>
+                    <input type="text" class="form-control mx-auto" id="name" name="Name" placeholder="Ingrese el nombre" required style="max-width: 400px;">
                 </div>
-                <div class="form-group">
-                    <label for="type">Tipo</label>
-                    <input type="text" class="form-control" id="type" name="Type" placeholder="Ingrese el tipo" required>
+                <div class="form-group text-center">
+                    <label for="type" class="d-block">Tipo</label>
+                    <input type="text" class="form-control mx-auto" id="type" name="Type" placeholder="Ingrese el tipo" required style="max-width: 400px;">
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                <button type="submit" class="btn btn-primary d-block mx-auto">Guardar</button>
             </form>
         </div>
     </div>
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

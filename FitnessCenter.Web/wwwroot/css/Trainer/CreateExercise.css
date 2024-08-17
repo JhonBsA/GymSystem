@@ -2,14 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Ocupa toda la altura de la ventana */
+    min-height: 90vh; /* Ocupa toda la altura de la ventana */
     background-color: #4a545f; /* Color de fondo opcional para la página */
     padding: 20px;
     margin-top: 0px;
 }
 
 .form-box {
-    background-color: #34495E;
+    background-color: #2C3E50;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -21,4 +21,13 @@
 .text-center {
     text-align: center;
     color: #fff; /* Color del texto */
+}
+.form-group {
+    margin-bottom: 80px;
+    text-align: center;
+    margin-top: 50px;
+    color: white;
+    border: none !important;
+    outline: none !important;
+    width: 545px;
 }

@@ -122,6 +122,7 @@ footer {
 
 .boto {
     color: white;
+    margin-top: inherit;
 }
 
 .circle-container {

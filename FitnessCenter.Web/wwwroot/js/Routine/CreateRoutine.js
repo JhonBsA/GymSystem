@@ -137,11 +137,26 @@
             contentType: 'application/json',
             data: JSON.stringify(routineData),
             success: function (response) {
-                Swal.fire('Éxito', 'La rutina ha sido registrada correctamente', 'success');
+                Swal.fire({
+                    title: 'Éxito',
+                    text: 'La rutina ha sido registrada correctamente',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#createRoutineForm')[0].reset(); // Restablecer el formulario
+                        // Opcionalmente, podrías volver a cargar las listas de selección aquí si es necesario
+                    }
+                });
             },
             error: function (xhr, status, error) {
                 console.error('Error al registrar rutina:', error);
-                Swal.fire('Error', 'No se pudo registrar la rutina', 'error');
+                Swal.fire({
+                    title: 'Error',
+                    text: 'No se pudo registrar la rutina',
+                    icon: 'error',
+                    confirmButtonText: 'Aceptar'
+                });
             }
         });
     });
