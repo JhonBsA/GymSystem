@@ -2,6 +2,12 @@
 @{
     ViewData["Title"] = "Login";
     Layout = null;
+
+    var customerHomeUrl = Url.Action("Home", "Customers");
+    var trainerHomeUrl = Url.Action("Home", "Trainer");
+    var receptionistHomeUrl = Url.Action("HomeReceptionist", "Receptionist");
+    var adminHomeUrl = Url.Action("Home", "Admin");
+    var loginUrl = Url.Action("Login", "Account");
 }
 
 <!DOCTYPE html>
@@ -63,7 +69,11 @@
         window.location.href = "@Url.Action("LandingPage", "LandingPage")";
     });
 
-    var redirectToHome = '@Url.Action("Home", "Customers")';
+        const customerHomeUrl = '@customerHomeUrl';
+        const trainerHomeUrl = '@trainerHomeUrl';
+        const receptionistHomeUrl = '@receptionistHomeUrl';
+        const adminHomeUrl = '@adminHomeUrl';
+        const loginUrl = '@loginUrl';
 
 </script>
 

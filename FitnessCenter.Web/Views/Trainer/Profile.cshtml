@@ -1,21 +1,20 @@
 ﻿@{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Profile";
     Layout = null; // No usar el layout predeterminado
 }
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi perfil</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/site.css">
-    <link rel="stylesheet" href="~/css/Customers/Home.css">
-    <link rel="stylesheet" href="~/css/Trainer/CreateEquipment.css">
+    <link rel="stylesheet" type="text/css" href="~/css/Account/Profile.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/Customers/Home.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
-
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom fondoNav">
@@ -49,13 +48,13 @@
                     <a class="nav-link" asp-controller="Trainer" asp-action="CreateEquipment">Crear equipo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="profile-icon nav-link" asp-controller="Trainer" asp-action="Profile">
+                    <a class="profile-icon nav-link" asp-controller="Account" asp-action="Profile">
                         <i class="fas fa-user"></i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a id="logoutButton" class="nav-link">
-                        <i class="fas fa-sign-out-alt"></i>
+                        <i class="fas fa-sign-out-alt"></i> <!-- Icono de salir -->
                     </a>
                 </li>
 
@@ -63,31 +62,30 @@
         </div>
     </nav>
 
+    <div class="titulo">
+        <h3>Mi perfil</h3>
+    </div>
 
-    <div class="form-container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-        <div class="form-box w-100" style="max-width: 500px;">
-            <h1 class="text-center textBlanco">Crear Equipo</h1>
-            <form id="Form">
-                <div class="form-group text-center">
-                    <label for="name" class="d-block">Nombre</label>
-                    <input type="text" class="form-control mx-auto" id="name" name="Name" placeholder="Ingrese el nombre" required style="max-width: 400px;">
-                </div>
-                <div class="form-group text-center">
-                    <label for="type" class="d-block">Tipo</label>
-                    <input type="text" class="form-control mx-auto" id="type" name="Type" placeholder="Ingrese el tipo" required style="max-width: 400px;">
-                </div>
-                <button type="submit" class="btn btn-primary d-block mx-auto">Guardar</button>
-            </form>
+    <div class="centered-container">
+        <div class="price__card">
+            <div class="price__card__content">
+                <h4 id="nombre"></h4>
+                <p id="cedula"></p>
+                <p id="telefono"></p>
+                <p id="correo"></p>
+            </div>
+            <a class="btn price__btn" asp-controller="Account" asp-action="ForgotPassword">Cambiar contraseña</a>
         </div>
+       
     </div>
 
 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/js/Trainer/CreateEquipment.js"></script>
+    <script src="~/js/Account/profile.js"></script>
     <script src="~/js/site.js"></script>
+
 </body>
-
 </html>
-
