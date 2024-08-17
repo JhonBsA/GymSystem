@@ -45,10 +45,14 @@
                     text: 'Ejercicio creado exitosamente.',
                     icon: 'success',
                     confirmButtonText: 'Aceptar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#form')[0].reset(); // Restablecer el formulario
+                    }
                 });
             },
             error: function (xhr, status, error) {
-               
+
                 Swal.fire({
                     title: 'Error',
                     text: 'Hubo un problema al crear el ejercicio. Por favor, inténtelo de nuevo.',

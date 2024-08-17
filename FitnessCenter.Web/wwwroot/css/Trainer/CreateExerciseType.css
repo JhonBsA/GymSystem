@@ -2,23 +2,88 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Ocupa toda la altura de la ventana */
+    min-height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
     background-color: #4a545f;
     padding: 20px;
+    margin-top: 0px;
 }
 
 .form-box {
-    background-color: #34495E;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #2C3E50;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 500px; /* Ajusta el tamaño máximo del formulario */
-    color: #fff; /* Color del texto */
-   
+    max-width: 600px; /* Mantén el ancho máximo del formulario */
+    color: #fff;
+    text-align: center;
+    min-height: 51vh;
+    margin-top: -82px;
 }
 
-.text-center {
+    .form-box .form-group {
+        margin-bottom: 30px; /* Espacio entre los elementos */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-box input {
+        width: 80%; /* Ajusta el ancho del input */
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 20px; /* Espacio entre el input y el botón */
+    }
+
+label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 100%;
     text-align: center;
-    color: #fff; /* Color del texto */
+    color: #ecf0f1;
+    margin-left: 172px;
+}
+
+button {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 10px 30px; /* Ajusta el padding para hacer el botón menos ancho */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    button:hover {
+        background-color: #2980b9;
+    }
+
+.btn-primary {
+    width: 55%;
+    padding: 8px;
+    background-color: #E67E22 !important;
+    border-color: none !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+    /* margin-right: 3px; */
+    align-items: center;
+    text-align: center;
+    margin-left: 115px;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    margin-left: 191px;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
