@@ -76,5 +76,25 @@ namespace FitnessCenter.Data.Crud.RoleCRUD
 
             return response;
         }
+
+        public Dictionary<string, string> SetUserRole(int userID, string roleName)
+{
+            SqlOperation operation = mapper.GetSetUserRoleStatement(userID, roleName);
+            var result = dao.ExecuteStoredProcedureWithResult(operation);
+            if (result.Count == 0)
+            {
+                throw new Exception("No response from stored procedure.");
+            }
+            var firstRow = result[0];
+            var response = new Dictionary<string, string>();
+
+            foreach (var key in firstRow.Keys)
+            {
+                response[key] = firstRow[key].ToString();
+            }
+
+            return response;
+        }
+
     }
 }
