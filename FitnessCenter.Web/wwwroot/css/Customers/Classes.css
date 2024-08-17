@@ -85,6 +85,7 @@
 .titulo {
     text-align: center;
     color: white;
+    margin-top: revert;
 }
 .fondoCards {
     background-color: #34495E;
