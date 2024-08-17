@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Registrar Rutina";
     Layout = null; // No usar el layout predeterminado
 }
@@ -14,7 +13,9 @@
     <link rel="stylesheet" href="~/css/site.css">
     <link rel="stylesheet" href="~/css/Routine/CreateRoutine.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    
 </head>
+
 
 <body>
 
@@ -55,7 +56,7 @@
                 </li>
                 <li class="nav-item">
                     <a id="logoutButton" class="nav-link">
-                        <i class="fas fa-sign-out-alt"></i> <!-- Icono de salir -->
+                        <i class="fas fa-sign-out-alt"></i>
                     </a>
                 </li>
             </ul>
@@ -72,29 +73,35 @@
                     <div class="inputgroup1">
                         <div class="form-group">
                             <label for="Cliente">Cliente</label>
-                            <select class="form-control" id="Cliente" name="ClienteId">
-                                <!-- Opciones de cliente -->
+                            <select id="Cliente" class="form-control" name="ClienteId">
+                               
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="Entrenador">Entrenador</label>
-                            <select class="form-control" id="Entrenador" name="EntrenadorId">
-                                <!-- Opciones de entrenador -->
+                            <select id="Entrenador" class="form-control" name="EntrenadorId">
+                              
                             </select>
                         </div>
                     </div>
                     <div class="inputgroup2">
                         <label for="Ejercicio">Ejercicio</label>
-                        <input class="form-control" id="Ejercicio" name="Ejercicio">
+                        <select id="Ejercicio" class="form-control" name="EjercicioId">
+                           
+                        </select>
                     </div>
                     <div class="inputgroup3">
                         <div class="form-group">
-                            <label for="TipoEjercicio">Tipo de ejercicio</label>
-                            <input class="form-control" id="TipoEjercicio" name="TipoEjercicio">
+                            <label for="TipoEjercicio">Tipo de Ejercicio</label>
+                            <select id="TipoEjercicio" class="form-control">
+                                <option value="">Seleccione un tipo de ejercicio</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="Equipo">Equipo</label>
-                            <input class="form-control" id="Equipo" name="Equipo">
+                            <select id="Equipo" class="form-control">
+                                <option value="">Seleccione un tipo de ejercicio</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="Sets">Sets</label>
@@ -112,21 +119,13 @@
                         </div>
                         <div class="form-group">
                             <label for="Duracion">Duración</label>
-                            <input class="form-control" id="Duracion (Segundos)" name="Duracion">
+                            <input class="form-control" id="Duracion" name="Duracion">
                         </div>
                     </div>
                     <div class="inputgroup5">
                         <div class="form-group">
                             <label for="dia">Día</label>
-                            <select class="form-control" id="dia" name="dia">
-                                <option value="1">Lunes</option>
-                                <option value="2">Martes</option>
-                                <option value="3">Miércoles</option>
-                                <option value="4">Jueves</option>
-                                <option value="5">Viernes</option>
-                                <option value="6">Sábado</option>
-                                <option value="7">Domingo</option>
-                            </select>
+                            <input class="form-control" id="Dia" name="Duracion">
                         </div>
                     </div>
                 </div>
@@ -137,6 +136,7 @@
             </form>
         </div>
     </div>
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>

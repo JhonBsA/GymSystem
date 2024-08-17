@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh; /* Ocupa toda la altura de la ventana */
-    background-color: #f4f4f4; /* Color de fondo opcional para la página */
+    background-color: #4a545f;
     padding: 20px;
 }
 
@@ -15,6 +15,7 @@
     width: 100%;
     max-width: 500px; /* Ajusta el tamaño máximo del formulario */
     color: #fff; /* Color del texto */
+   
 }
 
 .text-center {

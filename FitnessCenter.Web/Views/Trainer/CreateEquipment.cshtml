@@ -67,7 +67,7 @@
     <div class="form-container ">
         <div class="form-box ">
             <h1 class="text-center textBlanco">Crear Equipo</h1>
-            <form action="/your-post-endpoint" method="post">
+            <form id="Form">
                 <div class="form-group">
                     <label for="name">Nombre</label>
                     <input type="text" class="form-control" id="name" name="Name" placeholder="Ingrese el nombre" required>
@@ -80,7 +80,10 @@
             </form>
         </div>
     </div>
-    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/Trainer/CreateEquipment.js"></script>
     <script src="~/js/site.js"></script>
 </body>

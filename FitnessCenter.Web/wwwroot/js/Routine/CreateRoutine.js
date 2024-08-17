@@ -1,13 +1,7 @@
 ﻿$(document).ready(function () {
-
-    let apiUrlCustomers = API_URL_BASE + '/Account/GetCustomers';
     let apiUrlTrainers = API_URL_BASE + '/Account/GetTrainers';
-    let apiUrl = API_URL_BASE + '/Routine/CreateRoutine';
+    let apiUrlCustomers = API_URL_BASE + '/Account/GetCustomers';
 
-    // Filtrar usuarios que no comienzan con "del."
-    function filterUsers(users) {
-        return users.filter(user => !user.nombre.toLowerCase().startsWith('del.'));
-    }
 
     // Cargar clientes
     $.ajax({
@@ -15,27 +9,29 @@
         method: 'GET',
         success: function (data) {
             var clienteSelect = $('#Cliente');
-            clienteSelect.empty(); // Limpiar el select actual
-            var filteredCustomers = filterUsers(data);
-            filteredCustomers.forEach(function (customer) {
+            clienteSelect.empty();
+
+            
+            data.forEach(function (customer) {
                 clienteSelect.append(new Option(
-                    `${customer.nombre} ${customer.firstLastName} ${customer.secondLastName}`,
-                    customer.userID
+                    `${customer.nombre} ${customer.firstLastName} ${customer.secondLastName}`, // Concatenar nombre y apellidos
+                    customer.userID 
                 ));
             });
         },
         error: function (xhr, status, error) {
-            console.error('Error al cargar clientes');
+            console.error('Error al cargar clientes:', error);
         }
     });
 
-    // Cargar entrenadores
+
+    //Entrenadores
     $.ajax({
         url: apiUrlTrainers,
         method: 'GET',
         success: function (data) {
             var entrenadorSelect = $('#Entrenador');
-            entrenadorSelect.empty(); // Limpiar el select actual
+            entrenadorSelect.empty(); 
             data.forEach(function (trainer) {
                 entrenadorSelect.append(new Option(
                     `${trainer.nombre} ${trainer.firstLastName} ${trainer.secondLastName}`,
@@ -48,70 +44,104 @@
         }
     });
 
+    // Cargar tipos de ejercicio
+    $.ajax({
+        url: API_URL_BASE + '/ExerciseTypes/GetAllExerciseTypes',
+        type: 'GET',
+        success: function (data) {
+            var tipoEjercicioSelect = $('#TipoEjercicio');
+            tipoEjercicioSelect.empty();
+            data.forEach(function (tipo) {
+                tipoEjercicioSelect.append(
+                    $('<option></option>')
+                        .attr('value', tipo.exerciseTypeID)
+                        .text(tipo.typeName)
+                );
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error('Error al cargar tipos de ejercicio:', error);
+        }
+    });
+
+    // Cargar equipos
+    $.ajax({
+        url: API_URL_BASE + '/Equipment/GetAllEquipments',
+        type: 'GET',
+        success: function (data) {
+            var equipoSelect = $('#Equipo');
+            equipoSelect.empty();
+            data.forEach(function (equipo) {
+                equipoSelect.append(
+                    $('<option></option>')
+                        .attr('value', equipo.equipmentID) 
+                        .text(equipo.name) 
+                );
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error('Error al cargar equipos:', error);
+        }
+    });
+    // Cargar ejercicios
+    $.ajax({
+        url: API_URL_BASE + '/Exercise/GetAllExercises', 
+        type: 'GET',
+        success: function (data) {
+            console.log(data)
+            var ejercicioSelect = $('#Ejercicio');
+            ejercicioSelect.empty();
+            data.forEach(function (ejercicio) {
+                ejercicioSelect.append(
+                    $('<option></option>')
+                        .attr('value', ejercicio.exerciseID) 
+                        .text(ejercicio.name)
+                );
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error('Error al cargar ejercicios:', error);
+        }
+    });
+
+
     $('#createRoutineForm').submit(function (event) {
-        event.preventDefault(); // Evita el envío del formulario por defecto
+        event.preventDefault();
 
-        // Recolectar datos del formulario
-        var clienteId = $('#Cliente').val();
-        var entrenadorId = $('#Entrenador').val();
-        var fechaHora = new Date();
-
-        var ejercicio = $('#Ejercicio').val();
-        var tipoEjercicio = $('#TipoEjercicio').val();
-        var equipo = $('#Equipo').val();
-        var sets = $('#Sets').val();
-        var repeticiones = $('#Repeticiones').val();
-        var peso = $('#Peso').val();
-        var duracion = $('#Duracion').val();
-        var dia = $('#dia').val();
-
-        // Construir el objeto en el formato requerido
         var routineData = {
             routine: {
-                clientID: clienteId,
-                trainerID: entrenadorId,
-                createdAt: fechaHora
+                clientID: $('#Cliente').val(),
+                trainerID: $('#Entrenador').val(),
+                createdAt: new Date().toISOString()
             },
             exerciseDetails: [
                 {
-                    exerciseID: ejercicio,
-                    equipmentID: equipo,
-                    sets: sets,
-                    repetitions: repeticiones,
-                    weight: peso,
-                    durationInSeconds: duracion,
-                    amrapTimeLimitInSeconds: 0,
-                    amrapRepetitions: 0,
-                    dia: dia
+                    exerciseID: $('#Ejercicio').val(),
+                    equipmentID: $('#Equipo').val(),
+                    sets: parseInt($('#Sets').val()), 
+                    repetitions: parseInt($('#Repeticiones').val()), 
+                    weight: parseFloat($('#Peso').val()), 
+                    durationInSeconds: parseInt($('#Duracion').val()) || null,
+                    amrapTimeLimitInSeconds: null,  
+                    amrapRepetitions: null,  
+                    dia: parseInt($('#Dia').val()) || null
                 }
             ]
         };
 
-        // Enviar la solicitud AJAX
+        console.log('Datos a enviar:', routineData);
+
         $.ajax({
-            url: '/api/YourEndpoint', // Cambia esto por la URL de tu API
+            url: API_URL_BASE + '/Routine/CreateRoutine',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(routineData),
             success: function (response) {
-                // Mostrar un mensaje de éxito con SweetAlert
-                Swal.fire({
-                    icon: 'success',
-                    title: '¡Rutina asignada!',
-                    text: 'La rutina ha sido registrada correctamente.',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    window.location.href = '/Trainer/Home'; // Redirigir a la página de inicio
-                });
+                Swal.fire('Éxito', 'La rutina ha sido registrada correctamente', 'success');
             },
             error: function (xhr, status, error) {
-                // Mostrar un mensaje de error con SweetAlert
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Ocurrió un error al registrar la rutina. Por favor, intenta de nuevo.',
-                    confirmButtonText: 'OK'
-                });
+                console.error('Error al registrar rutina:', error);
+                Swal.fire('Error', 'No se pudo registrar la rutina', 'error');
             }
         });
     });
